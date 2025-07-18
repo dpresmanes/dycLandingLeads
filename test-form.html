@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Formulario Google Sheets</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 5px;
+            display: none;
+        }
+        .success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🧪 Test Formulario Google Sheets</h1>
+        <p>Esta página prueba la conexión directa con Google Apps Script sin CSP del navegador.</p>
+        
+        <form id="testForm">
+            <div class="form-group">
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" value="Test Usuario" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="empresa">Empresa:</label>
+                <input type="text" id="empresa" name="empresa" value="Test Company" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="celular">Celular:</label>
+                <input type="tel" id="celular" name="celular" value="+1234567890" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" value="test@ejemplo.com" required>
+            </div>
+            
+            <button type="submit" id="submitBtn">🚀 Probar Envío</button>
+        </form>
+        
+        <div id="result" class="result"></div>
+        
+        <div style="margin-top: 30px; padding: 15px; background-color: #e9ecef; border-radius: 5px;">
+            <h3>📋 Instrucciones:</h3>
+            <ol>
+                <li>Abre este archivo directamente en tu navegador</li>
+                <li>Llena el formulario (ya tiene datos de prueba)</li>
+                <li>Haz clic en "Probar Envío"</li>
+                <li>Revisa el resultado y verifica tu Google Sheet</li>
+            </ol>
+        </div>
+    </div>
+
+    <script>
+        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxWIcSHvfwRaZeRE4dk1LGANRoRlglMVkau8Xp-HENpKlPMROK2lcN4qCScjGJByvFayg/exec';
+        
+        document.getElementById('testForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const submitBtn = document.getElementById('submitBtn');
+            const result = document.getElementById('result');
+            
+            // Mostrar loading
+            submitBtn.textContent = '⏳ Enviando...';
+            submitBtn.disabled = true;
+            result.style.display = 'none';
+            
+            try {
+                const formData = {
+                    nombre: document.getElementById('nombre').value,
+                    empresa: document.getElementById('empresa').value,
+                    celular: document.getElementById('celular').value,
+                    email: document.getElementById('email').value,
+                    timestamp: new Date().toISOString(),
+                    source: 'Test HTML Page',
+                    userAgent: navigator.userAgent,
+                    referrer: window.location.href
+                };
+                
+                console.log('📤 Enviando datos:', formData);
+                
+                const response = await fetch(GOOGLE_SCRIPT_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'text/plain;charset=utf-8'
+                    },
+                    body: JSON.stringify(formData)
+                });
+                
+                console.log('📥 Respuesta status:', response.status);
+                
+                const data = await response.json();
+                console.log('📥 Respuesta data:', data);
+                
+                if (data.success) {
+                    result.className = 'result success';
+                    result.innerHTML = `
+                        <h3>✅ ¡Éxito!</h3>
+                        <p><strong>Mensaje:</strong> ${data.message}</p>
+                        <p><strong>Timestamp:</strong> ${data.timestamp}</p>
+                        <p><strong>Fila:</strong> ${data.row || 'N/A'}</p>
+                        <p>🎉 ¡Revisa tu Google Sheet para ver los datos!</p>
+                    `;
+                } else {
+                    throw new Error(data.error || 'Error desconocido');
+                }
+                
+            } catch (error) {
+                console.error('❌ Error:', error);
+                result.className = 'result error';
+                result.innerHTML = `
+                    <h3>❌ Error</h3>
+                    <p><strong>Mensaje:</strong> ${error.message}</p>
+                    <p><strong>Tipo:</strong> ${error.name || 'Error'}</p>
+                    <details>
+                        <summary>Ver detalles técnicos</summary>
+                        <pre>${error.stack || error.toString()}</pre>
+                    </details>
+                `;
+            } finally {
+                submitBtn.textContent = '🚀 Probar Envío';
+                submitBtn.disabled = false;
+                result.style.display = 'block';
+            }
+        });
+        
+        // Test de conectividad al cargar
+        window.addEventListener('load', async function() {
+            console.log('🔍 Probando conectividad con Google Apps Script...');
+            try {
+                const response = await fetch(GOOGLE_SCRIPT_URL);
+                const data = await response.json();
+                console.log('✅ Conectividad OK:', data);
+            } catch (error) {
+                console.error('❌ Error de conectividad:', error);
+            }
+        });
+    </script>
+</body>
+</html>

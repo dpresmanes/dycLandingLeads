@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Formulario - Bypass CSP</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .alert {
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        .alert-warning {
+            background-color: #fff3cd;
+            color: #856404;
+            border: 1px solid #ffeaa7;
+        }
+        .alert-info {
+            background-color: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔧 Test Formulario - Bypass CSP</h1>
+        
+        <div class="alert alert-warning">
+            <h3>⚠️ Problema CSP Detectado</h3>
+            <p>El navegador está bloqueando la conexión debido a Content Security Policy. Este formulario usa un método alternativo.</p>
+        </div>
+        
+        <div class="alert alert-info">
+            <h3>🔍 Diagnóstico:</h3>
+            <ul>
+                <li><strong>Error:</strong> CSP bloquea conexiones a Google Apps Script</li>
+                <li><strong>Causa:</strong> Archivo abierto como file:// en lugar de http://</li>
+                <li><strong>Solución:</strong> Usar formulario directo sin JavaScript fetch</li>
+            </ul>
+        </div>
+        
+        <!-- Método 1: Formulario directo (bypass CSP) -->
+        <form action="https://script.google.com/macros/s/AKfycbxWIcSHvfwRaZeRE4dk1LGANRoRlglMVkau8Xp-HENpKlPMROK2lcN4qCScjGJByvFayg/exec" method="POST" target="_blank">
+            <h3>📝 Método 1: Envío Directo (Recomendado)</h3>
+            
+            <div class="form-group">
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" value="Test Usuario CSP" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="empresa">Empresa:</label>
+                <input type="text" id="empresa" name="empresa" value="Test Company CSP" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="celular">Celular:</label>
+                <input type="tel" id="celular" name="celular" value="+1234567890" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" value="test-csp@ejemplo.com" required>
+            </div>
+            
+            <input type="hidden" name="source" value="CSP Bypass Test">
+            <input type="hidden" name="timestamp" value="">
+            
+            <button type="submit">🚀 Enviar (Método Directo)</button>
+        </form>
+        
+        <hr style="margin: 30px 0;">
+        
+        <!-- Método 2: Test con servidor local -->
+        <div>
+            <h3>🌐 Método 2: Servidor Local</h3>
+            <p>Para evitar problemas CSP permanentemente:</p>
+            <ol>
+                <li>Abre terminal en la carpeta del proyecto</li>
+                <li>Ejecuta: <code>npm run dev</code></li>
+                <li>Abre: <code>http://localhost:5173</code></li>
+            </ol>
+            <button onclick="showServerInstructions()">📋 Ver Instrucciones Detalladas</button>
+        </div>
+        
+        <div id="serverInstructions" style="display: none; margin-top: 20px; padding: 15px; background-color: #f8f9fa; border-radius: 5px;">
+            <h4>🔧 Pasos para servidor local:</h4>
+            <pre style="background: #2d3748; color: #e2e8f0; padding: 15px; border-radius: 5px; overflow-x: auto;">cd f:\Dami\Documents\project-bolt-payment-app-j42gcljf\project
+npm run dev</pre>
+            <p>Luego abre en el navegador: <strong>http://localhost:5173</strong></p>
+        </div>
+        
+        <div style="margin-top: 30px; padding: 15px; background-color: #e9ecef; border-radius: 5px;">
+            <h3>📋 Instrucciones de Uso:</h3>
+            <ol>
+                <li><strong>Método Directo:</strong> Llena el formulario y haz clic en "Enviar". Se abrirá una nueva pestaña con el resultado.</li>
+                <li><strong>Verificación:</strong> Revisa tu Google Sheet para confirmar que los datos se guardaron.</li>
+                <li><strong>Si falla:</strong> El problema está en la configuración de Google Apps Script, no en CSP.</li>
+            </ol>
+        </div>
+    </div>
+
+    <script>
+        // Agregar timestamp al envío
+        document.querySelector('form').addEventListener('submit', function() {
+            document.querySelector('input[name="timestamp"]').value = new Date().toISOString();
+        });
+        
+        function showServerInstructions() {
+            const instructions = document.getElementById('serverInstructions');
+            instructions.style.display = instructions.style.display === 'none' ? 'block' : 'none';
+        }
+        
+        // Mostrar información del navegador
+        console.log('🔍 Información del navegador:');
+        console.log('User Agent:', navigator.userAgent);
+        console.log('URL actual:', window.location.href);
+        console.log('Protocolo:', window.location.protocol);
+        
+        if (window.location.protocol === 'file:') {
+            console.warn('⚠️ Archivo abierto como file:// - CSP puede causar problemas');
+        }
+    </script>
+</body>
+</html>
