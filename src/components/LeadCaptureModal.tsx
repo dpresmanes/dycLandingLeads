@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, User, Building2, Phone, Mail, Send, CheckCircle } from 'lucide-react';
+import { X, User, Mail, Phone, Building2, Send, CheckCircle } from 'lucide-react';
 import { useState } from 'react';
 import { useLeadCaptureContext } from '../contexts/LeadCaptureContext';
 
@@ -14,7 +14,7 @@ const LeadCaptureModal = () => {
     errors
   } = useLeadCaptureContext();
   
-  console.log('LeadCaptureModal render - isModalOpen:', isModalOpen);
+
   
   const [showSuccess, setShowSuccess] = useState(false);
 
@@ -40,7 +40,7 @@ const LeadCaptureModal = () => {
     }
   };
 
-  console.log('Rendering modal, isModalOpen:', isModalOpen);
+
   
   return (
     <AnimatePresence>
@@ -132,7 +132,7 @@ const LeadCaptureModal = () => {
                 transition={{ delay: 0.2 }}
                 className="text-gray-300 font-inter text-sm md:text-base"
               >
-                Cuéntanos sobre tu proyecto y te contactaremos en menos de 24 horas
+                Solo necesitamos 4 datos para contactarte en menos de 2 horas
               </motion.p>
             </div>
 
@@ -169,56 +169,6 @@ const LeadCaptureModal = () => {
                 )}
               </div>
 
-              {/* Empresa */}
-              <div>
-                <div className="relative">
-                  <Building2 className="absolute left-3 top-1/2 transform -translate-y-1/2 text-[#00FF88] z-10" size={18} />
-                  <input
-                    type="text"
-                    placeholder="Tu empresa"
-                    value={leadData.empresa}
-                    onChange={(e) => handleInputChange('empresa', e.target.value)}
-                    className={`w-full pl-12 pr-4 py-3 bg-gray-800/50 border ${
-                      errors.empresa ? 'border-red-500' : 'border-[#00FF88]/30'
-                    } rounded-xl text-white placeholder-gray-400 font-inter focus:outline-none focus:border-[#00FF88] transition-colors duration-200`}
-                  />
-                </div>
-                {errors.empresa && (
-                  <motion.p
-                    initial={{ opacity: 0, y: -10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    className="text-red-400 text-xs mt-1 font-inter"
-                  >
-                    {errors.empresa}
-                  </motion.p>
-                )}
-              </div>
-
-              {/* Celular */}
-              <div>
-                <div className="relative">
-                  <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 text-[#00FF88] z-10" size={18} />
-                  <input
-                    type="tel"
-                    placeholder="Tu celular"
-                    value={leadData.celular}
-                    onChange={(e) => handleInputChange('celular', e.target.value)}
-                    className={`w-full pl-12 pr-4 py-3 bg-gray-800/50 border ${
-                      errors.celular ? 'border-red-500' : 'border-[#00FF88]/30'
-                    } rounded-xl text-white placeholder-gray-400 font-inter focus:outline-none focus:border-[#00FF88] transition-colors duration-200`}
-                  />
-                </div>
-                {errors.celular && (
-                  <motion.p
-                    initial={{ opacity: 0, y: -10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    className="text-red-400 text-xs mt-1 font-inter"
-                  >
-                    {errors.celular}
-                  </motion.p>
-                )}
-              </div>
-
               {/* Email */}
               <div>
                 <div className="relative">
@@ -240,6 +190,56 @@ const LeadCaptureModal = () => {
                     className="text-red-400 text-xs mt-1 font-inter"
                   >
                     {errors.email}
+                  </motion.p>
+                )}
+              </div>
+
+              {/* Celular */}
+              <div>
+                <div className="relative">
+                  <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 text-[#00FF88] z-10" size={18} />
+                  <input
+                    type="tel"
+                    placeholder="Tu celular (+54 9 11 1234-5678)"
+                    value={leadData.celular}
+                    onChange={(e) => handleInputChange('celular', e.target.value)}
+                    className={`w-full pl-12 pr-4 py-3 bg-gray-800/50 border ${
+                      errors.celular ? 'border-red-500' : 'border-[#00FF88]/30'
+                    } rounded-xl text-white placeholder-gray-400 font-inter focus:outline-none focus:border-[#00FF88] transition-colors duration-200`}
+                  />
+                </div>
+                {errors.celular && (
+                  <motion.p
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="text-red-400 text-xs mt-1 font-inter"
+                  >
+                    {errors.celular}
+                  </motion.p>
+                )}
+              </div>
+
+              {/* Mensaje/Objetivo */}
+              <div>
+                <div className="relative">
+                  <Building2 className="absolute left-3 top-3 text-[#00FF88] z-10" size={18} />
+                  <textarea
+                    placeholder="¿Cuál es tu principal objetivo? (ej: aumentar ventas, automatizar procesos, mejorar ROI...)"
+                    value={leadData.empresa}
+                    onChange={(e) => handleInputChange('empresa', e.target.value)}
+                    rows={3}
+                    className={`w-full pl-12 pr-4 py-3 bg-gray-800/50 border ${
+                      errors.empresa ? 'border-red-500' : 'border-[#00FF88]/30'
+                    } rounded-xl text-white placeholder-gray-400 font-inter focus:outline-none focus:border-[#00FF88] transition-colors duration-200 resize-none`}
+                  />
+                </div>
+                {errors.empresa && (
+                  <motion.p
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="text-red-400 text-xs mt-1 font-inter"
+                  >
+                    {errors.empresa}
                   </motion.p>
                 )}
               </div>

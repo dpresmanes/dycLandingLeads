@@ -8,8 +8,7 @@ const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { openModal } = useLeadCaptureContext();
   
-  const handleOpenModal = () => {
-    console.log('Navbar button clicked - opening modal');
+  const handleConsultaClick = () => {
     openModal();
   };
 
@@ -84,7 +83,7 @@ const Navbar = () => {
                   boxShadow: "0 0 30px rgba(0, 255, 136, 0.6)"
                 }}
                 whileTap={{ scale: 0.95 }}
-                onClick={handleOpenModal}
+                onClick={handleConsultaClick}
                 className="bg-gradient-to-r from-[#00FF88] to-[#39FF14] text-black px-4 lg:px-5 py-2 lg:py-2.5 rounded-full font-bold font-inter text-sm lg:text-base hover:shadow-[0_0_20px_rgba(0,255,136,0.5)] transition-all duration-300 flex items-center justify-center gap-2 min-h-[40px] lg:min-h-[44px] whitespace-nowrap"
               >
                 <Zap size={16} className="lg:w-[18px] lg:h-[18px]" />
@@ -137,7 +136,7 @@ const Navbar = () => {
                  }}
                  whileTap={{ scale: 0.98 }}
                  onClick={() => {
-                   handleOpenModal();
+                   handleConsultaClick();
                    setIsMobileMenuOpen(false);
                  }}
                  className="w-full max-w-xs bg-gradient-to-r from-[#00FF88] to-[#39FF14] text-black px-6 py-3 sm:py-4 rounded-full font-bold font-inter text-base sm:text-lg hover:shadow-[0_0_30px_rgba(0,255,136,0.6)] transition-all duration-300 flex items-center justify-center gap-3 mt-6 min-h-[52px] sm:min-h-[56px]"

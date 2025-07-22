@@ -73,14 +73,13 @@ const Process = () => {
 
                 <motion.div
                   whileHover={{ 
-                    y: -10,
-                    boxShadow: "0 20px 40px rgba(0, 255, 136, 0.2)"
+                    y: -5
                   }}
-                  className="bg-gray-900/50 backdrop-blur-xl border border-[#00FF88]/20 rounded-2xl p-8 text-center hover:border-[#00FF88]/50 transition-all duration-300 group"
+                  className="bg-gray-900/30 backdrop-blur-sm border border-gray-600/20 rounded-xl p-8 text-center hover:border-[#00FF88]/20 transition-all duration-300 group"
                 >
                   <motion.div
-                    whileHover={{ scale: 1.2, rotate: 10 }}
-                    className="inline-flex items-center justify-center w-20 h-20 bg-[#00FF88]/10 border border-[#00FF88]/30 rounded-full mb-6 group-hover:bg-[#00FF88]/20 transition-all duration-300"
+                    whileHover={{ scale: 1.1 }}
+                    className="inline-flex items-center justify-center w-20 h-20 bg-[#00FF88]/5 border border-[#00FF88]/20 rounded-full mb-6 group-hover:bg-[#00FF88]/10 transition-all duration-300"
                   >
                     <step.icon className="text-[#00FF88]" size={36} />
                   </motion.div>
@@ -116,13 +115,13 @@ const Process = () => {
               {/* Icon */}
               <motion.div
                 whileHover={{ scale: 1.1 }}
-                className="flex-shrink-0 w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 bg-[#00FF88]/10 border border-[#00FF88]/30 rounded-full flex items-center justify-center"
+                className="flex-shrink-0 w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 bg-[#00FF88]/5 border border-[#00FF88]/20 rounded-full flex items-center justify-center"
               >
                 <step.icon className="text-[#00FF88]" size={20} />
               </motion.div>
 
               {/* Content */}
-              <div className="flex-1 bg-gray-900/50 backdrop-blur-xl border border-[#00FF88]/20 rounded-2xl p-4 sm:p-6 md:p-8">
+              <div className="flex-1 bg-gray-900/30 backdrop-blur-sm border border-gray-600/20 rounded-xl p-4 sm:p-6 md:p-8">
                 <div className="flex items-center space-x-2 sm:space-x-3 mb-2 sm:mb-3">
                   <h3 className="text-base sm:text-xl md:text-2xl font-semibold text-white font-orbitron">
                     {step.title}

@@ -1,12 +1,17 @@
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Services from './components/Services';
+import ROICalculator from './components/ROICalculator';
 import Process from './components/Process';
 import About from './components/About';
+import LeadMagnet from './components/LeadMagnet';
+import IndustrySpecific from './components/IndustrySpecific';
+import SuccessStories from './components/SuccessStories';
+import Guarantee from './components/Guarantee';
 import Contact from './components/Contact';
-import Testimonials from './components/Testimonials';
 import Footer from './components/Footer';
 import LeadCaptureModal from './components/LeadCaptureModal';
+import DemandIndicators from './components/DemandIndicators';
 import SEOHead from './components/SEOHead';
 import { LeadCaptureProvider } from './contexts/LeadCaptureContext';
 
@@ -22,9 +27,13 @@ function App() {
         <main>
           <Hero />
           <Services />
+          <ROICalculator />
           <Process />
+          <IndustrySpecific />
+          <LeadMagnet />
           <About />
-          <Testimonials />
+          <SuccessStories />
+          <Guarantee />
           <Contact />
         </main>
         
@@ -32,6 +41,7 @@ function App() {
         
         {/* Lead Capture Modal */}
         <LeadCaptureModal />
+        <DemandIndicators />
       </div>
     </LeadCaptureProvider>
   );

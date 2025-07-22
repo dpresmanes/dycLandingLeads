@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { submitToGoogleSheets, isValidEmail, isValidPhone, sanitizeInput } from '../utils/googleSheets';
+import { submitToGoogleSheets, isValidEmail, sanitizeInput } from '../utils/googleSheets';
 
 interface LeadData {
   nombre: string;
@@ -22,7 +22,7 @@ interface UseLeadCaptureReturn {
 
 export const useLeadCapture = (): UseLeadCaptureReturn => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [hasShownModal, setHasShownModal] = useState(false);
+  const [hasShownModal] = useState(false);
   const [leadData, setLeadDataState] = useState<LeadData>({
     nombre: '',
     empresa: '',
@@ -80,10 +80,7 @@ export const useLeadCapture = (): UseLeadCaptureReturn => {
   }, [hasShownModal]);
 
   const openModal = () => {
-    console.log('openModal called - setting modal open to true');
     setIsModalOpen(true);
-    setHasShownModal(true);
-    console.log('Modal state should now be:', true);
   };
 
   const closeModal = () => {
@@ -110,20 +107,20 @@ export const useLeadCapture = (): UseLeadCaptureReturn => {
       newErrors.nombre = 'El nombre es requerido';
     }
 
-    if (!leadData.empresa.trim()) {
-      newErrors.empresa = 'La empresa es requerida';
-    }
-
-    if (!leadData.celular.trim()) {
-      newErrors.celular = 'El celular es requerido';
-    } else if (!isValidPhone(leadData.celular)) {
-      newErrors.celular = 'Formato de celular inválido';
-    }
-
     if (!leadData.email.trim()) {
       newErrors.email = 'El email es requerido';
     } else if (!isValidEmail(leadData.email)) {
       newErrors.email = 'Formato de email inválido';
+    }
+
+    if (!leadData.empresa.trim()) {
+      newErrors.empresa = 'Por favor cuéntanos tu objetivo';
+    }
+
+    if (!leadData.celular.trim()) {
+      newErrors.celular = 'El número de celular es requerido';
+    } else if (leadData.celular.length < 8) {
+      newErrors.celular = 'El número debe tener al menos 8 dígitos';
     }
 
     setErrors(newErrors);
@@ -138,12 +135,20 @@ export const useLeadCapture = (): UseLeadCaptureReturn => {
     setIsSubmitting(true);
 
     try {
-      // Sanitize input data
+      // Sanitize input data with general contact segmentation
       const sanitizedData = {
         nombre: sanitizeInput(leadData.nombre),
-        empresa: sanitizeInput(leadData.empresa),
+        empresa: sanitizeInput(leadData.empresa), // Now contains the objective/message
         celular: sanitizeInput(leadData.celular),
-        email: sanitizeInput(leadData.email)
+        email: sanitizeInput(leadData.email),
+        // General contact form segmentation
+        source: 'Formulario Contacto General',
+        leadType: 'CONTACT_FORM',
+        campaign: 'Contacto_General',
+        ctaLocation: 'Modal_Contact_Form',
+        pageUrl: window.location.href,
+        leadQuality: 'MEDIUM',
+        expectedAction: 'CONTACT'
       };
 
       // Submit to Google Sheets
@@ -161,8 +166,7 @@ export const useLeadCapture = (): UseLeadCaptureReturn => {
       } else {
         throw new Error('Error al enviar el formulario');
       }
-    } catch (error) {
-      console.error('Error submitting lead:', error);
+    } catch { 
       return false;
     } finally {
       setIsSubmitting(false);

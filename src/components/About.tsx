@@ -32,7 +32,7 @@ const About = () => {
               y: -5,
               boxShadow: "0 20px 40px rgba(0, 255, 136, 0.1)"
             }}
-            className="bg-gray-900/50 backdrop-blur-xl border border-[#00FF88]/20 rounded-3xl p-6 sm:p-8 md:p-8 hover:border-[#00FF88]/50 transition-all duration-300 group"
+            className="bg-gray-900/30 backdrop-blur-sm border border-gray-600/20 rounded-xl p-6 sm:p-8 md:p-8 hover:border-[#00FF88]/20 transition-all duration-300 group"
           >
             {/* Profile Header */}
             <div className="flex flex-col sm:flex-row items-center sm:items-start space-y-3 sm:space-y-0 sm:space-x-4 md:space-x-6 mb-4 sm:mb-6">

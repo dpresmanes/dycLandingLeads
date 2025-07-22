@@ -8,6 +8,12 @@ export interface LeadSubmission {
   email: string;
   timestamp?: string;
   source?: string;
+  leadType?: string;
+  campaign?: string;
+  pageUrl?: string;
+  ctaLocation?: string;
+  leadQuality?: string;
+  expectedAction?: string;
 }
 
 // Get Google Apps Script URL from environment variables
@@ -19,8 +25,7 @@ const GOOGLE_SCRIPT_URL = import.meta.env.VITE_GOOGLE_SCRIPT_URL || 'https://scr
  * @returns Promise<boolean> - Success status
  */
 export const submitToGoogleSheets = async (leadData: LeadSubmission): Promise<boolean> => {
-  console.log('🔍 Verificando configuración...');
-  console.log('Script URL:', GOOGLE_SCRIPT_URL);
+
   
   if (!GOOGLE_SCRIPT_URL || GOOGLE_SCRIPT_URL.includes('YOUR_SCRIPT_ID')) {
     console.error('❌ ERROR: Google Script URL no está configurada en el archivo .env');
@@ -33,7 +38,13 @@ export const submitToGoogleSheets = async (leadData: LeadSubmission): Promise<bo
     const dataToSubmit = {
       ...leadData,
       timestamp: new Date().toISOString(),
-      source: 'Website Lead Form',
+      source: leadData.source || 'Website Lead Form',
+      leadType: leadData.leadType || 'GENERAL',
+      campaign: leadData.campaign || 'General_Contact',
+      pageUrl: leadData.pageUrl || window.location.href,
+      ctaLocation: leadData.ctaLocation || 'Unknown',
+      leadQuality: leadData.leadQuality || 'MEDIUM',
+      expectedAction: leadData.expectedAction || 'CONTACT',
       userAgent: navigator.userAgent,
       referrer: document.referrer || 'Direct',
       fecha: new Date().toLocaleString('es-ES', {
@@ -42,8 +53,7 @@ export const submitToGoogleSheets = async (leadData: LeadSubmission): Promise<bo
       origen: window.location.href
     };
 
-    console.log('📤 Enviando datos a Google Sheets:', dataToSubmit);
-    console.log('🌐 URL destino:', GOOGLE_SCRIPT_URL);
+    
 
     await fetch(GOOGLE_SCRIPT_URL, {
       method: 'POST',
@@ -56,19 +66,8 @@ export const submitToGoogleSheets = async (leadData: LeadSubmission): Promise<bo
 
     // Note: With no-cors mode, we can't read the response
     // We assume success if no error was thrown
-    console.log('✅ Datos enviados exitosamente a Google Sheets');
-    
-    // Mostrar confirmación al usuario
-    console.log('🎉 Formulario enviado correctamente');
     return true;
-  } catch (error) {
-    console.error('❌ Error al enviar datos a Google Sheets:', error);
-    console.error('Detalles del error:', {
-      message: error instanceof Error ? error.message : 'Error desconocido',
-      stack: error instanceof Error ? error.stack : undefined,
-      scriptUrl: GOOGLE_SCRIPT_URL,
-      data: leadData
-    });
+  } catch {
     
     // Mostrar error más específico al usuario
     alert('Error al enviar el formulario. Por favor verifica tu conexión a internet e intenta nuevamente.');
@@ -138,6 +137,12 @@ function doPost(e) {
       data.celular,
       data.email,
       data.source,
+      data.leadType,
+      data.campaign,
+      data.ctaLocation,
+      data.pageUrl,
+      data.leadQuality,
+      data.expectedAction,
       data.userAgent,
       data.referrer
     ];
@@ -151,6 +156,12 @@ function doPost(e) {
         'Celular',
         'Email',
         'Source',
+        'Lead Type',
+        'Campaign',
+        'CTA Location',
+        'Page URL',
+        'Lead Quality',
+        'Expected Action',
         'User Agent',
         'Referrer'
       ]);

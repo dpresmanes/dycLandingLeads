@@ -15,6 +15,7 @@ declare module 'lucide-react' {
   export const User: LucideIcon;
   export const Briefcase: LucideIcon;
   export const MessageCircle: LucideIcon;
+  export const ArrowLeft: LucideIcon;
   export const ArrowRight: LucideIcon;
   export const Zap: LucideIcon;
   export const Clock: LucideIcon;
@@ -55,6 +56,12 @@ declare module 'lucide-react' {
   export const Phone: LucideIcon;
   export const Mail: LucideIcon;
   export const Send: LucideIcon;
+  export const DollarSign: LucideIcon;
+  export const ShoppingBag: LucideIcon;
+  export const GraduationCap: LucideIcon;
+  export const Heart: LucideIcon;
+  export const Home: LucideIcon;
+  export const Utensils: LucideIcon;
 
   // Export all other icons as a generic type
   const lucideReact: {

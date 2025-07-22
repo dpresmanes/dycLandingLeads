@@ -129,21 +129,34 @@ const Contact = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 + 0.6 }}
                 viewport={{ once: true }}
-                whileHover={{ y: -5 }}
-                className="bg-gray-900/30 backdrop-blur-xl border border-[#00FF88]/20 rounded-2xl p-4 sm:p-6 md:p-8 text-center hover:border-[#00FF88]/50 transition-all duration-300"
+                whileHover={{ y: -5, scale: 1.02 }}
+                className="relative group"
               >
-                <motion.div
-                  whileHover={{ scale: 1.1, rotate: 5 }}
-                  className="inline-flex items-center justify-center w-12 h-12 md:w-16 md:h-16 bg-[#00FF88]/10 border border-[#00FF88]/30 rounded-xl mb-4 md:mb-6"
-                >
-                  <feature.icon className="text-[#00FF88]" size={20} />
-                </motion.div>
-                <h3 className="text-base sm:text-lg md:text-xl font-semibold text-white mb-2 md:mb-3 font-inter">
-                  {feature.title}
-                </h3>
-                <p className="text-xs sm:text-sm md:text-base text-gray-300 font-inter leading-relaxed">
-                  {feature.description}
-                </p>
+                {/* Fondo con efecto glassmorphism */}
+                <div className="absolute inset-0 bg-gradient-to-br from-green-500/10 via-transparent to-green-600/5 rounded-3xl backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-green-600/20 via-green-500/10 to-green-700/20 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                
+                {/* Contenido principal */}
+                <div className="relative bg-gradient-to-br from-gray-900/40 via-gray-800/30 to-gray-900/50 backdrop-blur-xl rounded-3xl p-4 sm:p-6 md:p-8 border border-green-500/20 hover:border-green-400/40 transition-all duration-500 hover:shadow-2xl hover:shadow-green-500/10 text-center">
+                  {/* Efectos decorativos */}
+                  <div className="absolute top-2 right-2 w-8 h-8 bg-green-400/5 rounded-full blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <div className="absolute bottom-2 left-2 w-6 h-6 bg-green-600/5 rounded-full blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  
+                  <div className="relative z-10">
+                    <motion.div
+                      whileHover={{ scale: 1.1, rotate: 5 }}
+                      className="inline-flex items-center justify-center w-12 h-12 md:w-16 md:h-16 bg-green-500/20 border border-green-500/30 rounded-xl mb-4 md:mb-6 group-hover:bg-green-500/30 transition-colors duration-300"
+                    >
+                      <feature.icon className="text-green-400 group-hover:text-green-300 transition-colors duration-300" size={20} />
+                    </motion.div>
+                    <h3 className="text-base sm:text-lg md:text-xl font-semibold text-white mb-2 md:mb-3 font-inter">
+                      {feature.title}
+                    </h3>
+                    <p className="text-xs sm:text-sm md:text-base text-gray-300 font-inter leading-relaxed">
+                      {feature.description}
+                    </p>
+                  </div>
+                </div>
               </motion.div>
             ))}
           </motion.div>
