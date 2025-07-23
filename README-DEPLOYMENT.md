@@ -39,7 +39,7 @@ vercel
 ### 3. Configurar Variables de Entorno
 En Vercel Dashboard → Settings → Environment Variables:
 ```
-VITE_SITE_URL = https://tu-proyecto.vercel.app
+VITE_SITE_URL = https://handtobrand.vercel.app
 VITE_GOOGLE_SCRIPT_URL = [tu-google-script-url]
 ```
 
@@ -83,9 +83,9 @@ npm run deploy
 ## 🌐 URLs Importantes
 
 Después del deploy, tu sitio tendrá:
-- **Sitio principal:** `https://tu-proyecto.vercel.app`
-- **Robots:** `https://tu-proyecto.vercel.app/robots.txt`
-- **Sitemap:** `https://tu-proyecto.vercel.app/sitemap.xml`
+- **Sitio principal:** `https://handtobrand.vercel.app`
+- **Robots:** `https://handtobrand.vercel.app/robots.txt`
+- **Sitemap:** `https://handtobrand.vercel.app/sitemap.xml`
 
 ## 🆘 Soporte
 

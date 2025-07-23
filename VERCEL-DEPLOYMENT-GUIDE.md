@@ -55,7 +55,7 @@ vercel --prod
 2. Settings → Environment Variables
 3. Agrega:
    ```
-   VITE_SITE_URL = https://tu-proyecto.vercel.app
+   VITE_SITE_URL = https://handtobrand.vercel.app
    VITE_GOOGLE_SCRIPT_URL = [tu-url-de-google-script]
    ```
 
@@ -68,7 +68,7 @@ vercel --prod
 ### 5. Configurar Dominio Personalizado (Opcional)
 
 #### Dominio Gratuito de Vercel:
-- Tu sitio estará disponible en: `https://tu-proyecto.vercel.app`
+- Tu sitio estará disponible en: `https://handtobrand.vercel.app`
 - Puedes cambiar el nombre del proyecto en Settings
 
 #### Dominio Propio:
@@ -87,7 +87,7 @@ vercel --prod
    ```
 
 2. **Actualizar sitemap.xml:**
-   - Reemplaza `https://tu-proyecto.vercel.app` con tu URL real
+   - URL configurada: `https://handtobrand.vercel.app`
 
 3. **Actualizar robots.txt:**
    - Reemplaza la URL del sitemap
@@ -111,13 +111,13 @@ vercel --prod
 #### Herramientas de Validación:
 ```bash
 # Verificar meta tags
-curl -s https://tu-proyecto.vercel.app | grep -i "<meta"
+curl -s https://handtobrand.vercel.app | grep -i "<meta"
 
 # Verificar robots.txt
-curl https://tu-proyecto.vercel.app/robots.txt
+curl https://handtobrand.vercel.app/robots.txt
 
 # Verificar sitemap
-curl https://tu-proyecto.vercel.app/sitemap.xml
+curl https://handtobrand.vercel.app/sitemap.xml
 ```
 
 ### 8. Configuración SEO Post-Deploy
@@ -126,7 +126,7 @@ curl https://tu-proyecto.vercel.app/sitemap.xml
 1. Ve a [search.google.com/search-console](https://search.google.com/search-console)
 2. Agrega tu propiedad (URL de Vercel)
 3. Verifica la propiedad
-4. Envía tu sitemap: `https://tu-proyecto.vercel.app/sitemap.xml`
+4. Envía tu sitemap: `https://handtobrand.vercel.app/sitemap.xml`
 
 #### Google Analytics (Opcional):
 1. Crea una cuenta en Google Analytics
@@ -191,7 +191,7 @@ vercel rm [deployment-url]
 ## 🎯 Resultado Final
 
 Tu sitio estará disponible en:
-- **URL Principal:** `https://tu-proyecto.vercel.app`
+- **URL Principal:** `https://handtobrand.vercel.app`
 - **SEO Score:** 9/10 ⭐
 - **Performance:** Optimizado
 - **Mobile-First:** ✅

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { TrendingUp, Users, Target, Zap, ArrowLeft, ArrowRight, DollarSign } from 'lucide-react';
+import { useLeadCaptureContext } from '../contexts/LeadCaptureContext';
 
 interface SuccessStory {
   id: number;
@@ -115,6 +116,7 @@ const successStories: SuccessStory[] = [
 
 const SuccessStories: React.FC = () => {
   const [currentStory, setCurrentStory] = useState(0);
+  const { openModal } = useLeadCaptureContext();
 
   const nextStory = () => {
     setCurrentStory((prev) => (prev + 1) % successStories.length);
@@ -373,6 +375,7 @@ const SuccessStories: React.FC = () => {
                    <motion.button 
                      whileHover={{ scale: 1.05 }}
                      whileTap={{ scale: 0.95 }}
+                     onClick={openModal}
                      className="bg-gradient-to-r from-green-500 to-green-600 text-white px-8 py-3 rounded-full font-semibold hover:from-green-400 hover:to-green-500 transition-all duration-300 shadow-lg hover:shadow-green-500/25"
                    >
                      Solicitar Consulta Gratuita

@@ -2,7 +2,7 @@ User-agent: *
 Allow: /
 
 # Sitemap se actualizará automáticamente con tu dominio de Vercel
-Sitemap: https://tu-proyecto.vercel.app/sitemap.xml
+Sitemap: https://handtobrand.vercel.app/sitemap.xml
 
 # Disallow admin or private areas (if any)
 # Disallow: /admin/
