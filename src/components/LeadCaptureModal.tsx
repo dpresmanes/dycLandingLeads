@@ -132,7 +132,7 @@ const LeadCaptureModal = () => {
                 transition={{ delay: 0.2 }}
                 className="text-gray-300 font-inter text-sm md:text-base"
               >
-                Solo necesitamos 4 datos para contactarte en menos de 2 horas
+                Solo necesitamos 3 datos para contactarte en menos de 2 horas
               </motion.p>
             </div>
 
@@ -219,29 +219,30 @@ const LeadCaptureModal = () => {
                 )}
               </div>
 
-              {/* Mensaje/Objetivo */}
+              {/* Objetivo - Campo opcional y más simple */}
               <div>
                 <div className="relative">
-                  <Building2 className="absolute left-3 top-3 text-[#00FF88] z-10" size={18} />
-                  <textarea
-                    placeholder="¿Cuál es tu principal objetivo? (ej: aumentar ventas, automatizar procesos, mejorar ROI...)"
+                  <Building2 className="absolute left-3 top-1/2 transform -translate-y-1/2 text-[#00FF88] z-10" size={18} />
+                  <select
                     value={leadData.empresa}
                     onChange={(e) => handleInputChange('empresa', e.target.value)}
-                    rows={3}
-                    className={`w-full pl-12 pr-4 py-3 bg-gray-800/50 border ${
-                      errors.empresa ? 'border-red-500' : 'border-[#00FF88]/30'
-                    } rounded-xl text-white placeholder-gray-400 font-inter focus:outline-none focus:border-[#00FF88] transition-colors duration-200 resize-none`}
-                  />
-                </div>
-                {errors.empresa && (
-                  <motion.p
-                    initial={{ opacity: 0, y: -10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    className="text-red-400 text-xs mt-1 font-inter"
+                    className="w-full pl-12 pr-4 py-3 bg-gray-800/50 border border-[#00FF88]/30 rounded-xl text-white font-inter focus:outline-none focus:border-[#00FF88] transition-colors duration-200 appearance-none cursor-pointer"
                   >
-                    {errors.empresa}
-                  </motion.p>
-                )}
+                    <option value="" className="bg-gray-800">¿Cuál es tu principal objetivo?</option>
+                    <option value="Aumentar ventas" className="bg-gray-800">Aumentar ventas</option>
+                    <option value="Automatizar procesos" className="bg-gray-800">Automatizar procesos</option>
+                    <option value="Mejorar ROI" className="bg-gray-800">Mejorar ROI</option>
+                    <option value="Generar más leads" className="bg-gray-800">Generar más leads</option>
+                    <option value="Optimizar campañas" className="bg-gray-800">Optimizar campañas</option>
+                    <option value="Otro" className="bg-gray-800">Otro objetivo</option>
+                  </select>
+                  {/* Custom dropdown arrow */}
+                  <div className="absolute right-3 top-1/2 transform -translate-y-1/2 pointer-events-none">
+                    <svg className="w-4 h-4 text-[#00FF88]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </div>
+                </div>
               </div>
 
               {/* Submit Button */}

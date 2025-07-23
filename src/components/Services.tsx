@@ -13,18 +13,25 @@ import { useLeadCaptureContext } from '../contexts/LeadCaptureContext';
 
 const services = [
   {
-    icon: Zap,
-    title: 'Automatización Inteligente',
-    description: 'Sistemas que trabajan 24/7 para captar, nutrir y convertir leads automáticamente.',
-    features: ['CRM automatizado', 'Email marketing', 'Chatbots inteligentes', 'Workflows personalizados'],
-    popular: false
-  },
-  {
     icon: Target,
     title: 'Marketing Digital Estratégico',
     description: 'Estrategias data-driven que maximizan tu ROI y aceleran el crecimiento.',
     features: ['Análisis de mercado', 'Segmentación avanzada', 'Optimización continua', 'Reportes detallados'],
     popular: true
+  },
+  {
+    icon: Facebook,
+    title: 'Meta Ads',
+    description: 'Campañas publicitarias en Facebook e Instagram que maximizan tu inversión.',
+    features: ['Targeting preciso', 'Creatividades ganadoras', 'Optimización de presupuesto', 'Scaling estratégico'],
+    popular: true
+  },
+  {
+    icon: Zap,
+    title: 'Automatización Inteligente',
+    description: 'Sistemas que trabajan 24/7 para captar, nutrir y convertir leads automáticamente.',
+    features: ['CRM automatizado', 'Email marketing', 'Chatbots inteligentes', 'Workflows personalizados'],
+    popular: false
   },
   {
     icon: ShoppingCart,
@@ -55,8 +62,8 @@ const services = [
     popular: false
   },
   {
-     icon: CheckCircle,
-      title: 'Gestión de Proyectos',
+    icon: CheckCircle,
+    title: 'Gestión de Proyectos',
     description: 'Coordinación experta que asegura entregas a tiempo y resultados excepcionales.',
     features: ['Metodologías ágiles', 'Comunicación fluida', 'Control de calidad', 'Seguimiento continuo'],
     popular: false
@@ -67,13 +74,6 @@ const services = [
     description: 'Contenido de alta calidad potenciado por inteligencia artificial.',
     features: ['Copywriting persuasivo', 'Diseño gráfico', 'Video marketing', 'Automatización de contenido'],
     popular: false
-  },
-  {
-    icon: Facebook,
-    title: 'Meta Ads',
-    description: 'Campañas publicitarias en Facebook e Instagram que maximizan tu inversión.',
-    features: ['Targeting preciso', 'Creatividades ganadoras', 'Optimización de presupuesto', 'Scaling estratégico'],
-    popular: true
   }
 ];
 
@@ -108,7 +108,7 @@ const Services = () => {
             key={index}
             initial={{ opacity: 0, y: 40, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
-            transition={{ duration: 0.7, delay: index * 0.15, ease: "easeOut" }}
+            transition={{ duration: 0.5, delay: index * 0.08, ease: "easeOut" }}
             className={`bg-gray-900/30 backdrop-blur-sm border rounded-xl p-6 sm:p-8 hover:border-[#00FF88]/20 transition-all duration-300 group relative ${
               service.popular ? 'border-[#00FF88]/30' : 'border-gray-600/20'
             }`}
@@ -146,7 +146,7 @@ const Services = () => {
               onClick={openModal}
               className="w-full bg-[#00FF88]/10 hover:bg-[#00FF88]/80 text-[#00FF88] hover:text-black border border-[#00FF88]/20 hover:border-[#00FF88]/60 font-semibold py-3 px-6 rounded-lg transition-all duration-300 font-inter"
             >
-              Consulta Gratuita
+              Consultar
             </button>
           </motion.div>
         );

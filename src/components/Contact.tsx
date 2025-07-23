@@ -114,7 +114,7 @@ const Contact = () => {
               },
               {
                 icon: MessageCircle,
-                title: 'Consulta gratuita',
+                title: 'Consultar',
                 description: 'Primera sesión de diagnóstico sin costo'
               },
               {

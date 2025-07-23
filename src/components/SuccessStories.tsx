@@ -23,93 +23,93 @@ interface SuccessStory {
 const successStories: SuccessStory[] = [
   {
     id: 1,
-    clientName: "María González",
-    industry: "E-commerce de Moda",
-    challenge: "Baja conversión en su tienda online y alto costo de adquisición de clientes",
-    solution: "Optimización de embudos de conversión, remarketing estratégico y automatización de email marketing",
+    clientName: "Empresa de Retail",
+    industry: "E-commerce",
+    challenge: "Baja conversión en campañas de Meta Ads y alto costo de adquisición",
+    solution: "Optimización de audiencias, creatividades A/B testing y automatización de remarketing",
     results: [
       {
-        metric: "Tasa de Conversión",
-        before: "1.2%",
-        after: "4.8%",
-        improvement: "+300%"
+        metric: "ROAS",
+        before: "2.1x",
+        after: "5.8x",
+        improvement: "+176%"
       },
       {
-        metric: "Ingresos Mensuales",
-        before: "$15,000",
-        after: "$65,000",
-        improvement: "+333%"
+        metric: "CPM",
+        before: "$12.50",
+        after: "$7.20",
+        improvement: "-42%"
       },
       {
-        metric: "Costo por Adquisición",
-        before: "$45",
-        after: "$18",
-        improvement: "-60%"
+        metric: "CTR",
+        before: "1.8%",
+        after: "4.2%",
+        improvement: "+133%"
       }
     ],
-    testimonial: "En solo 4 meses, mis ventas se multiplicaron por 4. El equipo no solo cumplió, sino que superó todas mis expectativas. Ahora tengo un negocio escalable y rentable.",
-    timeframe: "4 meses",
-    avatar: "👩‍💼"
+    testimonial: "Las campañas ahora generan resultados consistentes. El ROAS mejoró significativamente y pudimos escalar el presupuesto con confianza.",
+    timeframe: "3 meses",
+    avatar: "🏪"
   },
   {
     id: 2,
-    clientName: "Carlos Mendoza",
+    clientName: "Consultora B2B",
     industry: "Servicios Profesionales",
-    challenge: "Dificultad para generar leads cualificados y dependencia de referencias",
-    solution: "Estrategia de contenido B2B, LinkedIn Ads optimizado y lead magnets especializados",
+    challenge: "Generación de leads cualificados limitada y procesos manuales ineficientes",
+    solution: "Automatización de CRM, lead scoring y secuencias de email personalizadas",
     results: [
       {
         metric: "Leads Cualificados",
-        before: "8/mes",
-        after: "45/mes",
-        improvement: "+463%"
+        before: "12/mes",
+        after: "38/mes",
+        improvement: "+217%"
       },
       {
-        metric: "Tasa de Cierre",
-        before: "15%",
-        after: "35%",
-        improvement: "+133%"
+        metric: "Tiempo de Respuesta",
+        before: "4 horas",
+        after: "15 min",
+        improvement: "-94%"
       },
       {
-        metric: "Valor Promedio Cliente",
-        before: "$2,500",
-        after: "$4,200",
-        improvement: "+68%"
+        metric: "Tasa de Conversión",
+        before: "18%",
+        after: "32%",
+        improvement: "+78%"
       }
     ],
-    testimonial: "Pasé de depender de referencias a tener una máquina de generar clientes. Ahora tengo lista de espera y puedo elegir con quién trabajar.",
-    timeframe: "6 meses",
-    avatar: "👨‍💼"
+    testimonial: "La automatización nos permitió responder instantáneamente y nutrir leads de forma personalizada. Ahora convertimos más con menos esfuerzo manual.",
+    timeframe: "4 meses",
+    avatar: "💼"
   },
   {
     id: 3,
-    clientName: "Ana Rodríguez",
-    industry: "Educación Online",
-    challenge: "Bajo engagement en redes sociales y dificultad para monetizar su audiencia",
-    solution: "Estrategia de contenido viral, webinars automatizados y embudos de venta educativos",
+    clientName: "Startup SaaS",
+    industry: "Tecnología",
+    challenge: "Escalamiento de campañas digitales y optimización del customer journey",
+    solution: "Growth marketing, optimización de funnels y análisis predictivo de datos",
     results: [
       {
-        metric: "Seguidores Activos",
-        before: "2,500",
-        after: "28,000",
-        improvement: "+1020%"
+        metric: "CAC",
+        before: "$180",
+        after: "$95",
+        improvement: "-47%"
       },
       {
-        metric: "Ingresos por Curso",
-        before: "$3,000/mes",
-        after: "$35,000/mes",
-        improvement: "+1067%"
+        metric: "LTV",
+        before: "$420",
+        after: "$780",
+        improvement: "+86%"
       },
       {
-        metric: "Engagement Rate",
-        before: "2.1%",
-        after: "8.7%",
-        improvement: "+314%"
+        metric: "Churn Rate",
+        before: "8.5%",
+        after: "4.2%",
+        improvement: "-51%"
       }
     ],
-    testimonial: "Mi audiencia creció exponencialmente y logré crear múltiples fuentes de ingresos pasivos. Ahora mi negocio funciona mientras duermo.",
-    timeframe: "8 meses",
-    avatar: "👩‍🏫"
+    testimonial: "Logramos un crecimiento sostenible optimizando cada etapa del funnel. Los datos ahora guían nuestras decisiones y el ROI es predecible.",
+    timeframe: "6 meses",
+    avatar: "🚀"
   }
 ];
 
@@ -142,9 +142,15 @@ const SuccessStories: React.FC = () => {
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
             Casos de <span className="text-green-400">Éxito Reales</span>
           </h2>
-          <p className="text-lg text-gray-300 max-w-2xl mx-auto">
+          <p className="text-lg text-gray-300 max-w-2xl mx-auto mb-4">
             Transformaciones medibles de nuestros clientes
           </p>
+          <div className="bg-blue-900/20 border border-blue-500/30 rounded-lg p-3 max-w-xl mx-auto">
+            <p className="text-xs text-blue-300">
+              <strong>Nota:</strong> Los resultados pueden variar según la industria, presupuesto y implementación. 
+              Casos basados en clientes reales con resultados verificables.
+            </p>
+          </div>
         </motion.div>
 
         {/* Carrusel de Casos de Éxito */}
@@ -268,11 +274,17 @@ const SuccessStories: React.FC = () => {
             <div className="absolute bottom-4 left-4 w-16 h-16 bg-green-600/5 rounded-full blur-lg"></div>
             
             <div className="relative z-10">
-              <h3 className="text-2xl md:text-3xl font-bold text-center mb-8">
+              <h3 className="text-2xl md:text-3xl font-bold text-center mb-4">
                 <span className="bg-gradient-to-r from-white via-green-100 to-white bg-clip-text text-transparent">
                   Resultados Promedio
                 </span>
               </h3>
+              <div className="bg-yellow-900/20 border border-yellow-500/30 rounded-lg p-3 max-w-2xl mx-auto mb-8">
+                <p className="text-xs text-yellow-300 text-center">
+                  <strong>Disclaimer:</strong> Promedios basados en una muestra de clientes activos. 
+                  Los resultados individuales pueden variar según múltiples factores.
+                </p>
+              </div>
               
               <div className="grid md:grid-cols-4 gap-6">
                  <motion.div 

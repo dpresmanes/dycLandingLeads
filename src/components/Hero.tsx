@@ -53,8 +53,8 @@ const Hero = () => {
       <div className="absolute inset-0 hidden md:block">
         <div className="absolute inset-0 bg-gradient-to-br from-black via-black to-green-900/20" />
         
-        {/* Animated Particles - Desktop Only */}
-        {[...Array(30)].map((_, i) => (
+        {/* Subtle Animated Particles - Desktop Only */}
+        {[...Array(12)].map((_, i) => (
           <motion.div
             key={i}
             className="absolute w-1 h-1 bg-[#00FF88] rounded-full"
@@ -66,10 +66,10 @@ const Hero = () => {
             animate={{
               x: Math.random() * (typeof window !== 'undefined' ? window.innerWidth : 1000),
               y: Math.random() * (typeof window !== 'undefined' ? window.innerHeight : 1000),
-              opacity: [0, 1, 0]
+              opacity: [0, 0.3, 0]
             }}
             transition={{
-              duration: Math.random() * 10 + 5,
+              duration: Math.random() * 15 + 10,
               repeat: Infinity,
               ease: "linear"
             }}
@@ -92,9 +92,9 @@ const Hero = () => {
       {/* Content */}
       <div className="relative z-10 text-center max-w-6xl mx-auto px-4 sm:px-6 pt-32 md:pt-24 lg:pt-16">
         <motion.h1
-          initial={{ opacity: 0, y: 50, scale: 0.8 }}
-          animate={{ opacity: 1, y: 0, scale: 1 }}
-          transition={{ duration: 1, delay: 0.2, ease: "easeOut" }}
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
           className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-orbitron font-bold text-white mb-6 md:mb-8 leading-tight"
         >
           <span className="text-[#00FF88]">Marketing Digital</span><br />
@@ -104,7 +104,7 @@ const Hero = () => {
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
           className="text-base xs:text-lg sm:text-xl md:text-2xl text-gray-300 mb-6 md:mb-8 max-w-3xl mx-auto font-inter leading-relaxed"
         >
           <span className="text-[#00FF88] font-semibold">Damián y Carolina</span> - 
@@ -113,9 +113,9 @@ const Hero = () => {
 
         {/* Urgency Counter */}
         <motion.div
-          initial={{ opacity: 0, y: 20, scale: 0.9 }}
-          animate={{ opacity: 1, y: 0, scale: 1 }}
-          transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.6 }}
           className="bg-gray-900/40 backdrop-blur-sm border border-gray-600/30 rounded-2xl p-6 max-w-2xl mx-auto mb-8 md:mb-12"
         >
           <div className="flex items-center justify-center space-x-2 mb-3">
