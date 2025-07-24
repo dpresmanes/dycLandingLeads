@@ -37,7 +37,7 @@ const industries: IndustryData[] = [
     id: 'ecommerce',
     name: 'E-commerce',
     icon: <ShoppingBag className="h-8 w-8" />,
-    description: 'Sistematización de stock, optimización de conversiones y metodologías de fidelización para comercios digitales.','
+    description: 'Sistematización de stock, optimización de conversiones y metodologías de fidelización para comercios digitales.',
     challenges: [
       'Alta competencia en precios',
       'Carritos abandonados (70% promedio)',
@@ -74,7 +74,7 @@ const industries: IndustryData[] = [
     id: 'services',
     name: 'Servicios Profesionales',
     icon: <Briefcase className="h-8 w-8" />,
-    description: 'Captación de prospectos calificados, sistematización de seguimiento y perfeccionamiento de embudos comerciales.','
+    description: 'Captación de prospectos calificados, sistematización de seguimiento y perfeccionamiento de embudos comerciales.',
     challenges: [
       'Dependencia de referencias',
       'Dificultad para demostrar valor',
