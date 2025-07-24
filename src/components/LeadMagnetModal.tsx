@@ -56,7 +56,7 @@ const LeadMagnetModal: React.FC<LeadMagnetModalProps> = ({ isOpen, onClose }) =>
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.9, y: 20 }}
             transition={{ duration: 0.3, ease: "easeOut" }}
-            className="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 rounded-2xl p-6 md:p-8 max-w-md w-full mx-4 border border-green-500/20 shadow-2xl shadow-green-500/10"
+            className="relative bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 rounded-2xl p-6 md:p-8 max-w-md w-full mx-4 border border-green-500/20 shadow-2xl shadow-green-500/10"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Close Button */}
