@@ -22,7 +22,10 @@ interface UseLeadCaptureReturn {
 
 export const useLeadCapture = (): UseLeadCaptureReturn => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [hasShownModal] = useState(false);
+  const [hasShownModal, setHasShownModal] = useState(() => {
+    // Check if modal was already shown in this session
+    return sessionStorage.getItem('leadModalShown') === 'true';
+  });
   const [leadData, setLeadDataState] = useState<LeadData>({
     nombre: '',
     empresa: '',
@@ -81,13 +84,20 @@ export const useLeadCapture = (): UseLeadCaptureReturn => {
 
   const openModal = () => {
     setIsModalOpen(true);
+    if (!hasShownModal) {
+      setHasShownModal(true);
+      sessionStorage.setItem('leadModalShown', 'true');
+    }
   };
 
   const closeModal = () => {
     setIsModalOpen(false);
     setErrors({});
-    // Keep hasShownModal as true to prevent auto-triggers after user dismissal
-    // Modal can still be opened manually via CTA buttons
+    // Mark modal as shown to prevent auto-triggers after user dismissal
+    if (!hasShownModal) {
+      setHasShownModal(true);
+      sessionStorage.setItem('leadModalShown', 'true');
+    }
   };
 
   const setLeadData = (data: Partial<LeadData>) => {

@@ -52,7 +52,7 @@ const Guarantee: React.FC = () => {
         >
           <div className="inline-flex items-center space-x-2 bg-[#00FF88]/10 border border-[#00FF88]/30 rounded-full px-4 py-2 mb-6">
             <Shield className="text-[#00FF88]" size={16} />
-            <span className="text-[#00FF88] font-semibold text-sm font-inter">Nuestro Compromiso</span>
+            <span className="text-[#00FF88] font-semibold text-sm font-inter">Nuestro Compromiso Contigo</span>
           </div>
           
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6 font-inter">
