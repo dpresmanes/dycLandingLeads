@@ -57,12 +57,12 @@ const Contact = () => {
             className="text-center mb-12 md:mb-16"
           >
             <h2 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-orbitron font-bold text-white mb-6 md:mb-8 leading-tight">
-              ¿Listos para{' '}
-              <span className="text-[#00FF88]">crecer con estrategia</span>?
+              ¿Preparados para{' '}
+              <span className="text-[#00FF88]">el siguiente nivel</span>?
             </h2>
             <p className="text-sm xs:text-base md:text-lg lg:text-xl xl:text-2xl text-gray-300 max-w-4xl mx-auto font-inter leading-relaxed">
-              Hablemos. Podemos ayudarte a automatizar, escalar y simplificar tu negocio.<br className="hidden sm:block" />
-              <span className="text-[#00FF88]">Trabajamos con empresas y marcas que quieren resultados sostenibles.</span>
+              Conversemos sobre cómo podemos potenciar tu negocio con soluciones personalizadas.<br className="hidden sm:block" />
+              <span className="text-[#00FF88]">Colaboramos con empresas que buscan crecimiento inteligente y medible.</span>
             </p>
           </motion.div>
 
@@ -88,7 +88,7 @@ const Contact = () => {
               >
                 <MessageCircle size={20} />
               </motion.div>
-              <span>Contactanos por WhatsApp</span>
+              <span>Iniciar Conversación</span>
               <motion.div
                 animate={{ x: [0, 5, 0] }}
                 transition={{ duration: 1.5, repeat: Infinity }}
@@ -114,8 +114,8 @@ const Contact = () => {
               },
               {
                 icon: MessageCircle,
-                title: 'Consultar',
-                description: 'Primera sesión de diagnóstico sin costo'
+                title: 'Diagnóstico Gratuito',
+                description: 'Análisis inicial personalizado sin compromiso'
               },
               {
                 icon: Target,

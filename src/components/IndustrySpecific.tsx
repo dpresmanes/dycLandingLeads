@@ -37,7 +37,7 @@ const industries: IndustryData[] = [
     id: 'ecommerce',
     name: 'E-commerce',
     icon: <ShoppingBag className="h-8 w-8" />,
-    description: 'Estrategias especializadas para tiendas online que buscan maximizar sus ventas y optimizar la experiencia del cliente.',
+    description: 'Sistematización de stock, optimización de conversiones y metodologías de fidelización para comercios digitales.','
     challenges: [
       'Alta competencia en precios',
       'Carritos abandonados (70% promedio)',
@@ -74,7 +74,7 @@ const industries: IndustryData[] = [
     id: 'services',
     name: 'Servicios Profesionales',
     icon: <Briefcase className="h-8 w-8" />,
-    description: 'Soluciones B2B para consultores, abogados, contadores y otros profesionales que buscan generar leads cualificados.',
+    description: 'Captación de prospectos calificados, sistematización de seguimiento y perfeccionamiento de embudos comerciales.','
     challenges: [
       'Dependencia de referencias',
       'Dificultad para demostrar valor',
@@ -111,7 +111,7 @@ const industries: IndustryData[] = [
     id: 'education',
     name: 'Educación Online',
     icon: <GraduationCap className="h-8 w-8" />,
-    description: 'Estrategias para coaches, formadores y educadores que quieren monetizar su conocimiento y escalar su impacto.',
+    description: 'Estrategias de visibilidad, administración de reputación digital y tácticas de conexión comunitaria para educadores.','
     challenges: [
       'Saturación del mercado',
       'Dificultad para justificar precios',
@@ -148,7 +148,7 @@ const industries: IndustryData[] = [
     id: 'health',
     name: 'Salud y Bienestar',
     icon: <Heart className="h-8 w-8" />,
-    description: 'Marketing especializado para clínicas, terapeutas, nutricionistas y profesionales de la salud.',
+    description: 'Sistematización de procesos operativos, mejora de la experiencia del usuario y marketing de crecimiento para salud.','
     challenges: [
       'Regulaciones estrictas de publicidad',
       'Necesidad de generar confianza',
@@ -185,7 +185,7 @@ const industries: IndustryData[] = [
     id: 'realestate',
     name: 'Bienes Raíces',
     icon: <Home className="h-8 w-8" />,
-    description: 'Estrategias digitales para agentes inmobiliarios, desarrolladores y empresas del sector inmobiliario.',
+    description: 'Tácticas de posicionamiento, sistematización de procesos consultivos y optimización de transformaciones inmobiliarias.','
     challenges: [
       'Mercado altamente competitivo',
       'Ciclos de venta muy largos',
@@ -222,7 +222,7 @@ const industries: IndustryData[] = [
     id: 'restaurants',
     name: 'Restaurantes',
     icon: <Utensils className="h-8 w-8" />,
-    description: 'Marketing gastronómico para restaurantes, cafeterías y negocios de comida que buscan aumentar su clientela.',
+    description: 'Campañas de rendimiento, sistematización de reservas y estrategias de marketing temporal para gastronomía.','
     challenges: [
       'Competencia local intensa',
       'Márgenes de ganancia ajustados',
@@ -277,10 +277,10 @@ const IndustrySpecific: React.FC = () => {
             </div>
           </div>
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-            Soluciones por <span className="text-green-400">Industria</span>
+            Estrategias personalizadas para <span className="text-green-400">cada sector</span>
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Estrategias especializadas diseñadas para los desafíos únicos de tu sector
+            Metodologías especializadas creadas para los retos particulares de tu mercado
           </p>
         </motion.div>
 

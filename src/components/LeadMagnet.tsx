@@ -12,7 +12,7 @@ const LeadMagnet = () => {
   const benefits = [
     {
       icon: Clock,
-      text: 'Ahorra 20+ horas semanales'
+      text: 'Optimiza 20+ horas semanales'
     },
     {
       icon: Target,
@@ -61,13 +61,13 @@ const LeadMagnet = () => {
             </div>
 
             <h2 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-orbitron font-bold text-white mb-6 leading-tight">
-              <span className="text-[#00FF88]">10 Automatizaciones</span><br />
-              que te ahorran 20 horas semanales
+              <span className="text-[#00FF88]">10 Sistemas Inteligentes</span><br />
+              que optimizan tu tiempo y recursos
             </h2>
 
             <p className="text-gray-300 text-base md:text-lg font-inter leading-relaxed mb-6">
-              Descarga nuestra guía exclusiva con las automatizaciones más efectivas 
-              que implementamos en nuestros clientes. <span className="text-[#00FF88]">Resultados garantizados.</span>
+              Descarga nuestra guía exclusiva con los sistemas más efectivos 
+              que implementamos en nuestros clientes. <span className="text-[#00FF88]">Estrategias probadas y validadas.</span>
             </p>
 
             {/* Benefits */}
@@ -98,7 +98,7 @@ const LeadMagnet = () => {
               className="bg-[#00FF88] text-black px-8 py-4 rounded-lg text-lg font-bold font-inter transition-all duration-300 inline-flex items-center space-x-3"
             >
               <Download size={20} />
-              <span>Descargar Guía GRATIS</span>
+              <span>Obtener Guía GRATIS</span>
             </motion.button>
           </motion.div>
 

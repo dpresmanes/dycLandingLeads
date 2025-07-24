@@ -9,14 +9,14 @@ const Guarantee: React.FC = () => {
   const guarantees = [
     {
       icon: Shield,
-      title: 'Garantía de Resultados',
-      description: 'Si no ves mejoras medibles en 90 días, te devolvemos el 100% de tu inversión.',
+      title: 'Impacto en 90 días',
+      description: 'Si no observas mejoras cuantificables en 3 meses, continuamos sin costo hasta conseguirlo.',
       highlight: '100% Garantía'
     },
     {
       icon: Clock,
-      title: 'Respuesta Garantizada',
-      description: 'Respondemos todas tus consultas en menos de 2 horas hábiles.',
+      title: 'Atención Personalizada',
+      description: 'Comunicación directa con nuestro equipo, sin intermediarios ni centros de llamadas.',
       highlight: '< 2 Horas'
     },
     {
@@ -27,8 +27,8 @@ const Guarantee: React.FC = () => {
     },
     {
       icon: CheckCircle,
-      title: 'Satisfacción Total',
-      description: 'El 98% de nuestros clientes renuevan. Si no estás satisfecho, cancela sin penalizaciones.',
+      title: 'Visibilidad Completa',
+      description: 'Acceso integral a métricas, análisis y resultados actualizados constantemente.',
       highlight: '98% Satisfacción'
     }
   ];
@@ -56,14 +56,14 @@ const Guarantee: React.FC = () => {
           </div>
           
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6 font-inter">
-            Trabajamos con
+            Respaldamos nuestro trabajo con
             <span className="text-[#00FF88] block sm:inline sm:ml-3">
-              Garantías Reales
+              Compromisos Concretos
             </span>
           </h2>
           
           <p className="text-[#CCCCCC] text-lg sm:text-xl max-w-3xl mx-auto leading-relaxed font-inter">
-            Tu éxito es nuestro compromiso. Por eso respaldamos nuestro trabajo con garantías que protegen tu inversión.
+            No ofrecemos soluciones mágicas. Ofrecemos metodología, dedicación y métricas transparentes. Si no alcanzamos los objetivos, no hay facturación.
           </p>
         </motion.div>
 

@@ -97,8 +97,8 @@ const Hero = () => {
           transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
           className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-orbitron font-bold text-white mb-6 md:mb-8 leading-tight"
         >
-          <span className="text-[#00FF88]">Marketing Digital</span><br />
-          <span className="text-[#39FF14]">que Escala tu Negocio</span>
+          <span className="text-[#00FF88]">Transformamos Ideas</span><br />
+          <span className="text-[#39FF14]">en Resultados Medibles</span>
         </motion.h1>
 
         <motion.p
@@ -108,7 +108,7 @@ const Hero = () => {
           className="text-base xs:text-lg sm:text-xl md:text-2xl text-gray-300 mb-6 md:mb-8 max-w-3xl mx-auto font-inter leading-relaxed"
         >
           <span className="text-[#00FF88] font-semibold">Damián y Carolina</span> - 
-          Automatización, Meta Ads y Growth Marketing
+          Estrategia Digital, Meta Ads y Crecimiento Sostenible
         </motion.p>
 
         {/* Urgency Counter */}

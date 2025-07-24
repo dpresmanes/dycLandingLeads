@@ -90,13 +90,13 @@ const Services = () => {
       className="text-center mb-12 md:mb-16"
     >
       <h2 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-orbitron font-bold text-white mb-6 md:mb-8 leading-tight">
-        Servicios de Marketing Digital que{' '}
-        <span className="text-[#00FF88]">Escalan tu Negocio</span>
+        Soluciones Integrales que{' '}
+        <span className="text-[#00FF88]">Impulsan tu Crecimiento</span>
       </h2>
       <p className="text-sm xs:text-base md:text-lg lg:text-xl text-gray-300 max-w-4xl mx-auto font-inter leading-relaxed">
-         Nos especializamos en integrar automatización, estrategia digital y herramientas de IA {' '}
-         para que cada parte de tu negocio trabaje en sintonía.<br className="hidden sm:block" />
-         <span className="text-[#00FF88] font-semibold">Nuestro enfoque combina análisis, creatividad y acción.</span>
+         Integramos tecnología, estrategia y creatividad {' '}
+         para que tu negocio funcione como un sistema eficiente.<br className="hidden sm:block" />
+         <span className="text-[#00FF88] font-semibold">Cada solución está diseñada para generar resultados sostenibles.</span>
        </p>
     </motion.div>
 
@@ -146,7 +146,7 @@ const Services = () => {
               onClick={openModal}
               className="w-full bg-[#00FF88]/10 hover:bg-[#00FF88]/80 text-[#00FF88] hover:text-black border border-[#00FF88]/20 hover:border-[#00FF88]/60 font-semibold py-3 px-6 rounded-lg transition-all duration-300 font-inter"
             >
-              Consultar
+              Explorar Solución
             </button>
           </motion.div>
         );

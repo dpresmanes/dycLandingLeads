@@ -43,13 +43,13 @@ const Process = () => {
           className="text-center mb-12 md:mb-16"
         >
           <h2 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-orbitron font-bold text-white mb-6 md:mb-8 leading-tight">
-            <span className="text-[#00FF88]">Procesos claros.</span><br />
-            Resultados concretos.
+            <span className="text-[#00FF88]">Metodología probada.</span><br />
+            Ejecución precisa.
           </h2>
           <p className="text-sm xs:text-base md:text-lg lg:text-xl text-gray-300 max-w-4xl mx-auto font-inter leading-relaxed">
-            Cada proyecto comienza con un diagnóstico, sigue con una estrategia sólida 
-            y termina en resultados medibles.<br className="hidden sm:block" />
-            <span className="text-[#00FF88]">Nuestro sistema se adapta a tu negocio y se mejora constantemente.</span>
+            Desde el análisis inicial hasta la optimización continua, 
+            cada paso está diseñado para maximizar tu inversión.<br className="hidden sm:block" />
+            <span className="text-[#00FF88]">Un enfoque sistemático que evoluciona con tu negocio.</span>
           </p>
         </motion.div>
 

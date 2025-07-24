@@ -51,10 +51,10 @@ const About = () => {
             </div>
 
             <p className="text-gray-300 leading-relaxed font-inter text-sm sm:text-base md:text-lg mb-4 sm:mb-6">
-              Me encargo de la <span className="text-[#00FF88]">estrategia, automatización y performance publicitaria</span>.
+              Me especializo en <span className="text-[#00FF88]">estrategia digital, sistemas inteligentes y optimización publicitaria</span>.
               <br /><br />
-              Me gusta resolver problemas complejos con soluciones simples. 
-              Trabajo con foco, sin vueltas, y siempre orientado a resultados.
+              Transformo desafíos complejos en soluciones efectivas. 
+              Mi enfoque es directo, eficiente y siempre orientado a generar impacto medible.
             </p>
 
             <div className="mb-4">
@@ -101,10 +101,10 @@ const About = () => {
             </div>
 
             <p className="text-gray-300 leading-relaxed font-inter text-sm sm:text-base md:text-lg mb-4 sm:mb-6">
-              Me enfoco en la <span className="text-[#00FF88]">planificación, administración y gestión de ecommerce</span>.
+              Me dedico a la <span className="text-[#00FF88]">coordinación estratégica, optimización operativa y desarrollo comercial</span>.
               <br /><br />
-              Organizo procesos, ajusto precios, manejo lanzamientos y acompaño 
-              cada proyecto con una mirada completa del negocio.
+              Estructuro procesos, optimizo recursos, coordino lanzamientos y superviso 
+              cada proyecto con una visión integral del crecimiento empresarial.
             </p>
 
             <div className="mb-4">

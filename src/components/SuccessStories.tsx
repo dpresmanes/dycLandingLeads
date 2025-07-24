@@ -48,7 +48,7 @@ const successStories: SuccessStory[] = [
         improvement: "+133%"
       }
     ],
-    testimonial: "Las campañas ahora generan resultados consistentes. El ROAS mejoró significativamente y pudimos escalar el presupuesto con confianza.",
+    testimonial: "Los sistemas publicitarios ahora producen resultados predecibles. El retorno de inversión se optimizó notablemente y logramos ampliar la inversión con seguridad.",
     timeframe: "3 meses",
     avatar: "🏪"
   },
@@ -78,7 +78,7 @@ const successStories: SuccessStory[] = [
         improvement: "+78%"
       }
     ],
-    testimonial: "La automatización nos permitió responder instantáneamente y nutrir leads de forma personalizada. Ahora convertimos más con menos esfuerzo manual.",
+    testimonial: "La sistematización nos habilitó para atender inmediatamente y cultivar prospectos de manera individualizada. Ahora transformamos más oportunidades con menor intervención manual.",
     timeframe: "4 meses",
     avatar: "💼"
   },
@@ -108,7 +108,7 @@ const successStories: SuccessStory[] = [
         improvement: "-51%"
       }
     ],
-    testimonial: "Logramos un crecimiento sostenible optimizando cada etapa del funnel. Los datos ahora guían nuestras decisiones y el ROI es predecible.",
+    testimonial: "Alcanzamos una expansión sustentable perfeccionando cada fase del embudo. La información ahora orienta nuestras estrategias y el retorno es calculable.",
     timeframe: "6 meses",
     avatar: "🚀"
   }
@@ -142,10 +142,10 @@ const SuccessStories: React.FC = () => {
             </div>
           </div>
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-            Casos de <span className="text-green-400">Éxito Reales</span>
+            Historias de <span className="text-green-400">Transformación</span>
           </h2>
           <p className="text-lg text-gray-300 max-w-2xl mx-auto mb-4">
-            Transformaciones medibles de nuestros clientes
+            Evoluciones cuantificables de nuestros socios comerciales
           </p>
           <div className="bg-blue-900/20 border border-blue-500/30 rounded-lg p-3 max-w-xl mx-auto">
             <p className="text-xs text-blue-300">
