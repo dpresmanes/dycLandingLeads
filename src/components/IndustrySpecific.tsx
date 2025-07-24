@@ -111,7 +111,7 @@ const industries: IndustryData[] = [
     id: 'education',
     name: 'Educación Online',
     icon: <GraduationCap className="h-8 w-8" />,
-    description: 'Estrategias de visibilidad, administración de reputación digital y tácticas de conexión comunitaria para educadores.','
+    description: 'Estrategias de visibilidad, administración de reputación digital y tácticas de conexión comunitaria para educadores.',
     challenges: [
       'Saturación del mercado',
       'Dificultad para justificar precios',
@@ -148,7 +148,7 @@ const industries: IndustryData[] = [
     id: 'health',
     name: 'Salud y Bienestar',
     icon: <Heart className="h-8 w-8" />,
-    description: 'Sistematización de procesos operativos, mejora de la experiencia del usuario y marketing de crecimiento para salud.','
+    description: 'Sistematización de procesos operativos, mejora de la experiencia del usuario y marketing de crecimiento para salud.',
     challenges: [
       'Regulaciones estrictas de publicidad',
       'Necesidad de generar confianza',
@@ -185,7 +185,7 @@ const industries: IndustryData[] = [
     id: 'realestate',
     name: 'Bienes Raíces',
     icon: <Home className="h-8 w-8" />,
-    description: 'Tácticas de posicionamiento, sistematización de procesos consultivos y optimización de transformaciones inmobiliarias.','
+    description: 'Tácticas de posicionamiento, sistematización de procesos consultivos y optimización de transformaciones inmobiliarias.',
     challenges: [
       'Mercado altamente competitivo',
       'Ciclos de venta muy largos',
@@ -222,7 +222,7 @@ const industries: IndustryData[] = [
     id: 'restaurants',
     name: 'Restaurantes',
     icon: <Utensils className="h-8 w-8" />,
-    description: 'Campañas de rendimiento, sistematización de reservas y estrategias de marketing temporal para gastronomía.','
+    description: 'Campañas de rendimiento, sistematización de reservas y estrategias de marketing temporal para gastronomía.',
     challenges: [
       'Competencia local intensa',
       'Márgenes de ganancia ajustados',
