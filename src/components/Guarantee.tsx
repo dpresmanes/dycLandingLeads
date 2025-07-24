@@ -9,27 +9,27 @@ const Guarantee: React.FC = () => {
   const guarantees = [
     {
       icon: Shield,
-      title: 'Impacto en 90 días',
-      description: 'Si no observas mejoras cuantificables en 3 meses, continuamos sin costo hasta conseguirlo.',
-      highlight: '100% Garantía'
+      title: 'Metodología Probada',
+      description: 'Aplicamos estrategias validadas con más de 100 clientes exitosos en diferentes industrias.',
+      highlight: 'Experiencia'
     },
     {
       icon: Clock,
       title: 'Atención Personalizada',
       description: 'Comunicación directa con nuestro equipo, sin intermediarios ni centros de llamadas.',
-      highlight: '< 2 Horas'
+      highlight: 'Directo'
     },
     {
       icon: TrendingUp,
-      title: 'ROI Mínimo Garantizado',
-      description: 'Garantizamos un ROI mínimo de 3x en los primeros 6 meses o trabajamos gratis hasta lograrlo.',
-      highlight: 'ROI 3x Mínimo'
+      title: 'Enfoque en Resultados',
+      description: 'Nos enfocamos en métricas que realmente importan para el crecimiento de tu negocio.',
+      highlight: 'Medible'
     },
     {
       icon: CheckCircle,
-      title: 'Visibilidad Completa',
-      description: 'Acceso integral a métricas, análisis y resultados actualizados constantemente.',
-      highlight: '98% Satisfacción'
+      title: 'Transparencia Total',
+      description: 'Acceso completo a reportes, métricas y análisis de rendimiento en tiempo real.',
+      highlight: 'Transparente'
     }
   ];
 
@@ -52,18 +52,18 @@ const Guarantee: React.FC = () => {
         >
           <div className="inline-flex items-center space-x-2 bg-[#00FF88]/10 border border-[#00FF88]/30 rounded-full px-4 py-2 mb-6">
             <Shield className="text-[#00FF88]" size={16} />
-            <span className="text-[#00FF88] font-semibold text-sm font-inter">Garantías Sólidas</span>
+            <span className="text-[#00FF88] font-semibold text-sm font-inter">Nuestro Compromiso</span>
           </div>
           
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6 font-inter">
-            Respaldamos nuestro trabajo con
+            Trabajamos con
             <span className="text-[#00FF88] block sm:inline sm:ml-3">
-              Compromisos Concretos
+              Estándares de Excelencia
             </span>
           </h2>
           
           <p className="text-[#CCCCCC] text-lg sm:text-xl max-w-3xl mx-auto leading-relaxed font-inter">
-            No ofrecemos soluciones mágicas. Ofrecemos metodología, dedicación y métricas transparentes. Si no alcanzamos los objetivos, no hay facturación.
+            Nuestro compromiso es brindar estrategias efectivas, comunicación transparente y resultados medibles para el crecimiento sostenible de tu negocio.
           </p>
         </motion.div>
 
@@ -126,12 +126,12 @@ const Guarantee: React.FC = () => {
             <div className="relative z-10">
               <h3 className="text-2xl sm:text-3xl font-bold mb-4 font-inter">
                 <span className="bg-gradient-to-r from-white via-green-100 to-white bg-clip-text text-transparent">
-                  ¿Listo para Crecer sin Riesgos?
+                  ¿Listo para Impulsar tu Negocio?
                 </span>
               </h3>
               
               <p className="text-gray-300 text-lg mb-8 font-inter max-w-2xl mx-auto">
-                Agenda tu consulta estratégica gratuita y descubre cómo podemos escalar tu negocio con garantías reales.
+                Agenda tu consulta estratégica gratuita y descubre cómo podemos potenciar tu negocio con metodologías probadas.
               </p>
               
               <motion.button
@@ -154,7 +154,7 @@ const Guarantee: React.FC = () => {
                 </div>
                 <div className="flex items-center space-x-2">
                   <CheckCircle className="text-green-400" size={16} />
-                  <span>Resultados garantizados</span>
+                  <span>Estrategia personalizada</span>
                 </div>
               </div>
             </div>
