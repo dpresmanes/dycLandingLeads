@@ -6,7 +6,7 @@ const Contact = () => {
   const { isContactVisible } = useScrollPosition();
   
   const handleWhatsAppClick = () => {
-    window.open('https://wa.me/5491234567890?text=Hola! Me interesa conocer más sobre sus servicios de marketing digital y automatización.', '_blank');
+    window.open('https://wa.me/5491137638307?text=Hola! Me interesa conocer más sobre sus servicios de marketing digital y automatización.', '_blank');
   };
 
   return (
