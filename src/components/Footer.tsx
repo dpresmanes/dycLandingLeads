@@ -119,13 +119,15 @@ const Footer = () => {
                   <li key={index}>
                     <button
                       onClick={() => {
-                        if (link === 'Sobre nosotros') scrollToSection('about');
+                        if (link === 'Blog') {
+                          window.history.pushState({}, '', '/blog');
+                          window.dispatchEvent(new PopStateEvent('popstate'));
+                        } else if (link === 'Sobre nosotros') scrollToSection('about');
                         else if (link === 'Nuestro proceso') scrollToSection('process');
-                        else if (link === 'Testimonios') scrollToSection('testimonials');
+                        else if (link === 'Testimonios') scrollToSection('success-stories');
                         else if (link === 'Contacto') scrollToSection('contact');
-                        else if (link === 'Consulta gratuita') handleWhatsAppClick();
                       }}
-                      className="text-[#CCCCCC] hover:text-[#00FF88] transition-colors text-xs sm:text-sm font-inter text-left"
+                      className="text-[#CCCCCC] hover:text-white transition-colors font-inter text-sm sm:text-base"
                     >
                       {link}
                     </button>

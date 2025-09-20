@@ -38,8 +38,14 @@ const Navbar = () => {
     { label: 'Servicios', id: 'services' },
     { label: 'Proceso', id: 'process' },
     { label: 'Nosotros', id: 'about' },
-    { label: 'Contacto', id: 'contact' }
+    { label: 'Contacto', id: 'contact' },
   ];
+
+  const goToBlog = () => {
+    window.history.pushState({}, '', '/blog');
+    window.dispatchEvent(new PopStateEvent('popstate'));
+    setIsMobileMenuOpen(false);
+  };
 
   return (
     <>
@@ -75,6 +81,14 @@ const Navbar = () => {
                    {item.label}
                  </motion.button>
               ))}
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                onClick={goToBlog}
+                className="text-gray-300 hover:text-white transition-all relative group"
+              >
+                <span>Blog</span>
+                <span className="absolute left-0 -bottom-1 w-0 h-0.5 bg-[#00FF88] group-hover:w-full transition-all" />
+              </motion.button>
               
               {/* CTA Button */}
               <motion.button
@@ -127,6 +141,7 @@ const Navbar = () => {
                    {item.label}
                  </motion.button>
                ))}
+               <button onClick={goToBlog} className="block w-full text-left text-gray-300 hover:text-white py-2">Blog</button>
                
                {/* Mobile CTA Button */}
                <motion.button
