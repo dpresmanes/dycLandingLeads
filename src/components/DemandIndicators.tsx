@@ -18,7 +18,7 @@ const DemandIndicators: React.FC = () => {
         {currentNotification && (
           <motion.div
             {...ANIMATION_CONFIG.NOTIFICATION_ENTRANCE}
-            className={`fixed bottom-6 left-6 z-${Z_INDEX.NOTIFICATION} max-w-sm`}
+            className={`fixed left-6 max-w-sm z-[68] bottom-[calc(84px+var(--sab)+1.5rem)] lg:bottom-6`}
           >
             <div className={`${CSS_CLASSES.CARD_BASE} p-4`}>
               <div className="flex items-start space-x-3">

@@ -1,35 +1,35 @@
-import { motion, AnimatePresence } from 'framer-motion';
-import { MessageCircle, X } from 'lucide-react';
-import { useEffect, useState } from 'react';
-import { useMobileDetection } from '../hooks/useMobileDetection';
+import { motion, AnimatePresence } from 'framer-motion'
+import { MessageCircle, X } from 'lucide-react'
+import { useEffect, useState } from 'react'
+import { useMobileDetection } from '../hooks/useMobileDetection'
 
 interface FloatingWhatsAppProps {
-  phone?: string; // in international format without +, e.g. 5491137638307
-  prefilled?: string;
+  phone?: string // in international format without +, e.g. 5491137638307
+  prefilled?: string
 }
 
-const DEFAULT_PHONE = '5491137638307';
-const DEFAULT_MSG = 'Hola! Me interesa conocer más sobre sus servicios de marketing digital y automatización.';
+const DEFAULT_PHONE = '5491137638307'
+const DEFAULT_MSG = 'Hola! Me interesa conocer más sobre sus servicios de marketing digital y automatización.'
 
 const FloatingWhatsApp = ({ phone = DEFAULT_PHONE, prefilled = DEFAULT_MSG }: FloatingWhatsAppProps) => {
-  const { isMobile } = useMobileDetection();
-  const [expanded, setExpanded] = useState(false);
-  const [visible, setVisible] = useState(true);
+  const { isMobile } = useMobileDetection()
+  const [expanded, setExpanded] = useState(false)
+  const [visible, setVisible] = useState(true)
 
   useEffect(() => {
     const onScroll = () => {
-      setVisible(true);
-    };
-    window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
-  }, []);
+      setVisible(true)
+    }
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
 
-  if (!isMobile || !visible) return null;
+  if (!isMobile || !visible) return null
 
   const handleClick = () => {
-    const url = `https://wa.me/${phone}?text=${encodeURIComponent(prefilled)}`;
-    window.open(url, '_blank');
-  };
+    const url = `https://wa.me/${phone}?text=${encodeURIComponent(prefilled)}`
+    window.open(url, '_blank')
+  }
 
   return (
     <AnimatePresence>
@@ -38,8 +38,8 @@ const FloatingWhatsApp = ({ phone = DEFAULT_PHONE, prefilled = DEFAULT_MSG }: Fl
         animate={{ scale: 1, opacity: 1 }}
         exit={{ scale: 0, opacity: 0 }}
         transition={{ duration: 0.25 }}
-        className="fixed z-[70] right-4 bottom-[84px] sm:bottom-[92px]"
-        style={{ pointerEvents: 'auto' }}
+        className="fixed z-[70] right-4"
+        style={{ pointerEvents: 'auto', bottom: 'calc(84px + var(--sab))' }}
       >
         {/* Collapsed FAB */}
         <motion.button
@@ -78,7 +78,7 @@ const FloatingWhatsApp = ({ phone = DEFAULT_PHONE, prefilled = DEFAULT_MSG }: Fl
         </div>
       </motion.div>
     </AnimatePresence>
-  );
+  )
 };
 
 export default FloatingWhatsApp;
