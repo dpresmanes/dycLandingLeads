@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, User, Mail, Phone, Building2, Send, CheckCircle } from 'lucide-react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useLeadCaptureContext } from '../contexts/LeadCaptureContext';
 
 const LeadCaptureModal = () => {
@@ -17,6 +17,15 @@ const LeadCaptureModal = () => {
 
   
   const [showSuccess, setShowSuccess] = useState(false);
+
+  useEffect(() => {
+    if (!isModalOpen) return;
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') closeModal();
+    };
+    window.addEventListener('keydown', onKeyDown);
+    return () => window.removeEventListener('keydown', onKeyDown);
+  }, [isModalOpen, closeModal]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -58,7 +67,7 @@ const LeadCaptureModal = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="absolute inset-0 bg-black/80 backdrop-blur-sm"
+            className="absolute inset-0 bg-black/80 backdrop-blur-sm cursor-pointer"
             onClick={closeModal}
           />
 
@@ -79,12 +88,14 @@ const LeadCaptureModal = () => {
 
             {/* Close Button */}
             <motion.button
-              whileHover={{ scale: 1.1, rotate: 90 }}
-              whileTap={{ scale: 0.9 }}
+              type="button"
+              aria-label="Cerrar"
+              whileHover={{ scale: 1.08, rotate: 90 }}
+              whileTap={{ scale: 0.96 }}
               onClick={closeModal}
-              className="absolute top-4 right-4 p-2 text-gray-400 hover:text-white transition-colors duration-200 z-10"
+              className="absolute top-4 right-4 -m-2 md:-m-3 p-3 md:p-4 rounded-full cursor-pointer text-gray-400 hover:text-white hover:bg-white/5 focus:outline-none focus:ring-2 focus:ring-[#00FF88]/50 transition-colors duration-200 z-10"
             >
-              <X size={20} />
+              <X size={22} />
             </motion.button>
 
             {/* Success State */}

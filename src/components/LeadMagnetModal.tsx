@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, User, Building2, Mail, Phone, CheckCircle, Download } from 'lucide-react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useLeadMagnetCapture } from '../hooks/useLeadMagnetCapture';
 
 interface LeadMagnetModalProps {
@@ -48,7 +48,7 @@ const LeadMagnetModal: React.FC<LeadMagnetModalProps> = ({ isOpen, onClose }) =>
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+          className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 cursor-pointer"
           onClick={handleClose}
         >
           <motion.div
@@ -61,10 +61,12 @@ const LeadMagnetModal: React.FC<LeadMagnetModalProps> = ({ isOpen, onClose }) =>
           >
             {/* Close Button */}
             <button
+              type="button"
+              aria-label="Cerrar"
               onClick={handleClose}
-              className="absolute top-4 right-4 text-gray-400 hover:text-white transition-colors duration-200 p-1"
+              className="absolute top-4 right-4 -m-2 md:-m-3 p-3 md:p-4 rounded-full cursor-pointer text-gray-400 hover:text-white hover:bg-white/5 focus:outline-none focus:ring-2 focus:ring-green-500/50 transition-colors duration-200"
             >
-              <X size={20} />
+              <X size={22} />
             </button>
 
             {!showSuccess ? (
