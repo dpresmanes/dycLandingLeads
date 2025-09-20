@@ -14,12 +14,14 @@ import LeadCaptureModal from './components/LeadCaptureModal';
 import DemandIndicators from './components/DemandIndicators';
 import SEOHead from './components/SEOHead';
 import { LeadCaptureProvider } from './contexts/LeadCaptureContext';
+import FloatingWhatsApp from './components/FloatingWhatsApp'
+import MobileBottomNavigation from './components/MobileBottomNavigation'
 
 function App() {
   return (
     <LeadCaptureProvider>
       <SEOHead />
-      <div className="min-h-screen bg-black text-white overflow-x-hidden">
+      <div className="min-h-screen bg-black text-white overflow-x-hidden pb-20 md:pb-0 safe-bottom">
         <header>
           <Navbar />
         </header>
@@ -42,6 +44,10 @@ function App() {
         {/* Lead Capture Modal */}
         <LeadCaptureModal />
         <DemandIndicators />
+
+        {/* Mobile components */}
+        <FloatingWhatsApp />
+        <MobileBottomNavigation />
       </div>
     </LeadCaptureProvider>
   );

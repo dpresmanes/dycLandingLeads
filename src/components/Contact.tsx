@@ -173,7 +173,7 @@ const Contact = () => {
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0, opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="fixed bottom-6 right-6 z-40"
+            className="fixed bottom-6 right-6 z-40 hidden md:block"
           >
             <motion.button
               whileHover={{ scale: 1.1 }}
