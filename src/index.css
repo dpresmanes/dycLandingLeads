@@ -57,3 +57,141 @@ html {
 button, a {
   touch-action: manipulation;
 }
+
+.prose :where(h2,h3,h4){
+  color: #fff;
+}
+.prose :where(h2){
+  font-size: 1.875rem; /* text-3xl */
+  line-height: 2.25rem;
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+}
+.prose :where(h3){
+  font-size: 1.5rem; /* text-2xl */
+  line-height: 2rem;
+  margin-top: 1.25rem;
+  margin-bottom: 0.75rem;
+}
+.prose :where(h4){
+  font-size: 1.25rem; /* text-xl */
+  line-height: 1.75rem;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+.prose :where(h5){
+  font-size: 1.125rem; /* text-lg */
+  line-height: 1.75rem;
+  margin-top: 0.75rem;
+  margin-bottom: 0.5rem;
+  color: #fff;
+}
+.prose :where(p,li){
+  color: #d1d5db; /* gray-300 */
+}
+.prose :where(a){
+  color: #00FF88;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.prose :where(blockquote){
+  border-left: 3px solid rgba(0,255,136,0.5);
+  background: rgba(17,24,39,0.6); /* gray-900/60 */
+  padding: 0.75rem 1rem;
+  margin: 1rem 0;
+  color: #e5e7eb; /* gray-200 */
+  font-style: italic;
+}
+.prose :where(code){
+  background: rgba(31,41,55,0.6); /* gray-800/60 */
+  color: #93c5fd; /* blue-300 */
+  padding: 0.125rem 0.375rem;
+  border-radius: 0.375rem;
+}
+.prose :where(pre){
+  background: rgba(17,24,39,0.8);
+  color: #e5e7eb;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  overflow: auto;
+}
+.prose :where(table){
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.prose :where(th,td){
+  border: 1px solid rgba(75,85,99,0.5); /* gray-600 */
+  padding: 0.5rem 0.75rem;
+}
+.prose :where(ul){
+  list-style: disc;
+  padding-left: 1.25rem;
+  margin: 1rem 0;
+}
+.prose :where(ol){
+  list-style: decimal;
+  padding-left: 1.25rem;
+  margin: 1rem 0;
+}
+.prose :where(li > ul, li > ol){
+  margin-top: 0.5rem;
+}
+.prose :where(hr){
+  border-color: #374151; /* gray-700 */
+  margin: 2rem 0;
+}
+.prose :where(img){
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 1rem auto;
+  border-radius: 0.5rem;
+}
+.prose :where(a:focus-visible){
+  outline: none;
+  box-shadow: 0 0 0 2px #00FF88;
+  border-radius: 0.25rem;
+}
+.prose :where(thead th){
+  background: rgba(31,41,55,0.6); /* gray-800/60 */
+  color: #e5e7eb; /* gray-200 */
+}
+.prose :where(tbody tr:nth-child(odd)){
+  background: rgba(17,24,39,0.4);
+}
+.prose :where(a:hover){
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+.prose :where(pre code){
+  display: block;
+  white-space: pre;
+  background: transparent;
+  padding: 0;
+  color: inherit;
+}
+.prose :where(p,li){
+  color: #d1d5db; /* gray-300 */
+  overflow-wrap: anywhere;
+}
+.prose :where(li){
+  margin: 0.25rem 0;
+}
+.prose :where(p + h2, p + h3, p + h4){
+  margin-top: 1.25rem;
+}
+
+/* Prefers-reduced-motion: reduce animations and transitions for accessibility and performance */
+@media (prefers-reduced-motion: reduce) {
+  /* Disable CSS animations and transitions globally */
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}

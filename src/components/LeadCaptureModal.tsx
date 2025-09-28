@@ -77,6 +77,7 @@ const LeadCaptureModal = () => {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.8, y: 20 }}
             transition={{ type: "spring", duration: 0.5 }}
+            role="dialog" aria-modal="true" aria-labelledby="lead-modal-title" aria-describedby="lead-modal-desc"
             className="relative w-full max-w-md mx-auto bg-gray-900/95 backdrop-blur-xl border border-[#00FF88]/30 rounded-2xl p-6 md:p-8 shadow-2xl"
             onClick={(e) => e.stopPropagation()}
           >
@@ -133,6 +134,7 @@ const LeadCaptureModal = () => {
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.1 }}
+                id="lead-modal-title"
                 className="text-2xl md:text-3xl font-orbitron font-bold text-white mb-2"
               >
                 ¿Listo para <span className="text-[#00FF88]">crecer</span>?
@@ -141,6 +143,7 @@ const LeadCaptureModal = () => {
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2 }}
+                id="lead-modal-desc"
                 className="text-gray-300 font-inter text-sm md:text-base"
               >
                 Solo necesitamos 3 datos para contactarte en menos de 2 horas
@@ -162,6 +165,9 @@ const LeadCaptureModal = () => {
                   <input
                     type="text"
                     placeholder="Tu nombre"
+                    aria-label="Nombre"
+                    aria-invalid={!!errors.nombre}
+                    aria-describedby={errors.nombre ? 'error-nombre' : undefined}
                     value={leadData.nombre}
                     onChange={(e) => handleInputChange('nombre', e.target.value)}
                     className={`w-full pl-12 pr-4 py-3 bg-gray-800/50 border ${
@@ -173,6 +179,9 @@ const LeadCaptureModal = () => {
                   <motion.p
                     initial={{ opacity: 0, y: -10 }}
                     animate={{ opacity: 1, y: 0 }}
+                    id="error-nombre"
+                    role="alert"
+                    aria-live="polite"
                     className="text-red-400 text-xs mt-1 font-inter"
                   >
                     {errors.nombre}
@@ -187,6 +196,9 @@ const LeadCaptureModal = () => {
                   <input
                     type="email"
                     placeholder="Tu email"
+                    aria-label="Email"
+                    aria-invalid={!!errors.email}
+                    aria-describedby={errors.email ? 'error-email' : undefined}
                     value={leadData.email}
                     onChange={(e) => handleInputChange('email', e.target.value)}
                     className={`w-full pl-12 pr-4 py-3 bg-gray-800/50 border ${
@@ -198,6 +210,9 @@ const LeadCaptureModal = () => {
                   <motion.p
                     initial={{ opacity: 0, y: -10 }}
                     animate={{ opacity: 1, y: 0 }}
+                    id="error-email"
+                    role="alert"
+                    aria-live="polite"
                     className="text-red-400 text-xs mt-1 font-inter"
                   >
                     {errors.email}
@@ -212,6 +227,9 @@ const LeadCaptureModal = () => {
                   <input
                     type="tel"
                     placeholder="Tu celular (+54 9 11 1234-5678)"
+                    aria-label="Celular"
+                    aria-invalid={!!errors.celular}
+                    aria-describedby={errors.celular ? 'error-celular' : undefined}
                     value={leadData.celular}
                     onChange={(e) => handleInputChange('celular', e.target.value)}
                     className={`w-full pl-12 pr-4 py-3 bg-gray-800/50 border ${
@@ -223,6 +241,9 @@ const LeadCaptureModal = () => {
                   <motion.p
                     initial={{ opacity: 0, y: -10 }}
                     animate={{ opacity: 1, y: 0 }}
+                    id="error-celular"
+                    role="alert"
+                    aria-live="polite"
                     className="text-red-400 text-xs mt-1 font-inter"
                   >
                     {errors.celular}

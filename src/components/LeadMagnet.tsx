@@ -1,13 +1,33 @@
 import { motion } from 'framer-motion';
 import { Download, CheckCircle, Clock, Target, Zap } from 'lucide-react';
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import LeadMagnetModal from './LeadMagnetModal';
+import { trackEvent } from '../utils/analytics';
 
 const LeadMagnet = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const sectionRef = useRef<HTMLDivElement | null>(null);
 
-  const openModal = () => setIsModalOpen(true);
-  const closeModal = () => setIsModalOpen(false);
+  useEffect(() => {
+    const el = sectionRef.current;
+    if (!el) return;
+    let fired = false;
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!fired && entry.isIntersecting && entry.intersectionRatio >= 0.3) {
+          trackEvent('lead_magnet_impression', { location: 'LeadMagnet_Section' });
+          fired = true;
+          observer.disconnect();
+        }
+      });
+    }, { threshold: [0, 0.3, 0.6, 1] });
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  const openModal = () => { setIsModalOpen(true); trackEvent('lead_magnet_view', { location: 'LeadMagnet_Section' }); };
+  const closeModal = () => { setIsModalOpen(false); trackEvent('lead_magnet_close', { location: 'LeadMagnet_Section' }); };
 
   const benefits = [
     {
@@ -38,7 +58,7 @@ const LeadMagnet = () => {
   ];
 
   return (
-    <section className="py-16 md:py-24 lg:py-32 bg-gradient-to-b from-gray-900/50 to-black relative overflow-hidden">
+    <section ref={sectionRef} id="lead-magnet" className="py-16 md:py-24 lg:py-32 bg-gradient-to-b from-gray-900/50 to-black relative overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute inset-0" style={{
@@ -94,7 +114,7 @@ const LeadMagnet = () => {
                 scale: 1.02
               }}
               whileTap={{ scale: 0.98 }}
-              onClick={openModal}
+              onClick={() => { trackEvent('lead_magnet_cta_click', { location: 'LeadMagnet_Section' }); openModal(); }}
               className="bg-[#00FF88] text-black px-8 py-4 rounded-lg text-lg font-bold font-inter transition-all duration-300 inline-flex items-center space-x-3"
             >
               <Download size={20} />

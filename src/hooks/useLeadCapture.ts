@@ -1,5 +1,6 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { submitToGoogleSheets, isValidEmail, sanitizeInput } from '../utils/googleSheets';
+import { trackEvent } from '../utils/analytics';
 
 interface LeadData {
   nombre: string;
@@ -34,6 +35,16 @@ export const useLeadCapture = (): UseLeadCaptureReturn => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errors, setErrors] = useState<Partial<LeadData>>({});
+
+  const openModal = useCallback(() => {
+    setIsModalOpen(true);
+    if (!hasShownModal) {
+      setHasShownModal(true);
+      sessionStorage.setItem('leadModalShown', 'true');
+    }
+    // Track modal view
+    trackEvent('consultation_modal_view', { ctaLocation: 'Modal_Contact_Form' });
+  }, [hasShownModal]);
 
   // Auto-trigger modal with improved UX - respects user dismissal
   useEffect(() => {
@@ -80,15 +91,7 @@ export const useLeadCapture = (): UseLeadCaptureReturn => {
       cleanupScroll?.();
       cleanupExit?.();
     };
-  }, [hasShownModal]);
-
-  const openModal = () => {
-    setIsModalOpen(true);
-    if (!hasShownModal) {
-      setHasShownModal(true);
-      sessionStorage.setItem('leadModalShown', 'true');
-    }
-  };
+  }, [hasShownModal, openModal]);
 
   const closeModal = () => {
     setIsModalOpen(false);
@@ -165,6 +168,8 @@ export const useLeadCapture = (): UseLeadCaptureReturn => {
       const success = await submitToGoogleSheets(sanitizedData);
 
       if (success) {
+        // Track success submit
+        trackEvent('consultation_modal_submit', { status: 'success' });
         // Reset form
         setLeadDataState({
           nombre: '',
@@ -174,9 +179,13 @@ export const useLeadCapture = (): UseLeadCaptureReturn => {
         });
         return true;
       } else {
+        // Track failed submit (non-throwing path)
+        trackEvent('consultation_modal_submit', { status: 'error' });
         throw new Error('Error al enviar el formulario');
       }
     } catch { 
+      // Track failed submit (exception path)
+      trackEvent('consultation_modal_submit', { status: 'error' });
       return false;
     } finally {
       setIsSubmitting(false);

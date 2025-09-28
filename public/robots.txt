@@ -1,12 +1,2 @@
-User-agent: *
-Allow: /
-
-# Sitemap se actualizará automáticamente con tu dominio de Vercel
-Sitemap: https://handtobrand.vercel.app/sitemap.xml
-
-# Disallow admin or private areas (if any)
-# Disallow: /admin/
-# Disallow: /private/
-
-# Allow all search engines to crawl
-# Crawl-delay: 1
+# Este archivo es servido dinámicamente desde /api/robots.txt según dominio desplegado.
+# Ver vercel.json rewrites.

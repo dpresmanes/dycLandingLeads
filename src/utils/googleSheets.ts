@@ -14,6 +14,10 @@ export interface LeadSubmission {
   ctaLocation?: string;
   leadQuality?: string;
   expectedAction?: string;
+  empleados?: string;
+  horasSemanales?: string;
+  costoHora?: string;
+  roiCalculado?: string;
 }
 
 // Get Google Apps Script URL from environment variables

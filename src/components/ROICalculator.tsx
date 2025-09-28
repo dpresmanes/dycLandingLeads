@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Calculator, TrendingUp, Target, DollarSign } from 'lucide-react';
+import { trackEvent } from '../utils/analytics';
+import { useLeadCaptureContext } from '../contexts/LeadCaptureContext';
 
 interface ROIData {
   monthlyRevenue: number;
@@ -29,12 +31,15 @@ const ROICalculator: React.FC = () => {
 
   const [results, setResults] = useState<ROIResults | null>(null);
   const [showResults, setShowResults] = useState(false);
+  const { openModal } = useLeadCaptureContext();
 
   const calculateROI = () => {
     const { monthlyRevenue, conversionRate, averageOrderValue, marketingBudget } = formData;
     
     // Validación de campos requeridos
     if (!monthlyRevenue || !conversionRate || !averageOrderValue || !marketingBudget) {
+      // Track invalid submit attempt
+      trackEvent('roi_calculator_submit', { status: 'error', reason: 'validation_failed' });
       alert('Por favor, completa todos los campos para calcular el ROI.');
       return;
     }
@@ -66,6 +71,20 @@ const ROICalculator: React.FC = () => {
     
     setResults(calculatedResults);
     setShowResults(true);
+    // Track when the user sees ROI results
+    trackEvent('roi_calculator_view', {
+      monthlyROI: calculatedResults.monthlyROI,
+      projectedMonthlyRevenue: calculatedResults.projectedMonthlyRevenue,
+      marketingBudget: formData.marketingBudget
+    });
+    // Track successful submit
+    trackEvent('roi_calculator_submit', {
+      status: 'success',
+      monthlyRevenue,
+      conversionRate,
+      averageOrderValue,
+      marketingBudget
+    });
   };
 
   const handleInputChange = (field: keyof ROIData, value: string) => {
@@ -251,7 +270,7 @@ const ROICalculator: React.FC = () => {
                 <div className="bg-yellow-900/30 rounded-lg p-4">
                   <p className="text-sm text-yellow-300 mb-2">💡 Incremento Proyectado</p>
                   <p className="text-lg font-semibold text-yellow-400">
-                    +${(results.projectedMonthlyRevenue - results.currentMonthlyRevenue).toLocaleString()} mensuales
+                    ${(results.projectedMonthlyRevenue - results.currentMonthlyRevenue).toLocaleString()} mensuales
                   </p>
                 </div>
               </div>
@@ -278,12 +297,15 @@ const ROICalculator: React.FC = () => {
               <p className="text-gray-300 mb-6 text-lg">
                 Nuestros clientes han experimentado crecimientos similares. ¡Tú podrías ser el siguiente!
               </p>
-              <a
-                href="#contact"
+              <button
+                onClick={() => {
+                  trackEvent('consultation_cta_click', { location: 'roi_calculator' });
+                  openModal();
+                }}
                 className="inline-block bg-[#00FF88] text-black font-bold py-4 px-8 rounded-lg hover:bg-[#00FF88]/90 transition-all duration-300"
               >
                 Solicitar Consulta Gratuita
-              </a>
+              </button>
             </div>
           </motion.div>
         )}

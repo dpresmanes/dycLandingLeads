@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { submitToGoogleSheets } from '../utils/googleSheets';
-import { isValidEmail } from '../utils/googleSheets';
+import { submitToGoogleSheets, isValidEmail, sanitizeInput, LeadSubmission } from '../utils/googleSheets';
+import { trackEvent } from '../utils/analytics';
 
 interface ROICalculatorData {
   nombre: string;
@@ -99,60 +99,58 @@ export const useROICalculatorCapture = () => {
     return Object.keys(newErrors).length === 0;
   };
 
-  const sanitizeInput = (input: string): string => {
-    return input.trim().replace(/[<>"'&]/g, '');
+  const resetForm = () => {
+    setCalculatorData({
+      nombre: '',
+      empresa: '',
+      email: '',
+      celular: '',
+      empleados: '',
+      horasSemanales: '',
+      costoHora: '',
+      roiCalculado: ''
+    });
+    setErrors({});
   };
 
   const submitROICalculator = async (): Promise<boolean> => {
-    if (!validateForm()) {
-      return false;
-    }
+    if (!validateForm()) return false;
 
     setIsSubmitting(true);
 
     try {
-      // Sanitize input data with ROI Calculator segmentation
-      const sanitizedData = {
+      const sanitizedData: LeadSubmission = {
         nombre: sanitizeInput(calculatorData.nombre),
         empresa: sanitizeInput(calculatorData.empresa),
         celular: sanitizeInput(calculatorData.celular),
         email: sanitizeInput(calculatorData.email),
-        // Additional ROI Calculator specific data
-        empleados: sanitizeInput(calculatorData.empleados),
-        horasSemanales: sanitizeInput(calculatorData.horasSemanales),
-        costoHora: sanitizeInput(calculatorData.costoHora),
-        roiCalculado: calculatorData.roiCalculado,
-        // ROI Calculator segmentation
+        // ROI Calculator specific segmentation
         source: 'Calculadora ROI',
         leadType: 'ROI_CALCULATOR',
         campaign: 'ROI_Calculator_Lead',
-        ctaLocation: 'ROI_Calculator_Form',
+        ctaLocation: 'ROI_Calculator_Widget',
         pageUrl: window.location.href,
-        leadQuality: 'HIGH', // ROI calculator leads are typically high quality
-        expectedAction: 'DEMO_REQUEST'
+        leadQuality: 'HIGH',
+        expectedAction: 'REQUEST_CONSULTATION',
+        // Extra fields (not required by backend but useful for analysis)
+        empleados: sanitizeInput(calculatorData.empleados),
+        horasSemanales: sanitizeInput(calculatorData.horasSemanales),
+        costoHora: sanitizeInput(calculatorData.costoHora),
+        roiCalculado: sanitizeInput(calculatorData.roiCalculado || '')
       };
 
-      // Submit to Google Sheets
       const success = await submitToGoogleSheets(sanitizedData);
-      
+
       if (success) {
-        // Reset form on success
-        setCalculatorData({
-          nombre: '',
-          empresa: '',
-          email: '',
-          celular: '',
-          empleados: '',
-          horasSemanales: '',
-          costoHora: '',
-          roiCalculado: ''
-        });
-        setErrors({});
+        trackEvent('roi_calculator_submit', { status: 'success' });
+        resetForm();
+        return true;
+      } else {
+        trackEvent('roi_calculator_submit', { status: 'error' });
+        throw new Error('Error al enviar los datos');
       }
-      
-      return success;
-    } catch (error) {
-      console.error('Error submitting ROI calculator data:', error);
+    } catch {
+      trackEvent('roi_calculator_submit', { status: 'error' });
       return false;
     } finally {
       setIsSubmitting(false);

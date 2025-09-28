@@ -62,6 +62,8 @@ declare module 'lucide-react' {
   export const Heart: LucideIcon;
   export const Home: LucideIcon;
   export const Utensils: LucideIcon;
+  export const Workflow: LucideIcon;
+  export const Info: LucideIcon;
 
   // Export all other icons as a generic type
   const lucideReact: {

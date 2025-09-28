@@ -39,7 +39,137 @@ export default {
         '18': '4.5rem',
         '88': '22rem',
       },
+      typography: ({ theme }) => ({
+        DEFAULT: {
+          css: {
+            color: theme('colors.gray.800'),
+            a: {
+              color: theme('colors.primary'),
+              textDecoration: 'none',
+              fontWeight: '600',
+              '&:hover': { textDecoration: 'underline' },
+            },
+            h1: {
+              color: theme('colors.white'),
+              fontWeight: '800',
+              letterSpacing: '-0.02em',
+            },
+            h2: {
+              color: theme('colors.white'),
+              fontWeight: '700',
+              letterSpacing: '-0.01em',
+            },
+            h3: {
+              color: theme('colors.white'),
+              fontWeight: '700',
+              letterSpacing: '-0.01em',
+            },
+            p: {
+              color: theme('colors.gray.700'),
+              lineHeight: '1.75',
+            },
+            'ul > li::marker': {
+              color: theme('colors.primary'),
+            },
+            'ol > li::marker': {
+              color: theme('colors.primary'),
+            },
+            blockquote: {
+              borderLeftColor: theme('colors.primary'),
+              paddingLeft: '1rem',
+            },
+            hr: {
+              borderColor: theme('colors.gray.300'),
+            },
+            img: {
+              borderRadius: theme('borderRadius.xl'),
+            },
+            code: {
+              color: theme('colors.white'),
+              backgroundColor: theme('colors.gray.900'),
+              borderRadius: theme('borderRadius.md'),
+              padding: '0.15rem 0.35rem',
+              border: `1px solid ${theme('colors.primary')+'33'}`,
+            },
+            'pre code': {
+              backgroundColor: 'transparent',
+              padding: '0',
+              border: '0',
+            },
+            pre: {
+              backgroundColor: 'rgba(17,24,39,0.6)',
+              border: `1px solid ${theme('colors.gray.800')}`,
+              borderRadius: theme('borderRadius.xl'),
+            },
+          },
+        },
+        invert: {
+          css: {
+            color: theme('colors.accent'),
+            a: {
+              color: theme('colors.primary'),
+              textDecoration: 'none',
+              fontWeight: '600',
+              '&:hover': { textDecoration: 'underline' },
+            },
+            h1: {
+              color: theme('colors.white'),
+              fontWeight: '800',
+              letterSpacing: '-0.02em',
+            },
+            h2: {
+              color: theme('colors.white'),
+              fontWeight: '700',
+              letterSpacing: '-0.01em',
+            },
+            h3: {
+              color: theme('colors.white'),
+              fontWeight: '700',
+              letterSpacing: '-0.01em',
+            },
+            p: {
+              color: theme('colors.accent'),
+              lineHeight: '1.75',
+            },
+            'ul > li::marker': {
+              color: theme('colors.primary'),
+            },
+            'ol > li::marker': {
+              color: theme('colors.primary'),
+            },
+            blockquote: {
+              color: theme('colors.accent'),
+              borderLeftColor: theme('colors.primary'),
+              backgroundColor: 'rgba(17,24,39,0.4)',
+              paddingLeft: '1rem',
+            },
+            hr: {
+              borderColor: theme('colors.gray.800'),
+            },
+            img: {
+              borderRadius: theme('borderRadius.xl'),
+            },
+            code: {
+              color: theme('colors.white'),
+              backgroundColor: 'rgba(17,24,39,0.9)',
+              borderRadius: theme('borderRadius.md'),
+              padding: '0.15rem 0.35rem',
+              border: `1px solid ${theme('colors.primary')+'33'}`,
+            },
+            'pre code': {
+              backgroundColor: 'transparent',
+              padding: '0',
+              border: '0',
+            },
+            pre: {
+              backgroundColor: 'rgba(17,24,39,0.6)',
+              border: `1px solid ${theme('colors.gray.800')}`,
+              borderRadius: theme('borderRadius.xl'),
+            },
+          },
+        },
+      }),
     },
   },
-  plugins: [],
+  plugins: [require('@tailwindcss/typography')],
 };

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { submitToGoogleSheets, isValidEmail, sanitizeInput, LeadSubmission } from '../utils/googleSheets';
+import { trackEvent } from '../utils/analytics';
 
 interface LeadMagnetData {
   nombre: string;
@@ -102,12 +103,15 @@ export const useLeadMagnetCapture = (): UseLeadMagnetCaptureReturn => {
       const success = await submitToGoogleSheets(sanitizedData);
 
       if (success) {
+        trackEvent('lead_magnet_submit', { status: 'success' });
         resetForm();
         return true;
       } else {
+        trackEvent('lead_magnet_submit', { status: 'error' });
         throw new Error('Error al enviar el formulario');
       }
     } catch {
+      trackEvent('lead_magnet_submit', { status: 'error' });
       return false;
     } finally {
       setIsSubmitting(false);

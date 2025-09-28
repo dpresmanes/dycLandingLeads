@@ -1,0 +1,282 @@
+{
+  "exportFormatVersion": 2,
+  "containerVersion": {
+    "variable": [
+      {
+        "name": "dlv - page_path",
+        "type": "v",
+        "parameter": [
+          { "type": "TEMPLATE", "key": "name", "value": "page_path" },
+          { "type": "BOOLEAN", "key": "setDefaultValue", "value": "false" },
+          { "type": "INTEGER", "key": "dataLayerVersion", "value": "2" }
+        ]
+      },
+      {
+        "name": "dlv - page_location",
+        "type": "v",
+        "parameter": [
+          { "type": "TEMPLATE", "key": "name", "value": "page_location" },
+          { "type": "BOOLEAN", "key": "setDefaultValue", "value": "false" },
+          { "type": "INTEGER", "key": "dataLayerVersion", "value": "2" }
+        ]
+      },
+      {
+        "name": "dlv - page_title",
+        "type": "v",
+        "parameter": [
+          { "type": "TEMPLATE", "key": "name", "value": "page_title" },
+          { "type": "BOOLEAN", "key": "setDefaultValue", "value": "false" },
+          { "type": "INTEGER", "key": "dataLayerVersion", "value": "2" }
+        ]
+      },
+      {
+        "name": "dlv - location",
+        "type": "v",
+        "parameter": [
+          { "type": "TEMPLATE", "key": "name", "value": "location" },
+          { "type": "BOOLEAN", "key": "setDefaultValue", "value": "false" },
+          { "type": "INTEGER", "key": "dataLayerVersion", "value": "2" }
+        ]
+      },
+      {
+        "name": "dlv - percent",
+        "type": "v",
+        "parameter": [
+          { "type": "TEMPLATE", "key": "name", "value": "percent" },
+          { "type": "BOOLEAN", "key": "setDefaultValue", "value": "false" },
+          { "type": "INTEGER", "key": "dataLayerVersion", "value": "2" }
+        ]
+      },
+      {
+        "name": "dlv - path",
+        "type": "v",
+        "parameter": [
+          { "type": "TEMPLATE", "key": "name", "value": "path" },
+          { "type": "BOOLEAN", "key": "setDefaultValue", "value": "false" },
+          { "type": "INTEGER", "key": "dataLayerVersion", "value": "2" }
+        ]
+      },
+      {
+        "name": "dlv - status",
+        "type": "v",
+        "parameter": [
+          { "type": "TEMPLATE", "key": "name", "value": "status" },
+          { "type": "BOOLEAN", "key": "setDefaultValue", "value": "false" },
+          { "type": "INTEGER", "key": "dataLayerVersion", "value": "2" }
+        ]
+      },
+      {
+        "name": "dlv - section",
+        "type": "v",
+        "parameter": [
+          { "type": "TEMPLATE", "key": "name", "value": "section" },
+          { "type": "BOOLEAN", "key": "setDefaultValue", "value": "false" },
+          { "type": "INTEGER", "key": "dataLayerVersion", "value": "2" }
+        ]
+      }
+    ],
+    "builtInVariable": [
+      { "type": "EVENT" }
+    ],
+    "trigger": [
+      {
+        "triggerId": "1",
+        "name": "All Pages",
+        "type": "PAGEVIEW"
+      },
+      {
+        "triggerId": "2",
+        "name": "app - custom events (regex)",
+        "type": "CUSTOM_EVENT",
+        "parameter": [
+          { "type": "TEMPLATE", "key": "eventName", "value": "^(page_view|scroll_depth|hero_view|roi_calculator_cta_click|blog_cta_click|scroll_to_services_click|lead_magnet_impression|lead_magnet_cta_click|lead_magnet_view|lead_magnet_close)$" },
+          { "type": "BOOLEAN", "key": "useRegex", "value": "true" }
+        ]
+      },
+      {
+        "triggerId": "3",
+        "name": "app - consultation_cta_click",
+        "type": "CUSTOM_EVENT",
+        "parameter": [
+          { "type": "TEMPLATE", "key": "eventName", "value": "consultation_cta_click" }
+        ]
+      },
+      {
+        "triggerId": "4",
+        "name": "app - roi_calculator_submit",
+        "type": "CUSTOM_EVENT",
+        "parameter": [
+          { "type": "TEMPLATE", "key": "eventName", "value": "roi_calculator_submit" }
+        ]
+      },
+      {
+        "triggerId": "5",
+        "name": "app - lead_magnet_submit",
+        "type": "CUSTOM_EVENT",
+        "parameter": [
+          { "type": "TEMPLATE", "key": "eventName", "value": "lead_magnet_submit" }
+        ]
+      }
+    ],
+    "tag": [
+      {
+        "tagId": "1",
+        "name": "ga4 - config (G-KSQXGDMX4T)",
+        "type": "gaawc",
+        "parameter": [
+          { "type": "TEMPLATE", "key": "measurementId", "value": "G-KSQXGDMX4T" },
+          { "type": "BOOLEAN", "key": "sendPageView", "value": "false" }
+        ],
+        "firingTriggerId": ["1"]
+      },
+      {
+        "tagId": "2",
+        "name": "ga4 - event (generic)",
+        "type": "gaawe",
+        "parameter": [
+          { "type": "TEMPLATE", "key": "eventName", "value": "{{Event}}" },
+          {
+            "type": "LIST",
+            "key": "eventParameters",
+            "list": [
+              { "type": "MAP", "map": [
+                { "type": "TEMPLATE", "key": "name", "value": "page_path" },
+                { "type": "TEMPLATE", "key": "value", "value": "{{dlv - page_path}}" }
+              ]},
+              { "type": "MAP", "map": [
+                { "type": "TEMPLATE", "key": "name", "value": "page_location" },
+                { "type": "TEMPLATE", "key": "value", "value": "{{dlv - page_location}}" }
+              ]},
+              { "type": "MAP", "map": [
+                { "type": "TEMPLATE", "key": "name", "value": "page_title" },
+                { "type": "TEMPLATE", "key": "value", "value": "{{dlv - page_title}}" }
+              ]},
+              { "type": "MAP", "map": [
+                { "type": "TEMPLATE", "key": "name", "value": "location" },
+                { "type": "TEMPLATE", "key": "value", "value": "{{dlv - location}}" }
+              ]},
+              { "type": "MAP", "map": [
+                { "type": "TEMPLATE", "key": "name", "value": "percent" },
+                { "type": "TEMPLATE", "key": "value", "value": "{{dlv - percent}}" }
+              ]},
+              { "type": "MAP", "map": [
+                { "type": "TEMPLATE", "key": "name", "value": "path" },
+                { "type": "TEMPLATE", "key": "value", "value": "{{dlv - path}}" }
+              ]},
+              { "type": "MAP", "map": [
+                { "type": "TEMPLATE", "key": "name", "value": "status" },
+                { "type": "TEMPLATE", "key": "value", "value": "{{dlv - status}}" }
+              ]},
+              { "type": "MAP", "map": [
+                { "type": "TEMPLATE", "key": "name", "value": "section" },
+                { "type": "TEMPLATE", "key": "value", "value": "{{dlv - section}}" }
+              ]}
+            ]
+          }
+        ],
+        "firingTriggerId": ["2"]
+      },
+      {
+        "tagId": "3",
+        "name": "ga4 - event (consultation_cta_click)",
+        "type": "gaawe",
+        "parameter": [
+          { "type": "TEMPLATE", "key": "eventName", "value": "consultation_cta_click" },
+          {
+            "type": "LIST",
+            "key": "eventParameters",
+            "list": [
+              { "type": "MAP", "map": [
+                { "type": "TEMPLATE", "key": "name", "value": "location" },
+                { "type": "TEMPLATE", "key": "value", "value": "{{dlv - location}}" }
+              ]},
+              { "type": "MAP", "map": [
+                { "type": "TEMPLATE", "key": "name", "value": "path" },
+                { "type": "TEMPLATE", "key": "value", "value": "{{dlv - path}}" }
+              ]},
+              { "type": "MAP", "map": [
+                { "type": "TEMPLATE", "key": "name", "value": "page_title" },
+                { "type": "TEMPLATE", "key": "value", "value": "{{dlv - page_title}}" }
+              ]},
+              { "type": "MAP", "map": [
+                { "type": "TEMPLATE", "key": "name", "value": "page_location" },
+                { "type": "TEMPLATE", "key": "value", "value": "{{dlv - page_location}}" }
+              ]}
+            ]
+          }
+        ],
+        "firingTriggerId": ["3"]
+      },
+      {
+        "tagId": "4",
+        "name": "ga4 - event (roi_calculator_submit)",
+        "type": "gaawe",
+        "parameter": [
+          { "type": "TEMPLATE", "key": "eventName", "value": "roi_calculator_submit" },
+          {
+            "type": "LIST",
+            "key": "eventParameters",
+            "list": [
+              { "type": "MAP", "map": [
+                { "type": "TEMPLATE", "key": "name", "value": "location" },
+                { "type": "TEMPLATE", "key": "value", "value": "{{dlv - location}}" }
+              ]},
+              { "type": "MAP", "map": [
+                { "type": "TEMPLATE", "key": "name", "value": "path" },
+                { "type": "TEMPLATE", "key": "value", "value": "{{dlv - path}}" }
+              ]},
+              { "type": "MAP", "map": [
+                { "type": "TEMPLATE", "key": "name", "value": "page_title" },
+                { "type": "TEMPLATE", "key": "value", "value": "{{dlv - page_title}}" }
+              ]},
+              { "type": "MAP", "map": [
+                { "type": "TEMPLATE", "key": "name", "value": "page_location" },
+                { "type": "TEMPLATE", "key": "value", "value": "{{dlv - page_location}}" }
+              ]},
+              { "type": "MAP", "map": [
+                { "type": "TEMPLATE", "key": "name", "value": "status" },
+                { "type": "TEMPLATE", "key": "value", "value": "{{dlv - status}}" }
+              ]}
+            ]
+          }
+        ],
+        "firingTriggerId": ["4"]
+      },
+      {
+        "tagId": "5",
+        "name": "ga4 - event (lead_magnet_submit)",
+        "type": "gaawe",
+        "parameter": [
+          { "type": "TEMPLATE", "key": "eventName", "value": "lead_magnet_submit" },
+          {
+            "type": "LIST",
+            "key": "eventParameters",
+            "list": [
+              { "type": "MAP", "map": [
+                { "type": "TEMPLATE", "key": "name", "value": "location" },
+                { "type": "TEMPLATE", "key": "value", "value": "{{dlv - location}}" }
+              ]},
+              { "type": "MAP", "map": [
+                { "type": "TEMPLATE", "key": "name", "value": "path" },
+                { "type": "TEMPLATE", "key": "value", "value": "{{dlv - path}}" }
+              ]},
+              { "type": "MAP", "map": [
+                { "type": "TEMPLATE", "key": "name", "value": "page_title" },
+                { "type": "TEMPLATE", "key": "value", "value": "{{dlv - page_title}}" }
+              ]},
+              { "type": "MAP", "map": [
+                { "type": "TEMPLATE", "key": "name", "value": "page_location" },
+                { "type": "TEMPLATE", "key": "value", "value": "{{dlv - page_location}}" }
+              ]},
+              { "type": "MAP", "map": [
+                { "type": "TEMPLATE", "key": "name", "value": "status" },
+                { "type": "TEMPLATE", "key": "value", "value": "{{dlv - status}}" }
+              ]}
+            ]
+          }
+        ],
+        "firingTriggerId": ["5"]
+      }
+    ]
+  }
+}

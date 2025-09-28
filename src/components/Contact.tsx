@@ -11,11 +11,11 @@ const Contact = () => {
 
   return (
     <>
-      <section id="contact" className="py-16 md:py-24 lg:py-32 bg-gradient-to-br from-black via-gray-900/50 to-black relative overflow-hidden">
+      <section id="contact" className="py-16 md:py-24 lg:py-32 bg-gradient-to-br from-black via-gray-900/50 to-black relative overflow-hidden" aria-labelledby="contact-title">
         {/* Animated Background - Desktop Only */}
-        <div className="absolute inset-0 hidden md:block">
+        <div className="absolute inset-0 hidden md:block" aria-hidden="true">
           {/* Network Lines */}
-          <svg className="absolute inset-0 w-full h-full opacity-10" viewBox="0 0 1000 1000">
+          <svg className="absolute inset-0 w-full h-full opacity-10" viewBox="0 0 1000 1000" aria-hidden="true">
             <defs>
               <pattern id="grid" width="50" height="50" patternUnits="userSpaceOnUse">
                 <path d="M 50 0 L 0 0 0 50" fill="none" stroke="#00FF88" strokeWidth="1"/>
@@ -44,6 +44,7 @@ const Contact = () => {
                 repeat: Infinity,
                 ease: "linear"
               }}
+              aria-hidden="true"
             />
           ))}
         </div>
@@ -56,7 +57,7 @@ const Contact = () => {
             viewport={{ once: true }}
             className="text-center mb-12 md:mb-16"
           >
-            <h2 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-orbitron font-bold text-white mb-6 md:mb-8 leading-tight">
+            <h2 id="contact-title" className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-orbitron font-bold text-white mb-6 md:mb-8 leading-tight">
               ¿Preparados para{' '}
               <span className="text-[#00FF88]">el siguiente nivel</span>?
             </h2>
@@ -80,11 +81,14 @@ const Contact = () => {
               }}
               whileTap={{ scale: 0.95 }}
               onClick={handleWhatsAppClick}
-              className="group bg-gradient-to-r from-[#00FF88] to-[#39FF14] text-black px-6 sm:px-8 md:px-12 py-3 sm:py-4 md:py-6 rounded-full text-base sm:text-lg md:text-xl lg:text-2xl font-bold font-inter hover:shadow-[0_0_50px_rgba(0,255,136,0.5)] transition-all duration-300 inline-flex items-center space-x-2 sm:space-x-3 md:space-x-4 min-h-[48px] touch-manipulation"
+              type="button"
+              aria-label="Iniciar conversación por WhatsApp"
+              className="group bg-gradient-to-r from-[#00FF88] to-[#39FF14] text-black px-6 sm:px-8 md:px-12 py-3 sm:py-4 md:py-6 rounded-full text-base sm:text-lg md:text-xl lg:text-2xl font-bold font-inter hover:shadow-[0_0_50px_rgba(0,255,136,0.5)] transition-all duration-300 inline-flex items-center space-x-2 sm:space-x-3 md:space-x-4 min-h-[48px] touch-manipulation focus:outline-none focus:ring-2 focus:ring-[#00FF88]/60 focus:ring-offset-2 focus:ring-offset-black"
             >
               <motion.div
                 animate={{ rotate: [0, 10, -10, 0] }}
                 transition={{ duration: 2, repeat: Infinity }}
+                aria-hidden="true"
               >
                 <MessageCircle size={20} />
               </motion.div>
@@ -92,6 +96,7 @@ const Contact = () => {
               <motion.div
                 animate={{ x: [0, 5, 0] }}
                 transition={{ duration: 1.5, repeat: Infinity }}
+                aria-hidden="true"
               >
                 <ArrowRight size={18} />
               </motion.div>
@@ -179,10 +184,12 @@ const Contact = () => {
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
               onClick={handleWhatsAppClick}
-              className="bg-[#25D366] hover:bg-[#128C7E] text-white p-4 rounded-full shadow-2xl transition-all duration-300 group"
+              type="button"
+              aria-label="Contactar por WhatsApp"
+              className="bg-[#25D366] hover:bg-[#128C7E] text-white p-4 rounded-full shadow-2xl transition-all duration-300 group focus:outline-none focus:ring-2 focus:ring-[#25D366]/60 focus:ring-offset-2 focus:ring-offset-black"
               title="Contactar por WhatsApp"
             >
-              <MessageCircle size={24} className="group-hover:animate-pulse" />
+              <MessageCircle size={24} className="group-hover:animate-pulse" aria-hidden="true" />
             </motion.button>
           </motion.div>
         )}

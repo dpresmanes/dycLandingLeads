@@ -7,6 +7,10 @@ interface SEOHeadProps {
   image?: string;
   url?: string;
   type?: string;
+  // New: allow passing extra JSON-LD structured data entries
+  structuredDataExtra?: object | object[];
+  // New: optionally include LocalBusiness schema (default true for site-wide)
+  includeLocalBusiness?: boolean;
 }
 
 const SEOHead: React.FC<SEOHeadProps> = ({
@@ -15,7 +19,9 @@ const SEOHead: React.FC<SEOHeadProps> = ({
   keywords = "marketing digital, meta ads, facebook ads, automatización, growth marketing, leads, conversiones, ROI",
   image = "/og-image.svg",
   url = import.meta.env.VITE_SITE_URL || "https://localhost:5173",
-  type = "website"
+  type = "website",
+  structuredDataExtra,
+  includeLocalBusiness = true,
 }) => {
   useEffect(() => {
     // Update document title
@@ -79,8 +85,8 @@ const SEOHead: React.FC<SEOHeadProps> = ({
     updateMetaTag('theme-color', '#00FF88');
     updateMetaTag('msapplication-TileColor', '#00FF88');
     
-    // Structured Data - LocalBusiness
-    const structuredData = {
+    // Structured Data - LocalBusiness (optional)
+    const localBusiness = {
       "@context": "https://schema.org",
       "@type": "LocalBusiness",
       "name": "Damián & Carolina - Marketing Digital",
@@ -120,35 +126,50 @@ const SEOHead: React.FC<SEOHeadProps> = ({
             }
           },
           {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Automatización Inteligente",
-              "description": "Reducimos tareas manuales y mejoramos procesos internos"
-            }
+            "@type": "Service",
+            "name": "Automatización Inteligente",
+            "description": "Reducimos tareas manuales y mejoramos procesos internos"
           },
           {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Growth Marketing",
-              "description": "Escalamos con metodología, no con suposiciones"
-            }
+            "@type": "Service",
+            "name": "Growth Marketing",
+            "description": "Escalamos con metodología, no con suposiciones"
           }
         ]
       }
-    };
-    
-    // Add or update structured data script
-    let structuredDataScript = document.querySelector('script[type="application/ld+json"]');
-    if (!structuredDataScript) {
-      structuredDataScript = document.createElement('script');
-      structuredDataScript.setAttribute('type', 'application/ld+json');
-      document.head.appendChild(structuredDataScript);
+    } as const;
+
+    if (includeLocalBusiness) {
+      let structuredDataScript = document.querySelector('script#ld-localbusiness[type="application/ld+json"]');
+      if (!structuredDataScript) {
+        structuredDataScript = document.createElement('script');
+        structuredDataScript.setAttribute('type', 'application/ld+json');
+        (structuredDataScript as HTMLScriptElement).id = 'ld-localbusiness';
+        document.head.appendChild(structuredDataScript);
+      }
+      (structuredDataScript as HTMLScriptElement).textContent = JSON.stringify(localBusiness);
     }
-    structuredDataScript.textContent = JSON.stringify(structuredData);
+
+    // Additional structured data entries (e.g., BlogPosting, BreadcrumbList)
+    const extras = Array.isArray(structuredDataExtra)
+      ? structuredDataExtra
+      : structuredDataExtra
+      ? [structuredDataExtra]
+      : [];
+
+    extras.forEach((item, idx) => {
+      const id = `ld-extra-${idx}`;
+      let extraScript = document.querySelector(`script#${id}[type="application/ld+json"]`);
+      if (!extraScript) {
+        extraScript = document.createElement('script');
+        extraScript.setAttribute('type', 'application/ld+json');
+        (extraScript as HTMLScriptElement).id = id;
+        document.head.appendChild(extraScript);
+      }
+      (extraScript as HTMLScriptElement).textContent = JSON.stringify(item);
+    });
     
-  }, [title, description, keywords, image, url, type]);
+  }, [title, description, keywords, image, url, type, structuredDataExtra, includeLocalBusiness]);
   
   return null;
 };

@@ -8,7 +8,6 @@ import {
   Home, 
   Utensils,
   TrendingUp,
-  Users,
   Target,
   CheckCircle
 } from 'lucide-react';
@@ -157,7 +156,6 @@ const industries: IndustryData[] = [
     ],
     solutions: [
       'Marketing de contenido médico',
-      'Testimonios y casos de éxito',
       'SEO local especializado',
       'Educación del paciente',
       'Reputación online'
@@ -367,7 +365,7 @@ const IndustrySpecific: React.FC = () => {
               </div>
             </div>
 
-            {/* Resultados y Caso de Estudio */}
+            {/* Resultados */}
             <div className="space-y-8">
               {/* Resultados */}
               <div className="bg-blue-900/10 backdrop-blur-sm rounded-xl p-8 border border-blue-500/20">
@@ -385,27 +383,6 @@ const IndustrySpecific: React.FC = () => {
                 </div>
               </div>
 
-              {/* Caso de Estudio */}
-              <div className="bg-gray-900/20 backdrop-blur-sm rounded-xl p-8 border border-gray-600/20">
-                <h4 className="text-xl font-bold text-white mb-6 flex items-center">
-                  <Users className="h-5 w-5 text-green-400 mr-3" />
-                  Caso de Éxito
-                </h4>
-                <div className="space-y-4">
-                  <div>
-                    <p className="text-sm text-green-300 mb-1">Cliente</p>
-                    <p className="text-white font-semibold">{currentIndustry.caseStudy.client}</p>
-                  </div>
-                  <div>
-                    <p className="text-sm text-green-300 mb-1">Desafío</p>
-                    <p className="text-gray-300">{currentIndustry.caseStudy.challenge}</p>
-                  </div>
-                  <div>
-                    <p className="text-sm text-green-300 mb-1">Resultado</p>
-                    <p className="text-green-400 font-semibold">{currentIndustry.caseStudy.result}</p>
-                  </div>
-                </div>
-              </div>
 
               {/* Servicios Específicos */}
               <div className="bg-gray-800/50 backdrop-blur-sm rounded-2xl p-8 border border-gray-600/50">

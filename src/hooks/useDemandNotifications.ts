@@ -32,7 +32,7 @@ const NOTIFICATIONS: Notification[] = [
   {
     id: 2,
     type: 'viewing',
-    message: 'Carlos está viendo los casos de éxito',
+    message: 'Carlos está viendo nuestros servicios',
     location: 'Córdoba',
     timeAgo: 'hace 1 min'
   },

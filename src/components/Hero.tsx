@@ -1,7 +1,9 @@
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 import { Clock } from 'lucide-react';
 import { useLeadCaptureContext } from '../contexts/LeadCaptureContext';
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { trackEvent } from '../utils/analytics';
 
 const Hero = () => {
   const { openModal } = useLeadCaptureContext();
@@ -11,7 +13,14 @@ const Hero = () => {
     minutes: 45,
     seconds: 30
   });
+  const navigate = useNavigate();
+  const prefersReducedMotion = useReducedMotion();
 
+  useEffect(() => {
+    // Fire once when hero becomes visible on mount
+    trackEvent('hero_view', { section: 'hero' });
+  }, []);
+  
   useEffect(() => {
     const timer = setInterval(() => {
       setTimeLeft(prev => {
@@ -30,21 +39,24 @@ const Hero = () => {
 
     return () => clearInterval(timer);
   }, []);
-  
+
+  // Handlers
   const handleOpenModal = () => {
+    trackEvent('consultation_cta_click', { location: 'hero' });
     openModal();
   };
-  
+
   const scrollToServices = () => {
-    const element = document.getElementById('services');
-    if (element) {
-      const offset = 80;
-      const elementPosition = element.offsetTop - offset;
-      window.scrollTo({
-        top: elementPosition,
-        behavior: 'smooth'
-      });
+    const el = document.getElementById('services');
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      trackEvent('scroll_to_services_click', { location: 'hero' });
     }
+  };
+
+  const goToBlog = () => {
+    trackEvent('blog_cta_click', { location: 'hero' });
+    navigate('/blog');
   };
 
   return (
@@ -54,7 +66,7 @@ const Hero = () => {
         <div className="absolute inset-0 bg-gradient-to-br from-black via-black to-green-900/20" />
         
         {/* Subtle Animated Particles - Desktop Only */}
-        {[...Array(12)].map((_, i) => (
+        {!prefersReducedMotion && [...Array(12)].map((_, i) => (
           <motion.div
             key={i}
             className="absolute w-1 h-1 bg-[#00FF88] rounded-full"
@@ -71,7 +83,7 @@ const Hero = () => {
             transition={{
               duration: Math.random() * 15 + 10,
               repeat: Infinity,
-              ease: "linear"
+              ease: 'linear'
             }}
           />
         ))}
@@ -94,7 +106,7 @@ const Hero = () => {
         <motion.h1
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+          transition={prefersReducedMotion ? { duration: 0 } : { duration: 0.8, delay: 0.2, ease: 'easeOut' }}
           className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-orbitron font-bold text-white mb-6 md:mb-8 leading-tight"
         >
           <span className="text-[#00FF88]">Transformamos Ideas</span><br />
@@ -104,7 +116,7 @@ const Hero = () => {
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
+          transition={prefersReducedMotion ? { duration: 0 } : { duration: 0.6, delay: 0.4 }}
           className="text-base xs:text-lg sm:text-xl md:text-2xl text-gray-300 mb-6 md:mb-8 max-w-3xl mx-auto font-inter leading-relaxed"
         >
           <span className="text-[#00FF88] font-semibold">Damián y Carolina</span> - 
@@ -115,7 +127,7 @@ const Hero = () => {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.6 }}
+          transition={prefersReducedMotion ? { duration: 0 } : { duration: 0.6, delay: 0.6 }}
           className="bg-gray-900/40 backdrop-blur-sm border border-gray-600/30 rounded-2xl p-6 max-w-2xl mx-auto mb-8 md:mb-12"
         >
           <div className="flex items-center justify-center space-x-2 mb-3">
@@ -148,32 +160,58 @@ const Hero = () => {
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.8 }}
+          transition={prefersReducedMotion ? { duration: 0 } : { duration: 0.8, delay: 0.8 }}
           className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center mb-16 sm:mb-20 md:mb-24"
         >
           <motion.button
             onClick={handleOpenModal}
-            whileHover={{ 
+            whileHover={prefersReducedMotion ? undefined : { 
               scale: 1.1,
-              boxShadow: "0 0 60px rgba(0, 255, 136, 0.7)"
+              boxShadow: '0 0 60px rgba(0, 255, 136, 0.7)'
             }}
-            whileTap={{ scale: 0.95 }}
-            className="group bg-gradient-to-r from-[#00FF88] to-[#39FF14] text-black px-6 sm:px-8 md:px-10 py-3 sm:py-4 rounded-full text-base sm:text-lg md:text-xl font-bold font-inter hover:shadow-[0_0_60px_rgba(0,255,136,0.7)] transition-all duration-300 inline-flex items-center justify-center min-h-[48px] sm:min-h-[56px] md:min-h-[60px] touch-manipulation w-full sm:w-auto"
+            whileTap={prefersReducedMotion ? undefined : { scale: 0.95 }}
+            className="group bg-gradient-to-r from-[#00FF88] to-[#39FF14] text:black px-6 sm:px-8 md:px-10 py-3 sm:py-4 rounded-full text-base sm:text-lg md:text-xl font-bold font-inter hover:shadow-[0_0_60px_rgba(0,255,136,0.7)] transition-all duration-300 inline-flex items-center justify-center min-h-[48px] sm:min-h-[56px] md:min-h-[60px] touch-manipulation w-full sm:w-auto"
           >
             <span className="whitespace-nowrap">Empezar Ahora</span>
           </motion.button>
 
           <motion.button
             onClick={scrollToServices}
-            whileHover={{ 
+            whileHover={prefersReducedMotion ? undefined : { 
               scale: 1.05,
-              borderColor: "#39FF14",
-              color: "#39FF14"
+              borderColor: '#39FF14',
+              color: '#39FF14'
             }}
-            whileTap={{ scale: 0.95 }}
+            whileTap={prefersReducedMotion ? undefined : { scale: 0.95 }}
             className="border-2 border-[#00FF88] text-[#00FF88] px-6 sm:px-8 md:px-10 py-3 sm:py-4 rounded-full text-base sm:text-lg md:text-xl font-bold font-inter transition-all duration-300 min-h-[48px] sm:min-h-[56px] md:min-h-[60px] touch-manipulation flex items-center justify-center w-full sm:w-auto"
           >
             <span className="whitespace-nowrap">Conocé nuestro trabajo</span>
+          </motion.button>
+
+          {/* Nuevo CTA: Calculadora de ROI */}
+          <motion.button
+            onClick={() => { trackEvent('roi_calculator_cta_click', { location: 'hero' }); navigate('/herramientas/calculadora-roi'); }}
+            whileHover={prefersReducedMotion ? undefined : { 
+              scale: 1.05,
+              boxShadow: '0 0 30px rgba(0, 255, 136, 0.5)'
+            }}
+            whileTap={prefersReducedMotion ? undefined : { scale: 0.95 }}
+            className="bg-gray-800/60 border border-[#00FF88]/40 text-white hover:bg-[#00FF88] hover:text-black px-6 sm:px-8 md:px-10 py-3 sm:py-4 rounded-full text-base sm:text-lg md:text-xl font-bold font-inter transition-all duration-300 min-h-[48px] sm:min-h-[56px] md:min-h-[60px] touch-manipulation w-full sm:w-auto"
+          >
+            <span className="whitespace-nowrap">Calcular ROI</span>
+          </motion.button>
+
+          {/* CTA: Blog */}
+          <motion.button
+            onClick={goToBlog}
+            whileHover={prefersReducedMotion ? undefined : { 
+              scale: 1.05,
+              boxShadow: '0 0 30px rgba(0, 255, 136, 0.5)'
+            }}
+            whileTap={prefersReducedMotion ? undefined : { scale: 0.95 }}
+            className="bg-gray-800/60 border border-[#00FF88]/40 text-white hover:bg-[#00FF88] hover:text-black px-6 sm:px-8 md:px-10 py-3 sm:py-4 rounded-full text-base sm:text-lg md:text-xl font-bold font-inter transition-all duration-300 min-h-[48px] sm:min-h-[56px] md:min-h-[60px] touch-manipulation w-full sm:w-auto"
+          >
+            <span className="whitespace-nowrap">Visitar el Blog</span>
           </motion.button>
         </motion.div>
 
