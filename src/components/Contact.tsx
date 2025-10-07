@@ -1,12 +1,19 @@
-import { motion, AnimatePresence } from 'framer-motion';
-import { MessageCircle, ArrowRight, Clock, Target } from 'lucide-react';
+import { useState } from 'react';
+import { motion } from 'framer-motion';
+import { MessageCircle, Clock, Target, Loader2 } from 'lucide-react';
 import { useScrollPosition } from '../hooks/useScrollPosition';
 
 const Contact = () => {
-  const { isContactVisible } = useScrollPosition();
+  // Removed useScrollPosition to avoid duplicate floating WhatsApp button
+  
+  const [isLoading, setIsLoading] = useState(false);
   
   const handleWhatsAppClick = () => {
-    window.open('https://wa.me/5491137638307?text=Hola! Me interesa conocer más sobre sus servicios de marketing digital y automatización.', '_blank');
+    setIsLoading(true);
+    const url = 'https://wa.me/5491137638307?text=Hola! Me interesa conocer más sobre sus servicios de marketing digital y automatización.';
+    const newWindow = window.open(url, '_blank', 'noopener,noreferrer');
+    if (newWindow) newWindow.opener = null;
+    setTimeout(() => setIsLoading(false), 1500);
   };
 
   return (
@@ -83,24 +90,29 @@ const Contact = () => {
               onClick={handleWhatsAppClick}
               type="button"
               aria-label="Iniciar conversación por WhatsApp"
-              className="group bg-gradient-to-r from-[#00FF88] to-[#39FF14] text-black px-6 sm:px-8 md:px-12 py-3 sm:py-4 md:py-6 rounded-full text-base sm:text-lg md:text-xl lg:text-2xl font-bold font-inter hover:shadow-[0_0_50px_rgba(0,255,136,0.5)] transition-all duration-300 inline-flex items-center space-x-2 sm:space-x-3 md:space-x-4 min-h-[48px] touch-manipulation focus:outline-none focus:ring-2 focus:ring-[#00FF88]/60 focus:ring-offset-2 focus:ring-offset-black"
+              aria-busy={isLoading}
+              disabled={isLoading}
+              className="group bg-gradient-to-r from-[#00FF88] to-[#39FF14] text-black px-5 sm:px-7 md:px-10 py-3 sm:py-4 md:py-5 rounded-full text-base sm:text-lg md:text-xl lg:text-2xl font-bold font-inter hover:shadow-[0_0_50px_rgba(0,255,136,0.5)] transition-all duration-300 inline-flex items-center gap-3 sm:gap-4 min-h-[48px] touch-manipulation focus:outline-none focus:ring-2 focus:ring-[#00FF88]/60 focus:ring-offset-2 focus:ring-offset-black disabled:opacity-70 disabled:cursor-not-allowed"
             >
-              <motion.div
-                animate={{ rotate: [0, 10, -10, 0] }}
-                transition={{ duration: 2, repeat: Infinity }}
-                aria-hidden="true"
-              >
-                <MessageCircle size={20} />
-              </motion.div>
-              <span>Iniciar Conversación</span>
-              <motion.div
-                animate={{ x: [0, 5, 0] }}
-                transition={{ duration: 1.5, repeat: Infinity }}
-                aria-hidden="true"
-              >
-                <ArrowRight size={18} />
-              </motion.div>
+              {isLoading ? (
+                <>
+                  <Loader2 size={20} className="animate-spin" aria-hidden="true" />
+                  <span>Abriendo WhatsApp…</span>
+                </>
+              ) : (
+                <>
+                  <motion.div
+                    animate={{ rotate: [0, 10, -10, 0] }}
+                    transition={{ duration: 2, repeat: Infinity }}
+                    aria-hidden="true"
+                  >
+                    <MessageCircle size={20} />
+                  </motion.div>
+                  <span>Iniciar Conversación</span>
+                </>
+              )}
             </motion.button>
+            <p className="mt-3 text-xs sm:text-sm text-gray-400 font-inter">Tiempo de respuesta menor a 2 horas</p>
           </motion.div>
 
           {/* Features Grid */}
@@ -109,24 +121,12 @@ const Contact = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
             viewport={{ once: true }}
-            className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8"
+            className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8 items-stretch"
           >
             {[
-              {
-                icon: Clock,
-                title: 'Respuesta inmediata',
-                description: 'Te respondemos en menos de 2 horas'
-              },
-              {
-                icon: MessageCircle,
-                title: 'Diagnóstico Gratuito',
-                description: 'Análisis inicial personalizado sin compromiso'
-              },
-              {
-                icon: Target,
-                title: 'Propuesta personalizada',
-                description: 'Plan específico para tu negocio'
-              }
+              { icon: Clock, title: 'Respuesta inmediata', description: 'Te respondemos en menos de 2 horas' },
+              { icon: MessageCircle, title: 'Diagnóstico Inicial Personalizado', description: 'Análisis inicial personalizado sin compromiso' },
+              { icon: Target, title: 'Propuesta personalizada', description: 'Plan específico para tu negocio' }
             ].map((feature, index) => (
               <motion.div
                 key={index}
@@ -142,7 +142,7 @@ const Contact = () => {
                 <div className="absolute inset-0 bg-gradient-to-r from-green-600/20 via-green-500/10 to-green-700/20 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 
                 {/* Contenido principal */}
-                <div className="relative bg-gradient-to-br from-gray-900/40 via-gray-800/30 to-gray-900/50 backdrop-blur-xl rounded-3xl p-4 sm:p-6 md:p-8 border border-green-500/20 hover:border-green-400/40 transition-all duration-500 hover:shadow-2xl hover:shadow-green-500/10 text-center">
+                <div className="relative bg-gradient-to-br from-gray-900/40 via-gray-800/30 to-gray-900/50 backdrop-blur-xl rounded-3xl p-4 sm:p-6 md:p-8 border border-green-500/20 hover:border-green-400/40 transition-all duration-500 hover:shadow-2xl hover:shadow-green-500/10 text-center min-h-[220px] sm:min-h-[240px] md:min-h-[260px] h-full flex flex-col items-center justify-start">
                   {/* Efectos decorativos */}
                   <div className="absolute top-2 right-2 w-8 h-8 bg-green-400/5 rounded-full blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   <div className="absolute bottom-2 left-2 w-6 h-6 bg-green-600/5 rounded-full blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
@@ -170,30 +170,8 @@ const Contact = () => {
         </div>
       </section>
 
-      {/* Floating WhatsApp Button - Appears only when contact section is not visible */}
-      <AnimatePresence>
-        {!isContactVisible && (
-          <motion.div
-            initial={{ scale: 0, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            exit={{ scale: 0, opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="fixed bottom-6 right-6 z-40 hidden md:block"
-          >
-            <motion.button
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-              onClick={handleWhatsAppClick}
-              type="button"
-              aria-label="Contactar por WhatsApp"
-              className="bg-[#25D366] hover:bg-[#128C7E] text-white p-4 rounded-full shadow-2xl transition-all duration-300 group focus:outline-none focus:ring-2 focus:ring-[#25D366]/60 focus:ring-offset-2 focus:ring-offset-black"
-              title="Contactar por WhatsApp"
-            >
-              <MessageCircle size={24} className="group-hover:animate-pulse" aria-hidden="true" />
-            </motion.button>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {/* Removed duplicate Floating WhatsApp Button to prevent overlap with global button */}
+      
     </>
   );
 };

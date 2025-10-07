@@ -15,8 +15,14 @@ import MobileBottomNavigation from './components/MobileBottomNavigation'
 import { LeadCaptureProvider } from './contexts/LeadCaptureContext'
 import { Suspense, lazy } from 'react'
 import About from './components/About'
+import Contact from './components/Contact'
 import { useEffect } from 'react'
-import { trackEvent } from './utils/analytics'
+import { trackEvent } from '@/utils/analytics'
+import RecoverAccess from './components/RecoverAccess'
+import PaySuccess from './components/PaySuccess'
+import PayFailure from './components/PayFailure'
+import PayPending from './components/PayPending'
+import PayTest from './components/PayTest'
 
 const BlogList = lazy(() => import('./blog/BlogList'))
 const BlogPost = lazy(() => import('./blog/BlogPost'))
@@ -99,6 +105,7 @@ function App() {
                   <Services />
                   <Process />
                   <About />
+                  <Contact />
                    
                    <ROICalculator />
                    <IndustrySpecific />
@@ -146,7 +153,7 @@ function App() {
                 <>
                   <SEOHead
                     title="Calculadora de ROI — Damián & Carolina"
-                    description="Calcula el retorno de inversión de tus campañas y proyecta leads y ventas. Herramienta gratuita para tomar decisiones con datos."
+                    description="Calcula el retorno de inversión de tus campañas y proyecta leads y ventas. Herramienta para tomar decisiones con datos."
                     url={import.meta.env.VITE_SITE_URL ? `${import.meta.env.VITE_SITE_URL}/herramientas/calculadora-roi` : undefined}
                     type="article"
                   />
@@ -159,14 +166,35 @@ function App() {
               element={
                 <>
                   <SEOHead
-                    title="Guías gratuitas — Damián & Carolina"
-                    description="Descarga guías prácticas de marketing digital, automatización y growth para conseguir más leads y ventas."
+                    title="Automatizaciones — Pack $17"
+                    description="Accede al Pack de Automatizaciones por $17 con sistemas y workflows listos para implementar en tu negocio."
                     url={import.meta.env.VITE_SITE_URL ? `${import.meta.env.VITE_SITE_URL}/recursos/guias` : undefined}
                     type="article"
                   />
                   <LeadMagnet />
                 </>
               }
+            />
+            <Route
+              path="/recuperar-acceso"
+              element={
+                <>
+                  <SEOHead
+                    title="Recuperar acceso"
+                    description="Usa tu Magic Link o clave de licencia para recuperar acceso al catálogo."
+                    url={import.meta.env.VITE_SITE_URL ? `${import.meta.env.VITE_SITE_URL}/recuperar-acceso` : undefined}
+                    type="article"
+                  />
+                  <RecoverAccess />
+                </>
+              }
+            />
+            <Route path="/pay/success" element={<PaySuccess />} />
+            <Route path="/pay/failure" element={<PayFailure />} />
+            <Route path="/pay/pending" element={<PayPending />} />
+            <Route
+              path="/pay/test"
+              element={<PayTest />}
             />
           </Routes>
         </main>

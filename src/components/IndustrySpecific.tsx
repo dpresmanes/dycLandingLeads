@@ -34,9 +34,9 @@ interface IndustryData {
 const industries: IndustryData[] = [
   {
     id: 'ecommerce',
-    name: 'E-commerce',
+    name: 'E‑commerce',
     icon: <ShoppingBag className="h-8 w-8" />,
-    description: 'Sistematización de stock, optimización de conversiones y metodologías de fidelización para comercios digitales.',
+    description: 'Automatización de stock, checkout optimizado y fidelización para tiendas online.',
     challenges: [
       'Alta competencia en precios',
       'Carritos abandonados (70% promedio)',
@@ -73,7 +73,7 @@ const industries: IndustryData[] = [
     id: 'services',
     name: 'Servicios Profesionales',
     icon: <Briefcase className="h-8 w-8" />,
-    description: 'Captación de prospectos calificados, sistematización de seguimiento y perfeccionamiento de embudos comerciales.',
+    description: 'Generación de leads calificados y seguimiento automatizado para cerrar más negocios.',
     challenges: [
       'Dependencia de referencias',
       'Dificultad para demostrar valor',
@@ -110,7 +110,7 @@ const industries: IndustryData[] = [
     id: 'education',
     name: 'Educación Online',
     icon: <GraduationCap className="h-8 w-8" />,
-    description: 'Estrategias de visibilidad, administración de reputación digital y tácticas de conexión comunitaria para educadores.',
+    description: 'Visibilidad y embudos educativos con automatización para aumentar inscripciones y retención.',
     challenges: [
       'Saturación del mercado',
       'Dificultad para justificar precios',
@@ -147,7 +147,7 @@ const industries: IndustryData[] = [
     id: 'health',
     name: 'Salud y Bienestar',
     icon: <Heart className="h-8 w-8" />,
-    description: 'Sistematización de procesos operativos, mejora de la experiencia del usuario y marketing de crecimiento para salud.',
+    description: 'Captación y fidelización con SEO local y contenido educativo confiable.',
     challenges: [
       'Regulaciones estrictas de publicidad',
       'Necesidad de generar confianza',
@@ -183,7 +183,7 @@ const industries: IndustryData[] = [
     id: 'realestate',
     name: 'Bienes Raíces',
     icon: <Home className="h-8 w-8" />,
-    description: 'Tácticas de posicionamiento, sistematización de procesos consultivos y optimización de transformaciones inmobiliarias.',
+    description: 'Generación de leads y nurturing a largo plazo con video y tours virtuales.',
     challenges: [
       'Mercado altamente competitivo',
       'Ciclos de venta muy largos',
@@ -433,7 +433,7 @@ const IndustrySpecific: React.FC = () => {
                 whileTap={{ scale: 0.95 }}
                 className="inline-block bg-gradient-to-r from-green-500 to-green-600 text-white font-bold py-4 px-8 rounded-full hover:from-green-400 hover:to-green-500 transition-all duration-300 shadow-lg hover:shadow-green-500/25"
               >
-                Solicitar Consulta Especializada
+                Agendá tu consulta especializada
               </motion.a>
             </div>
           </div>

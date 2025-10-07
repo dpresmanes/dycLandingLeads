@@ -1,0 +1,10 @@
+{
+  "$schema": "https://schemas.example/workflow.json",
+  "name": "Lead Recapture Sequence",
+  "steps": [
+    { "type": "trigger", "event": "lead_dropped" },
+    { "type": "action", "service": "sms", "template": "we_miss_you" },
+    { "type": "wait", "duration": "1d" },
+    { "type": "action", "service": "email", "template": "special_offer" }
+  ]
+}

@@ -10,6 +10,7 @@ export default defineConfig({
     setupFiles: ['./src/test/setup.ts'],
     css: true,
     coverage: {
+      provider: 'v8',
       reporter: ['text', 'json', 'html'],
       exclude: [
         'node_modules/',
@@ -17,7 +18,14 @@ export default defineConfig({
         '**/*.d.ts',
         '**/*.config.*',
         'dist/'
-      ]
+      ],
+      thresholds: {
+        lines: 15,
+        functions: 40,
+        statements: 15,
+        branches: 10
+      },
+      thresholdAutoUpdate: true
     }
   },
   resolve: {

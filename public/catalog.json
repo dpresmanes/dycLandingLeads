@@ -1,0 +1,31 @@
+{
+  "items": [
+    {
+      "id": "acq-welcome-email",
+      "name": "Welcome Email Acquisition",
+      "description": "Automatiza email de bienvenida con seguimiento de conversión",
+      "category": "Acquisition",
+      "tags": ["email", "onboarding", "conversion"],
+      "json_url": "/public/examples/acq-welcome-email.json",
+      "readme_url": "https://example.com/readme/acq-welcome-email",
+      "assistant_url": "https://chat.openai.com/g/gpt-example"
+    },
+    {
+      "id": "ret-lead-recapture",
+      "name": "Lead Recapture Sequence",
+      "description": "Secuencia de recuperación de leads con mensajes multicanal",
+      "category": "Retention",
+      "tags": ["sms", "email", "segments"],
+      "json_url": "/public/examples/ret-lead-recapture.json",
+      "readme_url": "https://example.com/readme/ret-lead-recapture"
+    },
+    {
+      "id": "ops-invoice-automation",
+      "name": "Invoice Automation Ops",
+      "description": "Generación y envío automático de facturas con recordatorios",
+      "category": "Ops",
+      "tags": ["billing", "reminders"],
+      "json_url": "/public/examples/ops-invoice-automation.json"
+    }
+  ]
+}

@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { User, Briefcase } from 'lucide-react';
+import { User, Briefcase, Target, TrendingUp, CheckCircle } from 'lucide-react';
 
 const About = () => {
   return (
@@ -13,11 +13,11 @@ const About = () => {
           className="text-center mb-12 md:mb-16"
         >
           <h2 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-orbitron font-bold text-white mb-6 md:mb-8 leading-tight">
-            <span className="text-[#00FF88]">Conoce al equipo</span><br />
-            que impulsa tu éxito.
+            <span className="text-[#00FF88]">Conocé al equipo</span><br />
+            detrás de tu crecimiento
           </h2>
           <p className="text-base md:text-lg lg:text-xl text-gray-300 max-w-4xl mx-auto font-inter leading-relaxed">
-            Combinamos visión estratégica, experiencia técnica y ejecución ágil.
+            Estrategia y ejecución para lograr resultados medibles y sostenibles.
           </p>
         </motion.div>
 
@@ -51,19 +51,33 @@ const About = () => {
             </div>
 
             <p className="text-gray-300 leading-relaxed font-inter text-sm sm:text-base md:text-lg mb-4 sm:mb-6">
-              Me especializo en <span className="text-[#00FF88]">estrategia digital, sistemas inteligentes y optimización publicitaria</span>.
+              Me especializo en <span className="text-[#00FF88]">estrategia digital, automatización y Meta Ads</span>.
               <br /><br />
-              Transformo desafíos complejos en soluciones efectivas. 
-              Mi enfoque es directo, eficiente y siempre orientado a generar impacto medible.
+              Enfoque directo y eficiente para generar impacto medible.
             </p>
 
+            {/* Más información tipo bullets */}
+            <ul className="space-y-2 mb-6">
+              <li className="flex items-start gap-3 text-gray-300 text-sm sm:text-base leading-snug">
+                <Target className="text-[#00FF88] flex-shrink-0 mt-0.5 sm:mt-1" size={18} />
+                <span>Diseño de embudos y arquitectura de campañas orientadas a conversión.</span>
+              </li>
+              <li className="flex items-start gap-3 text-gray-300 text-sm sm:text-base leading-snug">
+                <TrendingUp className="text-[#00FF88] flex-shrink-0 mt-0.5 sm:mt-1" size={18} />
+                <span>Optimización continua basada en datos y experimentación (A/B testing).</span>
+              </li>
+              <li className="flex items-start gap-3 text-gray-300 text-sm sm:text-base leading-snug">
+                <CheckCircle className="text-[#00FF88] flex-shrink-0 mt-0.5 sm:mt-1" size={18} />
+                <span>Implementación de automatizaciones para escalar resultados de forma sostenible.</span>
+              </li>
+            </ul>
             <div className="mb-4">
               <div className="flex items-center space-x-2 mb-3">
                 <Briefcase className="text-[#00FF88]" size={18} />
                 <span className="text-[#00FF88] font-semibold text-sm sm:text-base">Especialidades:</span>
               </div>
               <div className="flex flex-wrap gap-2">
-                {['Meta Ads', 'Automatización', 'Growth Marketing', 'Analytics'].map((skill) => (
+                {['Meta Ads', 'Automatización', 'Inteligencia Artificial', 'Growth Marketing', 'Analytics'].map((skill) => (
                   <span key={skill} className="bg-[#00FF88]/10 border border-[#00FF88]/30 text-[#00FF88] px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm">
                     {skill}
                   </span>
@@ -96,24 +110,38 @@ const About = () => {
                 <h3 className="text-xl sm:text-2xl md:text-3xl font-orbitron font-bold text-white group-hover:text-[#00FF88] transition-colors duration-300">
                   Carolina
                 </h3>
-                <p className="text-gray-300 font-inter text-sm sm:text-base">Planificación & Ecommerce</p>
+                <p className="text-gray-300 font-inter text-sm sm:text-base">Planificación & E‑commerce</p>
               </div>
             </div>
 
             <p className="text-gray-300 leading-relaxed font-inter text-sm sm:text-base md:text-lg mb-4 sm:mb-6">
-              Me dedico a la <span className="text-[#00FF88]">coordinación estratégica, optimización operativa y desarrollo comercial</span>.
+              Me enfoco en <span className="text-[#00FF88]">planificación, optimización y desarrollo comercial</span>.
               <br /><br />
-              Estructuro procesos, optimizo recursos, coordino lanzamientos y superviso 
-              cada proyecto con una visión integral del crecimiento empresarial.
+              Estructuro procesos y coordino lanzamientos para crecer de forma ordenada.
             </p>
 
+            {/* Más información tipo bullets */}
+            <ul className="space-y-2 mb-6">
+              <li className="flex items-start gap-3 text-gray-300 text-sm sm:text-base leading-snug">
+                <Target className="text-[#00FF88] flex-shrink-0 mt-0.5 sm:mt-1" size={18} />
+                <span>Metodologías para aumentar tasa de conversión y ticket promedio en e‑commerce.</span>
+              </li>
+              <li className="flex items-start gap-3 text-gray-300 text-sm sm:text-base leading-snug">
+                <TrendingUp className="text-[#00FF88] flex-shrink-0 mt-0.5 sm:mt-1" size={18} />
+                <span>Optimización operativa y coordinación integral de lanzamientos.</span>
+              </li>
+              <li className="flex items-start gap-3 text-gray-300 text-sm sm:text-base leading-snug">
+                <CheckCircle className="text-[#00FF88] flex-shrink-0 mt-0.5 sm:mt-1" size={18} />
+                <span>Implementación de procesos y sistemas para escalar con control de calidad.</span>
+              </li>
+            </ul>
             <div className="mb-4">
               <div className="flex items-center space-x-2 mb-3">
                 <Briefcase className="text-[#00FF88]" size={18} />
                 <span className="text-[#00FF88] font-semibold text-sm sm:text-base">Especialidades:</span>
               </div>
               <div className="flex flex-wrap gap-2">
-                {['Ecommerce', 'Project Management', 'Pricing', 'Operations'].map((skill) => (
+                {['E‑commerce', 'Project Management', 'Pricing', 'Operations'].map((skill) => (
                   <span key={skill} className="bg-[#00FF88]/10 border border-[#00FF88]/30 text-[#00FF88] px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm">
                     {skill}
                   </span>
@@ -135,9 +163,7 @@ const About = () => {
               Juntos creamos el equilibrio perfecto
             </h3>
             <p className="text-gray-300 font-inter text-sm sm:text-base md:text-lg leading-relaxed">
-              La combinación de estrategia técnica y visión integral nos permite 
-              abordar cada proyecto desde múltiples ángulos, garantizando resultados 
-              sostenibles y escalables.
+              Combinamos estrategia técnica y visión integral para resultados sostenibles.
             </p>
           </div>
         </motion.div>

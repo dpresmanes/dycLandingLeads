@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { submitToGoogleSheets, isValidEmail, sanitizeInput, LeadSubmission } from '../utils/googleSheets';
-import { trackEvent } from '../utils/analytics';
+import { trackEvent } from '@/utils/analytics';
 
 interface ROICalculatorData {
   nombre: string;

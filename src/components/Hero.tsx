@@ -1,9 +1,9 @@
 import { motion, useReducedMotion } from 'framer-motion';
-import { Clock } from 'lucide-react';
+import { Clock, Calculator, BookOpen } from 'lucide-react';
 import { useLeadCaptureContext } from '../contexts/LeadCaptureContext';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { trackEvent } from '../utils/analytics';
+import { trackEvent } from '@/utils/analytics';
 
 const Hero = () => {
   const { openModal } = useLeadCaptureContext();
@@ -109,18 +109,20 @@ const Hero = () => {
           transition={prefersReducedMotion ? { duration: 0 } : { duration: 0.8, delay: 0.2, ease: 'easeOut' }}
           className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-orbitron font-bold text-white mb-6 md:mb-8 leading-tight"
         >
-          <span className="text-[#00FF88]">Transformamos Ideas</span><br />
-          <span className="text-[#39FF14]">en Resultados Medibles</span>
+          Escalá tu <span className="text-[#00FF88]">e‑commerce</span>
+          <span className="block text-[#39FF14]">con estrategias de marketing digital</span>
         </motion.h1>
+
+        {/* Subtítulo */}
+        {/* Subtítulo principal único para SEO (unificado color verde #00FF88) */}
 
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={prefersReducedMotion ? { duration: 0 } : { duration: 0.6, delay: 0.4 }}
-          className="text-base xs:text-lg sm:text-xl md:text-2xl text-gray-300 mb-6 md:mb-8 max-w-3xl mx-auto font-inter leading-relaxed"
+          className="text-lg xs:text-xl sm:text-2xl md:text-3xl lg:text-4xl text-white/85 mb-6 md:mb-8 max-w-4xl mx-auto font-inter leading-snug"
         >
-          <span className="text-[#00FF88] font-semibold">Damián y Carolina</span> - 
-          Estrategia Digital, Meta Ads y Crecimiento Sostenible
+          Somos Damián & Carolina. Ayudamos marcas de <span className="text-[#00FF88] font-semibold">e‑commerce</span> a crecer con <span className="text-[#00FF88] font-semibold">Meta Ads</span> y automatizaciones.
         </motion.p>
 
         {/* Urgency Counter */}
@@ -135,7 +137,7 @@ const Hero = () => {
             <span className="text-green-400 font-semibold text-sm md:text-base">Oferta Limitada</span>
           </div>
           <p className="text-white text-sm md:text-base mb-4 text-center font-medium">
-            <span className="text-[#00FF88] font-bold">Consulta estratégica GRATUITA</span> - Solo quedan <span className="text-green-300 font-bold">3 cupos</span> este mes
+            <span className="text-[#00FF88] font-bold">Oferta especial</span> - Solo quedan <span className="text-green-300 font-bold">3 cupos</span> este mes
           </p>
           <div className="grid grid-cols-4 gap-2 md:gap-4 text-center">
             <div className="bg-gray-800/60 rounded-lg p-2 md:p-3">
@@ -161,58 +163,59 @@ const Hero = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={prefersReducedMotion ? { duration: 0 } : { duration: 0.8, delay: 0.8 }}
-          className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center mb-16 sm:mb-20 md:mb-24"
+          className="space-y-3 sm:space-y-4 mb-16 sm:mb-20 md:mb-24"
         >
-          <motion.button
-            onClick={handleOpenModal}
-            whileHover={prefersReducedMotion ? undefined : { 
-              scale: 1.1,
-              boxShadow: '0 0 60px rgba(0, 255, 136, 0.7)'
-            }}
-            whileTap={prefersReducedMotion ? undefined : { scale: 0.95 }}
-            className="group bg-gradient-to-r from-[#00FF88] to-[#39FF14] text:black px-6 sm:px-8 md:px-10 py-3 sm:py-4 rounded-full text-base sm:text-lg md:text-xl font-bold font-inter hover:shadow-[0_0_60px_rgba(0,255,136,0.7)] transition-all duration-300 inline-flex items-center justify-center min-h-[48px] sm:min-h-[56px] md:min-h-[60px] touch-manipulation w-full sm:w-auto"
-          >
-            <span className="whitespace-nowrap">Empezar Ahora</span>
-          </motion.button>
+          {/* Fila principal: acciones primarias */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 max-w-3xl mx-auto">
+            <motion.button
+              type="button"
+              onClick={() => navigate('/recursos/guias')}
+              whileHover={prefersReducedMotion ? undefined : { y: -2 }}
+              whileTap={prefersReducedMotion ? undefined : { scale: 0.98 }}
+              className="group bg-gradient-to-r from-[#00FF88] to-[#39FF14] text-black px-6 sm:px-8 md:px-10 h-12 sm:h-14 md:h-[60px] rounded-full text-base sm:text-lg md:text-xl font-bold font-inter shadow-[0_0_30px_rgba(0,255,136,0.35)] hover:shadow-[0_0_45px_rgba(0,255,136,0.55)] transition-all duration-200 inline-flex items-center justify-center touch-manipulation focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00FF88]/60 focus-visible:ring-offset-2 focus-visible:ring-offset-black"
+              aria-label="Comprar pack de automatizaciones"
+            >
+              <span className="whitespace-nowrap">Comprar pack de automatizaciones • $17</span>
+            </motion.button>
 
-          <motion.button
-            onClick={scrollToServices}
-            whileHover={prefersReducedMotion ? undefined : { 
-              scale: 1.05,
-              borderColor: '#39FF14',
-              color: '#39FF14'
-            }}
-            whileTap={prefersReducedMotion ? undefined : { scale: 0.95 }}
-            className="border-2 border-[#00FF88] text-[#00FF88] px-6 sm:px-8 md:px-10 py-3 sm:py-4 rounded-full text-base sm:text-lg md:text-xl font-bold font-inter transition-all duration-300 min-h-[48px] sm:min-h-[56px] md:min-h-[60px] touch-manipulation flex items-center justify-center w-full sm:w-auto"
-          >
-            <span className="whitespace-nowrap">Conocé nuestro trabajo</span>
-          </motion.button>
+            <motion.button
+              type="button"
+              onClick={scrollToServices}
+              whileHover={prefersReducedMotion ? undefined : { y: -2 }}
+              whileTap={prefersReducedMotion ? undefined : { scale: 0.98 }}
+              className="border-2 border-[#00FF88] text-[#00FF88] hover:bg-[#00FF88] hover:text-black px-6 sm:px-8 md:px-10 h-12 sm:h-14 md:h-[60px] rounded-full text-base sm:text-lg md:text-xl font-bold font-inter transition-all duration-200 inline-flex items-center justify-center touch-manipulation focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00FF88]/60 focus-visible:ring-offset-2 focus-visible:ring-offset-black"
+              aria-label="Conocé nuestro trabajo"
+            >
+              <span className="whitespace-nowrap">Conocé nuestro trabajo</span>
+            </motion.button>
+          </div>
 
-          {/* Nuevo CTA: Calculadora de ROI */}
-          <motion.button
-            onClick={() => { trackEvent('roi_calculator_cta_click', { location: 'hero' }); navigate('/herramientas/calculadora-roi'); }}
-            whileHover={prefersReducedMotion ? undefined : { 
-              scale: 1.05,
-              boxShadow: '0 0 30px rgba(0, 255, 136, 0.5)'
-            }}
-            whileTap={prefersReducedMotion ? undefined : { scale: 0.95 }}
-            className="bg-gray-800/60 border border-[#00FF88]/40 text-white hover:bg-[#00FF88] hover:text-black px-6 sm:px-8 md:px-10 py-3 sm:py-4 rounded-full text-base sm:text-lg md:text-xl font-bold font-inter transition-all duration-300 min-h-[48px] sm:min-h-[56px] md:min-h-[60px] touch-manipulation w-full sm:w-auto"
-          >
-            <span className="whitespace-nowrap">Calcular ROI</span>
-          </motion.button>
+          {/* Fila secundaria: acciones complementarias como chips */}
+          <div className="grid grid-cols-2 gap-3 sm:gap-4 max-w-3xl mx-auto">
+            <motion.button
+              type="button"
+              onClick={() => { trackEvent('roi_calculator_cta_click', { location: 'hero' }); navigate('/herramientas/calculadora-roi'); }}
+              whileHover={prefersReducedMotion ? undefined : { y: -2 }}
+              whileTap={prefersReducedMotion ? undefined : { scale: 0.98 }}
+              className="bg-gray-900/60 border border-[#00FF88]/35 text-white hover:bg-[#00FF88] hover:text-black hover:border-[#00FF88] px-5 sm:px-6 h-11 sm:h-12 rounded-full text-sm sm:text-base font-semibold font-inter transition-all duration-200 inline-flex items-center justify-center gap-2 touch-manipulation focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00FF88]/60 focus-visible:ring-offset-2 focus-visible:ring-offset-black"
+              aria-label="Calcular ROI"
+            >
+              <Calculator size={18} aria-hidden="true" />
+              <span className="whitespace-nowrap">Calcular ROI</span>
+            </motion.button>
 
-          {/* CTA: Blog */}
-          <motion.button
-            onClick={goToBlog}
-            whileHover={prefersReducedMotion ? undefined : { 
-              scale: 1.05,
-              boxShadow: '0 0 30px rgba(0, 255, 136, 0.5)'
-            }}
-            whileTap={prefersReducedMotion ? undefined : { scale: 0.95 }}
-            className="bg-gray-800/60 border border-[#00FF88]/40 text-white hover:bg-[#00FF88] hover:text-black px-6 sm:px-8 md:px-10 py-3 sm:py-4 rounded-full text-base sm:text-lg md:text-xl font-bold font-inter transition-all duration-300 min-h-[48px] sm:min-h-[56px] md:min-h-[60px] touch-manipulation w-full sm:w-auto"
-          >
-            <span className="whitespace-nowrap">Visitar el Blog</span>
-          </motion.button>
+            <motion.button
+              type="button"
+              onClick={goToBlog}
+              whileHover={prefersReducedMotion ? undefined : { y: -2 }}
+              whileTap={prefersReducedMotion ? undefined : { scale: 0.98 }}
+              className="bg-gray-900/60 border border-[#00FF88]/35 text-white hover:bg-[#00FF88] hover:text-black hover:border-[#00FF88] px-5 sm:px-6 h-11 sm:h-12 rounded-full text-sm sm:text-base font-semibold font-inter transition-all duration-200 inline-flex items-center justify-center gap-2 touch-manipulation focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00FF88]/60 focus-visible:ring-offset-2 focus-visible:ring-offset-black"
+              aria-label="Visitar el Blog"
+            >
+              <BookOpen size={18} aria-hidden="true" />
+              <span className="whitespace-nowrap">Visitar el Blog</span>
+            </motion.button>
+          </div>
         </motion.div>
 
 

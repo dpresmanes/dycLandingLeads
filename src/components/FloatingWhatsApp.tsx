@@ -39,12 +39,15 @@ const FloatingWhatsApp = ({ phone = DEFAULT_PHONE, prefilled = DEFAULT_MSG }: Fl
     return () => window.removeEventListener('keydown', onKeyDown)
   }, [expanded])
 
-  if (!isMobile || !visible) return null
+  // Mostrar también en desktop para asegurar disponibilidad del botón
+  if (!visible) return null
 
   const handleClick = () => {
     const url = `https://wa.me/${phone}?text=${encodeURIComponent(prefilled)}`
     window.open(url, '_blank')
   }
+
+  const bottomValue = isMobile ? 'calc(84px + var(--sab))' : 'calc(24px + var(--sab))'
 
   return (
     <AnimatePresence>
@@ -53,8 +56,8 @@ const FloatingWhatsApp = ({ phone = DEFAULT_PHONE, prefilled = DEFAULT_MSG }: Fl
         animate={{ scale: 1, opacity: 1 }}
         exit={{ scale: 0, opacity: 0 }}
         transition={{ duration: 0.25 }}
-        className="fixed z-[70] right-4"
-        style={{ pointerEvents: 'auto', bottom: 'calc(84px + var(--sab))' }}
+        className="fixed z-[80] right-4"
+        style={{ pointerEvents: 'auto', bottom: bottomValue }}
       >
         {/* Collapsed FAB */}
         <motion.button

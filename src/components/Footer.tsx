@@ -19,9 +19,7 @@ const Footer = () => {
     ],
     'Recursos': [
       'Blog',
-      'Guías gratuitas',
-      'Webinars',
-      'Consulta gratuita'
+      'Webinars'
     ],
     'Empresa': [
       'Sobre nosotros',
@@ -138,7 +136,7 @@ const Footer = () => {
           {/* Links */}
           {Object.entries({
           'Servicio': footerLinks['Servicios'].slice(0, 3),
-          'Recursos': ['Blog', 'Guías gratuitas', 'Consulta gratuita'],
+          'Recursos': ['Blog', 'Webinars'],
           'Empresa': ['Sobre nosotros', 'Contacto']
           }).map(([category, links], categoryIndex) => (
             <motion.div
@@ -159,9 +157,7 @@ const Footer = () => {
                             navigate('/blog')
                           } else if (link === 'Sobre nosotros') navigateOrScroll('about')
                           else if (link === 'Nuestro proceso') navigateOrScroll('process')
-                          else if (link === 'Guías gratuitas') navigate('/recursos/guias')
-                           else if (link === 'Consulta gratuita') openModal()
-                           else if (link === 'Contacto') navigateOrScroll('contact')
+                          else if (link === 'Contacto') navigateOrScroll('contact')
                         }}
                         role="link"
                         aria-label={`Ir a ${link}`}

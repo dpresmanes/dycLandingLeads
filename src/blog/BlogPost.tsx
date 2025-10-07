@@ -1,11 +1,13 @@
-import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useState, useEffect, useRef } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
 import { posts as localPosts } from './data';
 import NewsletterForm from '../components/NewsletterForm';
 import SEOHead from '../components/SEOHead';
 
 const BlogPost: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
+  const navigate = useNavigate();
+  const contentRef = useRef<HTMLDivElement | null>(null);
   const [html, setHtml] = useState<string>('');
   const [meta, setMeta] = useState<{ title: string; date: string; readingTime: number | null; tags: string[]; excerpt?: string }>({
     title: '',
@@ -53,7 +55,39 @@ const BlogPost: React.FC = () => {
     return () => { active = false; };
   }, [slug]);
 
+  // Intercepta links internos como #contact dentro del contenido del post
+  useEffect(() => {
+    const el = contentRef.current;
+    if (!el) return;
+    const handler = (e: MouseEvent) => {
+      const target = e.target as HTMLElement | null;
+      const anchor = target?.closest('a') as HTMLAnchorElement | null;
+      if (!anchor) return;
+      const href = anchor.getAttribute('href') || '';
+      // Ignorar enlaces externos o mailto/tel
+      if (/^(https?:)?\/\//.test(href) && !href.startsWith(window.location.origin)) return;
+      if (href.startsWith('mailto:') || href.startsWith('tel:')) return;
 
+      const siteOrigin = window.location.origin;
+      let hash = '';
+      // Casos: "#contact", "/#contact", "https://site/#contact"
+      if (href.startsWith('#')) {
+        hash = href.slice(1);
+      } else if (href.startsWith('/#')) {
+        hash = href.slice(2);
+      } else if (href.startsWith(siteOrigin + '/#')) {
+        hash = href.replace(siteOrigin + '/#', '');
+      }
+
+      const validSections = new Set(['contact', 'services', 'process', 'about', 'hero']);
+      if (hash && validSections.has(hash)) {
+        e.preventDefault();
+        navigate('/', { state: { scrollTo: hash } });
+      }
+    };
+    el.addEventListener('click', handler);
+    return () => el.removeEventListener('click', handler);
+  }, [navigate]);
 
   if (error) {
     return (
@@ -119,42 +153,42 @@ const BlogPost: React.FC = () => {
       <SEOHead title={meta.title || 'Artículo'} description={description} image="/og-image.svg" url={canonical} type="article" structuredDataExtra={[blogPosting, breadcrumbList]} includeLocalBusiness={false} />
       <article className="mx-auto px-4 sm:px-6 lg:px-8" aria-labelledby="post-title">
         <div className="max-w-[70ch] mx-auto">
-        <header className="mb-6">
-          <h1 id="post-title" className="text-4xl font-bold text-white mb-2">{meta.title}</h1>
-          <div className="flex items-center text-sm text-gray-400 gap-4 flex-wrap">
-            <time dateTime={meta.date}>{new Date(meta.date).toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
-            {meta.readingTime && <span>{meta.readingTime} min de lectura</span>}
-          </div>
-          {meta.tags.length > 0 && (
-            <div className="mt-2 flex flex-wrap gap-2">
-              {meta.tags.map((tag, index) => (
-                <span key={index} className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-[#00FF88]/10 text-[#00FF88] border border-[#00FF88]/30">
-                  {tag}
-                </span>
-              ))}
+          <header className="mb-6">
+            <h1 id="post-title" className="text-4xl font-bold text-white mb-2">{meta.title}</h1>
+            <div className="flex items-center text-sm text-gray-400 gap-4 flex-wrap">
+              <time dateTime={meta.date}>{new Date(meta.date).toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+              {meta.readingTime && <span>{meta.readingTime} min de lectura</span>}
             </div>
-          )}
-        </header>
+            {meta.tags.length > 0 && (
+              <div className="mt-2 flex flex-wrap gap-2">
+                {meta.tags.map((tag, index) => (
+                  <span key={index} className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-[#00FF88]/10 text-[#00FF88] border border-[#00FF88]/30">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            )}
+          </header>
 
-        <div className="prose prose-invert md:prose-lg [&>p:first-child]:mt-0" role="region" aria-label="Contenido del artículo" dangerouslySetInnerHTML={{ __html: html }} />
+          <div ref={contentRef} className="prose prose-invert md:prose-lg [&>p:first-child]:mt-0" role="region" aria-label="Contenido del artículo" dangerouslySetInnerHTML={{ __html: html }} />
 
-         <section className="mt-12">
-           <div className="relative overflow-hidden rounded-xl border border-gray-700/40 bg-gray-900/50 backdrop-blur-sm p-5 md:p-6">
-             <div className="absolute -top-10 -right-10 w-40 h-40 rounded-full bg-[#00FF88]/10 blur-2xl pointer-events-none" aria-hidden />
-             <h3 className="text-xl font-bold mb-1">¿Te gustó este artículo?</h3>
-             <p className="text-gray-300 mb-4 text-sm">Suscribite al newsletter para recibir más contenido como este directamente en tu correo.</p>
-             <NewsletterForm
-               source={`/blog/${slug ?? ''}`}
-               variant="compact"
-               showName={false}
-               buttonLabel="Suscribirme"
-             />
-           </div>
-         </section>
+          <section className="mt-12">
+            <div className="relative overflow-hidden rounded-xl border border-gray-700/40 bg-gray-900/50 backdrop-blur-sm p-5 md:p-6">
+              <div className="absolute -top-10 -right-10 w-40 h-40 rounded-full bg-[#00FF88]/10 blur-2xl pointer-events-none" aria-hidden />
+              <h3 className="text-xl font-bold mb-1">¿Te gustó este artículo?</h3>
+              <p className="text-gray-300 mb-4 text-sm">Suscribite al newsletter para recibir más contenido como este directamente en tu correo.</p>
+              <NewsletterForm
+                source={`/blog/${slug ?? ''}`}
+                variant="compact"
+                showName={false}
+                buttonLabel="Suscribirme"
+              />
+            </div>
+          </section>
         </div>
-        </article>
-     </div>
-   );
+      </article>
+    </div>
+  );
 }
 
 export default BlogPost;

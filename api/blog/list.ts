@@ -75,6 +75,11 @@ function mapPageToPostSummary(page: NotionPage): PostSummary {
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   res.setHeader('Cache-Control', 's-maxage=60, stale-while-revalidate=600');
 
+  // Parámetros de paginación
+  const cursor = (req.query?.cursor as string | undefined) || undefined;
+  const pageSizeParam = (Array.isArray(req.query?.pageSize) ? req.query?.pageSize?.[0] : (req.query?.pageSize as string | undefined)) || undefined;
+  const pageSize = Math.min(Math.max(parseInt(pageSizeParam || '12') || 12, 1), 100);
+
   if (!NOTION_TOKEN || !NOTION_DB_BLOG_ID) {
     // Fallback: sample data if Notion is not configured yet
     return res.status(200).json({
@@ -114,7 +119,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
           'Content-Type': 'application/json',
         },
         // Evitamos filtros/ordenamientos que podrían fallar si la propiedad no existe
-        body: JSON.stringify({ page_size: 50 }),
+        body: JSON.stringify({ page_size: pageSize, start_cursor: cursor || undefined }),
       }
     );
 
@@ -143,10 +148,12 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
             readingTime: 6,
           },
         ],
+        nextCursor: null,
+        hasMore: false,
       });
     }
 
-    const data = (await resp.json()) as { results?: NotionPage[] };
+    const data = (await resp.json()) as { results?: NotionPage[]; has_more?: boolean; next_cursor?: string | null };
     const pages: NotionPage[] = data.results ?? [];
 
     const posts: PostSummary[] = pages
@@ -154,7 +161,10 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       .filter((p) => p.slug && p.title)
       .sort((a, b) => (b.date || '').localeCompare(a.date || ''));
 
-    return res.status(200).json({ source: 'notion', posts });
+    const nextCursor = (data.next_cursor ?? null);
+    const hasMore = !!data.has_more;
+
+    return res.status(200).json({ source: 'notion', posts, nextCursor, hasMore });
   } catch (error: unknown) {
     const message = error instanceof Error ? error.message : String(error);
     console.error('Notion list error', message);

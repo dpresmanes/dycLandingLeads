@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Calculator, TrendingUp, Target, DollarSign } from 'lucide-react';
-import { trackEvent } from '../utils/analytics';
+import { trackEvent } from '@/utils/analytics';
 import { useLeadCaptureContext } from '../contexts/LeadCaptureContext';
 
 interface ROIData {
@@ -299,12 +299,12 @@ const ROICalculator: React.FC = () => {
               </p>
               <button
                 onClick={() => {
-                  trackEvent('consultation_cta_click', { location: 'roi_calculator' });
-                  openModal();
+                  trackEvent('purchase_cta_click', { location: 'roi_calculator' });
+                  window.location.href = '/recursos/guias';
                 }}
                 className="inline-block bg-[#00FF88] text-black font-bold py-4 px-8 rounded-lg hover:bg-[#00FF88]/90 transition-all duration-300"
               >
-                Solicitar Consulta Gratuita
+                Comprar pack de automatizaciones • $17
               </button>
             </div>
           </motion.div>

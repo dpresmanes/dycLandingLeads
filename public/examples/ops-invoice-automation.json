@@ -1,0 +1,9 @@
+{
+  "$schema": "https://schemas.example/workflow.json",
+  "name": "Invoice Automation Ops",
+  "steps": [
+    { "type": "trigger", "event": "order_fulfilled" },
+    { "type": "action", "service": "billing", "template": "generate_invoice" },
+    { "type": "action", "service": "email", "template": "send_invoice" }
+  ]
+}

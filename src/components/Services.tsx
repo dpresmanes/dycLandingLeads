@@ -7,7 +7,9 @@ import {
   Users, 
   MessageSquare, 
   Facebook,
-  CheckCircle
+  CheckCircle,
+  Brain,
+  Video
 } from 'lucide-react';
 import { useLeadCaptureContext } from '../contexts/LeadCaptureContext';
 
@@ -15,66 +17,60 @@ const services = [
   {
     icon: Target,
     title: 'Marketing Digital Estratégico',
-    description: 'Estrategias data-driven que maximizan tu ROI y aceleran el crecimiento.',
-    features: ['Análisis de mercado', 'Segmentación avanzada', 'Optimización continua', 'Reportes detallados'],
+    description: 'Estrategias con datos para maximizar ROI y crecer.',
+    features: ['Análisis de mercado', 'Segmentación avanzada', 'Optimización continua', 'Reportes claros'],
     popular: true
   },
   {
     icon: Facebook,
     title: 'Meta Ads',
-    description: 'Campañas publicitarias en Facebook e Instagram que maximizan tu inversión.',
-    features: ['Targeting preciso', 'Creatividades ganadoras', 'Optimización de presupuesto', 'Scaling estratégico'],
+    description: 'Campañas en Facebook e Instagram con foco en ROI.',
+    features: ['Targeting preciso', 'Creatividades efectivas', 'Optimización de presupuesto', 'Escala segura'],
     popular: true
   },
   {
     icon: Zap,
     title: 'Automatización Inteligente',
-    description: 'Sistemas que trabajan 24/7 para captar, nutrir y convertir leads automáticamente.',
-    features: ['CRM automatizado', 'Email marketing', 'Chatbots inteligentes', 'Workflows personalizados'],
+    description: 'Sistemas 24/7 para captar y convertir automáticamente.',
+    features: ['CRM automatizado', 'Email marketing', 'Chatbots', 'Flujos personalizados'],
     popular: false
   },
   {
     icon: ShoppingCart,
-    title: 'Ecommerce y Funnels de Conversión',
-    description: 'Tiendas online optimizadas y funnels que convierten visitantes en clientes.',
-    features: ['Diseño UX/UI', 'Optimización de conversión', 'Integración de pagos', 'Analytics avanzado'],
+    title: 'Paquete integral de e‑commerce',
+    description: 'Servicio integral para vender más con tecnología, datos y creatividad.',
+    features: [
+      'Auditoría de tienda y métricas',
+      'Optimización de conversión (UX y PDP)',
+      'Automatizaciones y remarketing (Meta Ads + email)',
+      'Datos y reportes: ROAS, conversión y ticket'
+    ],
+    popular: true
+  },
+  {
+    icon: Brain,
+    title: 'Soluciones con IA',
+    description: 'Aplicamos inteligencia artificial para escalar adquisición y conversión.',
+    features: [
+      'Chatbots y asistentes de ventas',
+      'Segmentación y lookalikes predictivos',
+      'Optimización automática de creatividades',
+      'Insights y reportes impulsados por IA'
+    ],
     popular: false
   },
   {
-    icon: TrendingUp,
-    title: 'Growth Marketing',
-    description: 'Estrategias de crecimiento acelerado basadas en experimentación y datos.',
-    features: ['A/B Testing', 'Growth hacking', 'Retención de clientes', 'Escalabilidad'],
-    popular: false
+    icon: Video,
+    title: 'TikTok Ads',
+    description: 'Performance en TikTok con contenido nativo y creatividades UGC.',
+    features: [
+      'Estrategia de contenido y UGC',
+      'Optimización de conversiones (TikTok Pixel)',
+      'Spark Ads y whitelisting de creadores',
+      'Escala y testing continuo de hooks'
+    ],
+    popular: true
   },
-  {
-    icon: Users,
-    title: 'Inbound Marketing',
-    description: 'Atrae clientes ideales con contenido valioso y estrategias de posicionamiento.',
-    features: ['Content marketing', 'SEO avanzado', 'Lead magnets', 'Nurturing campaigns'],
-    popular: false
-  },
-  {
-    icon: MessageSquare,
-    title: 'Community Management',
-    description: 'Gestión profesional de redes sociales que construye comunidades leales.',
-    features: ['Estrategia de contenido', 'Engagement auténtico', 'Influencer marketing', 'Social listening'],
-    popular: false
-  },
-  {
-    icon: CheckCircle,
-    title: 'Gestión de Proyectos',
-    description: 'Coordinación experta que asegura entregas a tiempo y resultados excepcionales.',
-    features: ['Metodologías ágiles', 'Comunicación fluida', 'Control de calidad', 'Seguimiento continuo'],
-    popular: false
-  },
-  {
-    icon: CheckCircle,
-    title: 'Creación de Contenido con IA',
-    description: 'Contenido de alta calidad potenciado por inteligencia artificial.',
-    features: ['Copywriting persuasivo', 'Diseño gráfico', 'Video marketing', 'Automatización de contenido'],
-    popular: false
-  }
 ];
 
 const Services = () => {
@@ -89,15 +85,13 @@ const Services = () => {
       transition={{ duration: 1, ease: "easeOut" }}
       className="text-center mb-12 md:mb-16"
     >
-      <h2 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-orbitron font-bold text-white mb-6 md:mb-8 leading-tight">
-        Soluciones Integrales que{' '}
-        <span className="text-[#00FF88]">Impulsan tu Crecimiento</span>
+      <h2 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-orbitron font-bold text-white mb-6 md:mb-8 leading-tight"
+        >
+        Soluciones integrales <span className="text-[#00FF88]">para e‑commerce</span>
       </h2>
       <p className="text-sm xs:text-base md:text-lg lg:text-xl text-gray-300 max-w-4xl mx-auto font-inter leading-relaxed">
-         Integramos tecnología, estrategia y creatividad {' '}
-         para que tu negocio funcione como un sistema eficiente.<br className="hidden sm:block" />
-         <span className="text-[#00FF88] font-semibold">Cada solución está diseñada para generar resultados sostenibles.</span>
-       </p>
+        Vendé más con tecnología, datos y creatividad.
+      </p>
     </motion.div>
 
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 md:gap-10">
@@ -126,7 +120,7 @@ const Services = () => {
             </div>
 
             <h3 className="text-white font-bold text-xl sm:text-2xl mb-4 font-inter">
-              {service.title}
+              <span className="group-hover:text-[#00FF88] transition-colors duration-300">{service.title}</span>
             </h3>
 
             <p className="text-[#CCCCCC] mb-4 leading-relaxed font-inter">
@@ -146,7 +140,7 @@ const Services = () => {
               onClick={openModal}
               className="w-full bg-[#00FF88]/10 hover:bg-[#00FF88]/80 text-[#00FF88] hover:text-black border border-[#00FF88]/20 hover:border-[#00FF88]/60 font-semibold py-3 px-6 rounded-lg transition-all duration-300 font-inter"
             >
-              Explorar Solución
+              Agendá tu consulta
             </button>
           </motion.div>
         );

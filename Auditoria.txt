@@ -1,0 +1,245 @@
+Textos para la página enfocados en e‑commerce
+
+Estos textos están diseñados para una landing page dedicada al servicio de e‑commerce, siguiendo las buenas prácticas de páginas de destino (un único objetivo claro
+insights.theinteractive.studio
+ y una propuesta única de valor bien definida
+insights.theinteractive.studio
+), adoptando el voseo argentino y evitando el lunfardo. El tono es claro, conciso y directo, como recomienda la guía de voz del Estado argentino
+argentina.gob.ar
+.
+
+Encabezado (Hero)
+
+Título:
+
+Potenciá tu e‑commerce con estrategias de marketing digital
+
+Subtítulo:
+
+Transformamos ideas en ventas: automatizamos tu tienda online y multiplicamos tus conversiones.
+
+Descripción breve:
+
+Somos Damián & Carolina, especialistas en marketing digital, Meta Ads y crecimiento sostenible en Argentina. Nos enfocamos en potenciar tu e‑commerce para que obtengas más conversiones y vendas más. Nuestro objetivo es claro: ayudarte a crecer.
+
+Llamado a la acción:
+
+Agendá tu consulta gratuita
+
+Este encabezado se centra en un único objetivo (agendar una consulta), siguiendo la recomendación de reducir puntos de fuga
+insights.theinteractive.studio
+. El uso del voseo (“potenciá”, “transformamos”) se alinea con el tono cercano que busca el público argentino
+argentina.gob.ar
+.
+
+Sección de servicios de e‑commerce
+
+Título de la sección:
+
+Soluciones integrales para tu e‑commerce
+
+Subtítulo:
+
+Optimizamos tus ventas con tecnología, datos y creatividad
+
+En lugar de listar muchos servicios, se presenta un único paquete enfocado en e‑commerce, siguiendo la recomendación de centrarse en una audiencia específica
+insights.theinteractive.studio
+. Este enfoque simplifica la decisión del visitante.
+
+Nuestro servicio de e‑commerce incluye
+
+Diagnóstico y auditoría: analizamos tu tienda, tus embudos y tus métricas para detectar oportunidades de mejora.
+
+Optimización de conversiones: diseñamos experiencias de compra personalizadas y mejoramos las páginas de producto para aumentar el porcentaje de ventas.
+
+Automatización y remarketing: implementamos campañas de remarketing en Meta Ads y secuencias de email marketing para recuperar carritos abandonados y fidelizar a tus clientes.
+
+Análisis de datos y reportes: monitoreamos tus métricas clave (ROAS, tasa de conversión, ticket promedio) y ajustamos las acciones para que tu inversión rinda cada vez más.
+
+Clientes que implementaron estas estrategias han multiplicado sus conversiones y aumentado el valor promedio de sus pedidos, demostrando la eficacia de un enfoque basado en datos.
+
+Llamado a la acción:
+
+Solicitá una consulta especializada para tu e‑commerce
+
+Resultados típicos y casos de éxito
+
+Al trabajar con nosotros, muchas tiendas online han visto mejoras como:
+
++280 % en la tasa de conversión
+
++65 % en el valor promedio de pedido
+
++150 % en la retención de clientes
+
+Estos resultados son posibles gracias a estrategias bien implementadas y optimizadas continuamente. La sección muestra datos concretos para crear confianza, al tiempo que mantiene un tono cercano y profesional.
+
+Metodología
+
+Título:
+
+Metodología probada, ejecución precisa
+
+Descripción:
+
+Nuestra metodología consta de cuatro pasos pensados para que tu e‑commerce crezca de manera sostenible. Siguiendo las recomendaciones de contenido claro y conciso
+argentina.gob.ar
+, cada etapa se explica en una frase:
+
+Diagnóstico: revisamos tus datos, tu competencia y tus procesos actuales para comprender tu situación.
+
+Estrategia personalizada: diseñamos un plan a medida con metas y tácticas concretas, alineado con la intención de búsqueda de tus clientes
+ahrefs.com
+.
+
+Implementación: ejecutamos campañas de alta conversión, automatizaciones y mejoras en tu sitio.
+
+Optimización: analizamos resultados y ajustamos lo que sea necesario para escalar lo que funciona.
+
+Te acompañamos en cada paso, asegurándonos de que la estrategia se adapte a tu negocio y a tus objetivos.
+
+Equipo
+
+Título:
+
+Conocé al equipo que impulsa tu éxito
+
+Descripción:
+
+Damián – Estrategia & Performance: especialista en estrategia digital, sistemas inteligentes y Meta Ads. Convierte desafíos complejos en soluciones efectivas.
+
+Carolina – Planificación & E‑commerce: se dedica a la coordinación estratégica, la optimización operativa y el desarrollo comercial. Estructura procesos, optimiza recursos y coordina lanzamientos con una visión integral.
+
+En conjunto: combinamos visión estratégica y enfoque integral para abordar tu proyecto desde múltiples ángulos, garantizando resultados sostenibles y escalables.
+
+El texto usa el voseo (“conocé”) y mantiene un tono cercano y respetuoso
+argentina.gob.ar
+.
+
+Calculadora de ROI
+
+Título:
+
+Calculá el ROI de tu e‑commerce
+
+Descripción:
+
+Descubrí tu potencial de crecimiento con un 40 % más de conversiones y un 30 % más de tráfico. Completá los datos de tu negocio (ingresos mensuales actuales, tasa de conversión, valor promedio de pedido y presupuesto de marketing) y recibí un informe con tus resultados. De esta manera, podés visualizar el retorno que podrías obtener al implementar nuestras estrategias.
+
+Llamado a la acción:
+
+Calculá tu ROI ahora
+
+Esta sección funciona como un lead magnet: al solicitar el informe, el usuario deja sus datos. Según Shopify, los lead magnets aumentan el engagement y la lista de suscriptores
+shopify.com
+, lo que contribuye a la generación de clientes potenciales.
+
+Especialización en e‑commerce
+
+Título:
+
+E‑commerce: desafíos comunes y nuestras soluciones
+
+Descripción:
+
+El comercio electrónico en Argentina presenta desafíos específicos: competencia en precios, carritos abandonados (hasta 70 %), bajo valor de vida del cliente y dificultad para diferenciarse. Para cada problema, tenemos soluciones:
+
+Optimización de embudos de conversión: mejoramos la experiencia del usuario desde la navegación hasta el checkout, reduciendo carritos abandonados.
+
+Remarketing multicanal: recuperamos a los clientes que abandonaron la compra mediante campañas en Facebook, Instagram y email marketing.
+
+Personalización de la experiencia de compra: usamos segmentación precisa para ofrecer productos relevantes y aumentar el ticket promedio
+metricool.com
+.
+
+Automatización de email marketing: nutrimos leads y fidelizamos clientes con secuencias automáticas.
+
+Optimización de páginas de producto: aplicamos principios de conversión para destacar beneficios y generar confianza.
+
+Servicios especializados: auditoría de conversión, optimización de checkout, campañas de remarketing, automatización de email marketing y análisis del comportamiento del usuario.
+
+Llamado a la acción:
+
+¿Listo para transformar tu e‑commerce? Solicitá tu estrategia personalizada
+
+Guía gratuita (lead magnet)
+
+Título:
+
+Guía gratuita: 10 automatizaciones que optimizan tu tiempo y recursos
+
+Descripción:
+
+Descargá nuestra guía exclusiva de 20 páginas que revela los sistemas más efectivos que implementamos en nuestros clientes. Con esta guía:
+
+Ahorrás 20+ horas semanales gracias a la automatización de procesos.
+
+Aumentás tus conversiones un 40 % al personalizar tus campañas.
+
+Ponés en práctica automatizaciones de email marketing, seguimiento de leads perdidos, respuestas automáticas en redes, chatbots de atención al cliente, segmentación de clientes y más.
+
+Es una descarga inmediata, sin spam y con valor real para tu negocio. Los lead magnets de calidad contribuyen a aumentar el engagement y la base de datos de clientes potenciales
+shopify.com
+.
+
+Llamado a la acción:
+
+Obtené tu guía gratis
+
+Blog y recursos
+
+Título:
+
+Blog y recursos
+
+Descripción:
+
+Visitá nuestro blog para aprender sobre marketing digital, automatización y estrategias de e‑commerce. Publicamos artículos basados en la intención de búsqueda de nuestros clientes
+ahrefs.com
+ y optimizados para SEO
+ahrefs.com
+, con consejos prácticos y casos de éxito que muestran cómo nuestros servicios pueden transformar negocios como el tuyo. Cada artículo incluye enlaces internos a servicios relacionados para mejorar la experiencia de usuario y el posicionamiento SEO
+ahrefs.com
+.
+
+Llamado a la acción:
+
+Explorá el blog
+
+Newsletter / Suscripción
+
+Título:
+
+Suscribite a nuestra newsletter
+
+Descripción:
+
+Recibí novedades y recursos en tu correo. Prometemos ser claros y concisos en nuestros mensajes, sin spam. Nuestro objetivo es ayudarte a crecer con información valiosa y herramientas que puedas aplicar en tu e‑commerce.
+
+Campo de suscripción:
+
+Email (obligatorio)
+
+Botón: Suscribirme
+
+Footer
+
+Contacto: damianpresmanes@gmail.com
+ · +54 9 11 3763‑8307 · Buenos Aires, Argentina
+
+Redes sociales: [enlaces a perfiles de Facebook, Instagram, LinkedIn]
+
+Servicios: Meta Ads · Automatización · Growth Marketing
+
+Recursos: Blog · Guías gratuitas · Consulta gratuita
+
+Empresa: Sobre nosotros · Contacto
+
+Aviso de privacidad: Tus datos están seguros con nosotros; no enviamos spam.
+
+Siguiendo estos textos y estructura, tu página se enfocará en un solo objetivo y una audiencia específica
+insights.theinteractive.studio
+, mantendrá un tono argentino profesional sin lunfardo, y estará optimizada tanto para la conversión como para el SEO
+ahrefs.com
+ahrefs.com
+.

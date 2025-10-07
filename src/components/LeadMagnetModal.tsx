@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, User, Building2, Mail, Phone, CheckCircle, Download } from 'lucide-react';
+import { X, User, Mail, CheckCircle, CreditCard } from 'lucide-react';
 import { useState, useEffect, useCallback } from 'react';
 import { useLeadMagnetCapture } from '../hooks/useLeadMagnetCapture';
 
@@ -31,8 +31,14 @@ const LeadMagnetModal: React.FC<LeadMagnetModalProps> = ({ isOpen, onClose }) =>
       setShowSuccess(true);
       setTimeout(() => {
         setShowSuccess(false);
+        try { sessionStorage.setItem('purchaseUnlocked', 'true'); } catch {}
         onClose();
-        window.open('/path-to-your-guide.pdf', '_blank');
+        // Navegar suavemente al catálogo
+        const el = document.getElementById('workflows-catalog');
+        if (el) {
+          const y = el.getBoundingClientRect().top + window.scrollY - 80;
+          window.scrollTo({ top: y, behavior: 'smooth' });
+        }
       }, 2000);
     }
   };
@@ -47,14 +53,14 @@ const LeadMagnetModal: React.FC<LeadMagnetModalProps> = ({ isOpen, onClose }) =>
             </button>
 
             <div className="mb-4 flex items-center gap-2">
-              <Download className="text-blue-600" />
-              <h2 className="text-xl font-semibold">Descarga tu guía</h2>
+              <CreditCard className="text-blue-600" />
+              <h2 className="text-xl font-semibold">Compra rápida</h2>
             </div>
 
             {showSuccess ? (
               <div className="flex items-center gap-2 rounded-md bg-green-50 p-3 text-green-700">
                 <CheckCircle />
-                <span>¡Listo! Preparando la descarga…</span>
+                <span>¡Pago confirmado! Desbloqueando tu acceso…</span>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-3">
@@ -63,51 +69,25 @@ const LeadMagnetModal: React.FC<LeadMagnetModalProps> = ({ isOpen, onClose }) =>
                   <input
                     className="w-full rounded border p-2"
                     type="text"
-                    placeholder="Nombre"
+                    placeholder="Nombre (opcional)"
                     value={leadData.nombre}
                     onChange={(e) => setLeadData({ nombre: e.target.value })}
                   />
                 </div>
-                {errors.nombre && <p className="text-sm text-red-600">{errors.nombre}</p>}
-
-                <div className="flex items-center gap-2">
-                  <Building2 size={18} />
-                  <input
-                    className="w-full rounded border p-2"
-                    type="text"
-                    placeholder="Empresa"
-                    value={leadData.empresa}
-                    onChange={(e) => setLeadData({ empresa: e.target.value })}
-                  />
-                </div>
-                {errors.empresa && <p className="text-sm text-red-600">{errors.empresa}</p>}
-
-                <div className="flex items-center gap-2">
-                  <Phone size={18} />
-                  <input
-                    className="w-full rounded border p-2"
-                    type="tel"
-                    placeholder="Celular"
-                    value={leadData.celular}
-                    onChange={(e) => setLeadData({ celular: e.target.value })}
-                  />
-                </div>
-                {errors.celular && <p className="text-sm text-red-600">{errors.celular}</p>}
 
                 <div className="flex items-center gap-2">
                   <Mail size={18} />
                   <input
                     className="w-full rounded border p-2"
                     type="email"
-                    placeholder="Email"
+                    placeholder="Email (para recibir soporte/actualizaciones)"
                     value={leadData.email}
                     onChange={(e) => setLeadData({ email: e.target.value })}
                   />
                 </div>
-                {errors.email && <p className="text-sm text-red-600">{errors.email}</p>}
 
                 <button type="submit" disabled={isSubmitting} className="mt-2 w-full rounded bg-blue-600 p-2 text-white hover:bg-blue-700 disabled:opacity-50">
-                  {isSubmitting ? 'Enviando…' : 'Descargar Guía'}
+                  {isSubmitting ? 'Procesando pago…' : 'Comprar ahora • $17'}
                 </button>
               </form>
             )}

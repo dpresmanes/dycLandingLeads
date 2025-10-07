@@ -32,6 +32,12 @@ type NotionBlock = {
   numbered_list_item?: { rich_text?: NotionRichText[] };
   quote?: { rich_text?: NotionRichText[] };
   code?: { rich_text?: NotionRichText[] };
+  image?: {
+    type?: 'file' | 'external';
+    file?: { url?: string };
+    external?: { url?: string };
+    caption?: NotionRichText[];
+  };
 };
 
 const NOTION_TOKEN = process.env.NOTION_TOKEN;
@@ -128,19 +134,16 @@ function blocksToSimpleHtml(blocks: NotionBlock[] | undefined): string {
       }
       case 'heading_1': {
         closeListIfOpen();
-        // Map Notion H1 to H2 to ensure a single H1 per view (the page title acts as H1)
         out.push(`<h2>${escapeHtml(richTextToPlain(b.heading_1?.rich_text))}</h2>`);
         break;
       }
       case 'heading_2': {
         closeListIfOpen();
-        // Demote H2 to H3
         out.push(`<h3>${escapeHtml(richTextToPlain(b.heading_2?.rich_text))}</h3>`);
         break;
       }
       case 'heading_3': {
         closeListIfOpen();
-        // Demote H3 to H4
         out.push(`<h4>${escapeHtml(richTextToPlain(b.heading_3?.rich_text))}</h4>`);
         break;
       }
@@ -154,15 +157,24 @@ function blocksToSimpleHtml(blocks: NotionBlock[] | undefined): string {
         out.push(`<pre><code>${escapeHtml(richTextToPlain(b.code?.rich_text))}</code></pre>`);
         break;
       }
+      case 'image': {
+        closeListIfOpen();
+        const src = b.image?.type === 'external' ? b.image?.external?.url : b.image?.file?.url;
+        const alt = richTextToPlain(b.image?.caption);
+        const srcSafe = escapeHtml(src || '');
+        const altSafe = escapeHtml(alt || '');
+        if (srcSafe) {
+          out.push(`<figure class="my-6"><img src="${srcSafe}" alt="${altSafe}" class="rounded-lg mx-auto" />${altSafe ? `<figcaption class="text-sm text-gray-400 mt-2 text-center">${altSafe}</figcaption>` : ''}</figure>`);
+        }
+        break;
+      }
       default: {
-        // ignore unsupported block types, but ensure lists are closed
         closeListIfOpen();
         break;
       }
     }
   }
 
-  // Close any open list at the end
   closeListIfOpen();
 
   return out.join('\n');
@@ -249,10 +261,12 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     }
 
     const safeHtml = sanitizeHtml(html, {
-      allowedTags: ['h2','h3','h4','h5','h6','p','blockquote','ul','ol','li','strong','em','code','pre','a','img','table','thead','tbody','tr','th','td','hr','br','span'],
+      allowedTags: ['h2','h3','h4','h5','h6','p','blockquote','ul','ol','li','strong','em','code','pre','a','img','figure','figcaption','table','thead','tbody','tr','th','td','hr','br','span'],
       allowedAttributes: {
         a: ['href', 'name', 'target', 'rel'],
-        img: ['src', 'alt', 'title', 'width', 'height'],
+        img: ['src', 'alt', 'title', 'width', 'height', 'class'],
+        figure: ['class'],
+        figcaption: ['class'],
         code: ['class'],
         span: ['class'],
         '*': ['class']

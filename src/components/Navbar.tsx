@@ -124,7 +124,7 @@ const Navbar = () => {
                 className="bg-gradient-to-r from-[#00FF88] to-[#39FF14] text-black px-4 lg:px-5 py-2 lg:py-2.5 rounded-full font-bold font-inter text-sm lg:text-base hover:shadow-[0_0_20px_rgba(0,255,136,0.5)] transition-all duration-300 flex items-center justify-center gap-2 min-h-[40px] lg:min-h-[44px] whitespace-nowrap focus:outline-none focus-visible:ring-2 focus-visible:ring-[#00FF88] focus-visible:ring-offset-2 focus-visible:ring-offset-black"
               >
                 <Zap size={16} className="lg:w-[18px] lg:h-[18px]" />
-                <span>Empezar</span>
+                <span>Agendá tu consulta</span>
               </motion.button>
             </div>
 
@@ -174,7 +174,9 @@ const Navbar = () => {
                  </motion.button>
                ))}
                <button onClick={goToBlog} className="block w-full text-left text-gray-300 hover:text-white py-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#00FF88] focus-visible:ring-offset-2 focus-visible:ring-offset-black rounded">Blog</button>
-               
+               {/* Divider for clarity */}
+               <div className="w-24 h-px bg-[#00FF88]/20" aria-hidden="true" />
+                
                {/* Mobile CTA Button */}
                <motion.button
                  whileHover={prefersReducedMotion ? undefined : { 
@@ -189,7 +191,7 @@ const Navbar = () => {
                  className="w-full max-w-xs bg-gradient-to-r from-[#00FF88] to-[#39FF14] text-black px-6 py-3 sm:py-4 rounded-full font-bold font-inter text-base sm:text-lg hover:shadow-[0_0_30px_rgba(0,255,136,0.6)] transition-all duration-300 flex items-center justify-center gap-3 mt-6 min-h-[52px] sm:min-h-[56px] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#00FF88] focus-visible:ring-offset-2 focus-visible:ring-offset-black"
                >
                  <Zap size={18} className="sm:w-5 sm:h-5" />
-                 <span className="whitespace-nowrap">Empezar Ahora</span>
+                 <span className="whitespace-nowrap">Agendá tu consulta</span>
                </motion.button>
              </div>
            </motion.div>

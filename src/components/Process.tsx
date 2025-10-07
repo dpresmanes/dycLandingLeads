@@ -5,22 +5,22 @@ const processSteps = [
   {
     icon: Search,
     title: 'Diagnóstico',
-    description: 'Analizamos tu negocio, identificamos oportunidades y definimos objetivos claros.'
+    description: 'Analizamos negocio y métricas. Definimos objetivos claros.'
   },
   {
     icon: Lightbulb,
     title: 'Estrategia',
-    description: 'Diseñamos un plan personalizado con metodologías probadas y herramientas específicas.'
+    description: 'Plan a medida con tácticas y herramientas concretas.'
   },
   {
     icon: Rocket,
     title: 'Ejecución',
-    description: 'Implementamos cada acción con precisión, monitoreando cada paso del proceso.'
+    description: 'Implementación precisa y seguimiento continuo.'
   },
   {
     icon: BarChart3,
     title: 'Optimización',
-    description: 'Medimos resultados, ajustamos estrategias y escalamos lo que funciona.'
+    description: 'Medimos, ajustamos y escalamos lo que funciona.'
   }
 ];
 
@@ -43,13 +43,12 @@ const Process = () => {
           className="text-center mb-12 md:mb-16"
         >
           <h2 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-orbitron font-bold text-white mb-6 md:mb-8 leading-tight">
-            <span className="text-[#00FF88]">Metodología probada.</span><br />
-            Ejecución precisa.
+            <span className="text-[#00FF88]">Metodología probada,</span><br />
+            ejecución precisa
           </h2>
           <p className="text-sm xs:text-base md:text-lg lg:text-xl text-gray-300 max-w-4xl mx-auto font-inter leading-relaxed">
-            Desde el análisis inicial hasta la optimización continua, 
-            cada paso está diseñado para maximizar tu inversión.<br className="hidden sm:block" />
-            <span className="text-[#00FF88]">Un enfoque sistemático que evoluciona con tu negocio.</span>
+            Cuatro pasos claros para hacer crecer tu e‑commerce de forma sostenible.
+            <span className="hidden sm:inline"> Del diagnóstico a la optimización, cada etapa maximiza tu inversión.</span>
           </p>
         </motion.div>
 

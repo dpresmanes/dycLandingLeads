@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import { submitToGoogleSheets, isValidEmail, sanitizeInput } from '../utils/googleSheets';
-import { trackEvent } from '../utils/analytics';
+import { trackEvent } from '@/utils/analytics';
 
 interface LeadData {
   nombre: string;

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { submitToGoogleSheets, isValidEmail, sanitizeInput, LeadSubmission } from '../utils/googleSheets';
-import { trackEvent } from '../utils/analytics';
+import { trackEvent } from '@/utils/analytics';
 
 interface LeadMagnetData {
   nombre: string;
@@ -41,9 +41,7 @@ export const useLeadMagnetCapture = (): UseLeadMagnetCaptureReturn => {
   const validateForm = (): boolean => {
     const newErrors: Partial<LeadMagnetData> = {};
 
-    if (!leadData.nombre.trim()) {
-      newErrors.nombre = 'El nombre es requerido';
-    }
+    // Nombre opcional
 
     if (!leadData.email.trim()) {
       newErrors.email = 'El email es requerido';
@@ -51,15 +49,7 @@ export const useLeadMagnetCapture = (): UseLeadMagnetCaptureReturn => {
       newErrors.email = 'Formato de email inválido';
     }
 
-    if (!leadData.empresa.trim()) {
-      newErrors.empresa = 'El nombre de la empresa es requerido';
-    }
-
-    if (!leadData.celular.trim()) {
-      newErrors.celular = 'El número de celular es requerido';
-    } else if (leadData.celular.length < 8) {
-      newErrors.celular = 'El número debe tener al menos 8 dígitos';
-    }
+    // Empresa y celular no requeridos
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -85,33 +75,33 @@ export const useLeadMagnetCapture = (): UseLeadMagnetCaptureReturn => {
     try {
       // Sanitize input data
       const sanitizedData: LeadSubmission = {
-        nombre: sanitizeInput(leadData.nombre),
-        empresa: sanitizeInput(leadData.empresa),
-        celular: sanitizeInput(leadData.celular),
+        nombre: sanitizeInput(leadData.nombre || ''),
+        empresa: sanitizeInput(leadData.empresa || ''),
+        celular: sanitizeInput(leadData.celular || ''),
         email: sanitizeInput(leadData.email),
-        // Lead Magnet specific segmentation
-        source: 'Lead Magnet - Guía Automatizaciones',
-        leadType: 'LEAD_MAGNET',
-        campaign: 'Descarga_Guia_Automatizaciones',
+        // Segmentación compra pack
+        source: 'Automations Pack $17',
+        leadType: 'PURCHASE',
+        campaign: 'Compra_Pack_Automatizaciones',
         ctaLocation: 'LeadMagnet_Section',
         pageUrl: window.location.href,
-        leadQuality: 'HIGH', // Lead magnets typically indicate higher intent
-        expectedAction: 'DOWNLOAD_GUIDE'
+        leadQuality: 'HIGH',
+        expectedAction: 'PURCHASE'
       };
 
       // Submit to Google Sheets with lead magnet segmentation
       const success = await submitToGoogleSheets(sanitizedData);
 
       if (success) {
-        trackEvent('lead_magnet_submit', { status: 'success' });
+        trackEvent('purchase_submit', { status: 'success' });
         resetForm();
         return true;
       } else {
-        trackEvent('lead_magnet_submit', { status: 'error' });
+        trackEvent('purchase_submit', { status: 'error' });
         throw new Error('Error al enviar el formulario');
       }
     } catch {
-      trackEvent('lead_magnet_submit', { status: 'error' });
+      trackEvent('purchase_submit', { status: 'error' });
       return false;
     } finally {
       setIsSubmitting(false);

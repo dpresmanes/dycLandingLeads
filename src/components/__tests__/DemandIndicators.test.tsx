@@ -25,6 +25,11 @@ vi.mock('../../hooks/useLiveStats', () => ({
   useLiveStats: vi.fn(),
 }));
 
+// Mock LeadCaptureContext para evitar error de Provider
+vi.mock('../../contexts/LeadCaptureContext', () => ({
+  useLeadCaptureContext: vi.fn().mockReturnValue({ isModalOpen: false }),
+}));
+
 import { useDemandNotifications } from '../../hooks/useDemandNotifications';
 import { useLiveStats } from '../../hooks/useLiveStats';
 
@@ -64,8 +69,8 @@ describe('DemandIndicators', () => {
   it('aplica las clases CSS responsivas correctamente', () => {
     const { container } = render(<DemandIndicators />);
     
-    // Verificar que hay elementos con clases fixed (stats desktop)
-    const desktopStats = container.querySelector('.fixed.top-20.right-6');
+    // Verificar que hay elementos con clases de desktop (stats desktop)
+    const desktopStats = container.querySelector('.fixed.right-6.lg\\:block');
     expect(desktopStats).toBeInTheDocument();
     
     // Verificar que hay elementos con clases responsive (mobile stats)
@@ -83,12 +88,17 @@ describe('DemandIndicators', () => {
       timeAgo: 'hace 1 min'
     });
     
-    render(<DemandIndicators />);
+    const { container } = render(<DemandIndicators />);
     
-    // Verificar que se muestra la notificación
+    // La notificación solo se muestra cuando no hay modal abierto
+    // y en desktop: el wrapper usa `hidden md:block`, así que verifiquemos contenido
     expect(screen.getByText('Test notification')).toBeInTheDocument();
     expect(screen.getByText('Test location')).toBeInTheDocument();
     expect(screen.getByText('hace 1 min')).toBeInTheDocument();
+
+    // El contenedor de notificación existe
+    const notif = container.querySelector('[aria-label="Actividad reciente"]');
+    expect(notif).toBeInTheDocument();
   });
 
   it('maneja correctamente cuando no hay notificación', () => {

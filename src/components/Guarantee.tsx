@@ -1,10 +1,19 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Shield, CheckCircle, Clock, TrendingUp } from 'lucide-react';
-import { useLeadCaptureContext } from '../contexts/LeadCaptureContext';
+
 
 const Guarantee: React.FC = () => {
-  const { openModal } = useLeadCaptureContext();
+  const navigateOrScroll = (id: string) => {
+    if (typeof window !== 'undefined') {
+      const el = document.getElementById(id);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      } else {
+        window.location.hash = id;
+      }
+    }
+  };
 
   const guarantees = [
     {
@@ -131,30 +140,30 @@ const Guarantee: React.FC = () => {
               </h3>
               
               <p className="text-gray-300 text-lg mb-8 font-inter max-w-2xl mx-auto">
-                Agenda tu consulta estratégica gratuita y descubre cómo podemos potenciar tu negocio con metodologías probadas.
+                Descubrí cómo nuestras metodologías pueden potenciar tu negocio con resultados comprobados.
               </p>
               
               <motion.button
-                onClick={openModal}
+                onClick={() => navigateOrScroll('services')}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="bg-gradient-to-r from-green-500 to-green-600 text-white font-bold py-4 px-8 rounded-full hover:from-green-400 hover:to-green-500 transition-all duration-300 font-inter text-lg shadow-lg hover:shadow-green-500/25"
               >
-                Agendar Consulta Gratuita
+                Conocé nuestros servicios
               </motion.button>
               
               <div className="flex items-center justify-center space-x-6 mt-6 text-sm text-gray-300">
                 <div className="flex items-center space-x-2">
                   <CheckCircle className="text-green-400" size={16} />
-                  <span>Sin compromiso</span>
+                  <span>Metodologías probadas</span>
                 </div>
                 <div className="flex items-center space-x-2">
                   <CheckCircle className="text-green-400" size={16} />
-                  <span>100% gratuita</span>
+                  <span>Implementación ágil</span>
                 </div>
                 <div className="flex items-center space-x-2">
                   <CheckCircle className="text-green-400" size={16} />
-                  <span>Estrategia personalizada</span>
+                  <span>Resultados medibles</span>
                 </div>
               </div>
             </div>

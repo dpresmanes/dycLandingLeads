@@ -1,0 +1,10 @@
+{
+  "$schema": "https://schemas.example/workflow.json",
+  "name": "Welcome Email Acquisition",
+  "steps": [
+    { "type": "trigger", "event": "purchase_completed" },
+    { "type": "action", "service": "email", "template": "welcome_v1" },
+    { "type": "wait", "duration": "2d" },
+    { "type": "action", "service": "email", "template": "conversion_followup" }
+  ]
+}
