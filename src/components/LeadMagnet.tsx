@@ -1,23 +1,14 @@
 import { motion } from 'framer-motion';
-import { CheckCircle, Clock, Target, Zap, CreditCard } from 'lucide-react';
+import { CheckCircle, Clock, Target, Zap } from 'lucide-react';
 import { useState, useEffect, useRef } from 'react';
-import LeadMagnetModal from './LeadMagnetModal';
 import { trackEvent } from '@/utils/analytics';
 import JSZip from 'jszip';
 import { Link } from 'react-router-dom'
+import { useLeadCaptureContext } from '../contexts/LeadCaptureContext'
 
 const LeadMagnet = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [unlocked, setUnlocked] = useState(() => {
-    try {
-      return (
-        localStorage.getItem('purchaseUnlocked') === 'true' ||
-        sessionStorage.getItem('purchaseUnlocked') === 'true'
-      );
-    } catch {
-      return false;
-    }
-  });
+  const { openModal } = useLeadCaptureContext()
+  const [unlocked, setUnlocked] = useState(true);
   const sectionRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
@@ -38,8 +29,6 @@ const LeadMagnet = () => {
     return () => observer.disconnect();
   }, []);
 
-  const openModal = () => { setIsModalOpen(true); trackEvent('lead_magnet_view', { location: 'LeadMagnet_Section' }); };
-  const closeModal = () => { setIsModalOpen(false); trackEvent('lead_magnet_close', { location: 'LeadMagnet_Section' }); };
 
   const benefits = [
     {
@@ -88,8 +77,8 @@ const LeadMagnet = () => {
             viewport={{ once: true }}
           >
             <div className="bg-[#00FF88]/5 border border-[#00FF88]/20 rounded-full px-4 py-2 inline-flex items-center space-x-2 mb-6">
-              <CreditCard className="text-[#00FF88]" size={16} />
-              <span className="text-[#00FF88] font-semibold text-sm">OFERTA LANZAMIENTO • $17</span>
+              <Zap className="text-[#00FF88]" size={16} />
+              <span className="text-[#00FF88] font-semibold text-sm">Acceso gratuito</span>
             </div>
 
             <h2 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-orbitron font-bold text-white mb-6 leading-tight">
@@ -126,11 +115,11 @@ const LeadMagnet = () => {
                 scale: 1.02
               }}
               whileTap={{ scale: 0.98 }}
-              onClick={() => { trackEvent('purchase_cta_click', { location: 'LeadMagnet_Section' }); openModal(); }}
+              onClick={() => { trackEvent('lead_capture_cta_click', { location: 'LeadMagnet_Section' }); openModal(); }}
               className="bg-[#00FF88] text-black px-8 py-4 rounded-lg text-lg font-bold font-inter transition-all duration-300 inline-flex items-center space-x-3"
             >
-              <CreditCard size={20} />
-              <span>Comprar ahora • $17</span>
+              <Zap size={20} />
+              <span>Obtener acceso</span>
             </motion.button>
           </motion.div>
 
@@ -202,19 +191,9 @@ const LeadMagnet = () => {
       
       {/* Catálogo dinámico */}
       <div id="workflows-catalog" className="mt-16">
-        <Catalog unlocked={unlocked} onBuy={openModal} />
+        <Catalog unlocked={true} onBuy={openModal} />
       </div>
       
-      {/* Lead Magnet Modal */}
-      <LeadMagnetModal isOpen={isModalOpen} onClose={() => { closeModal();
-        try {
-          const isUnlocked = (
-            localStorage.getItem('purchaseUnlocked') === 'true' ||
-            sessionStorage.getItem('purchaseUnlocked') === 'true'
-          );
-          setUnlocked(isUnlocked);
-        } catch { setUnlocked(false); }
-      }} />
     </section>
   );
 };
